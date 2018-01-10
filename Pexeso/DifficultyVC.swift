@@ -17,14 +17,15 @@ class DifficultyVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var pairsLabel: UILabel!
     
-    let availableNumOfPairs = ["2", "4", "6", "8", "10", "12"]
+    // I assume that the maximal possible number of pairs is 12 (24 cards) since minimal iPhone screen (320x480) may fit about 4x6 cards (in this case each card size will be 80x80 maximum)
+    let availableNumOfPairs = [Int](1...12)
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-         return availableNumOfPairs[row]
+        return String(describing: availableNumOfPairs[row])
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -47,12 +48,11 @@ class DifficultyVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
     
     func getPickerViewSelectedNumOfPairs() -> Int {
         let pickerSelectedRow = pickerView.selectedRow(inComponent: 0)
-        var selectedNumOfPairsStr = "0"
+        var selectedNumOfPairs = 0
         if pickerSelectedRow != -1 {
-            selectedNumOfPairsStr = availableNumOfPairs[pickerSelectedRow]
+            selectedNumOfPairs = availableNumOfPairs[pickerSelectedRow]
         }
-        let selectedNumOfPairs = Int(selectedNumOfPairsStr)
-        return selectedNumOfPairs ?? 0
+        return selectedNumOfPairs
     }
     
 }
