@@ -13,7 +13,8 @@ private let reuseIdentifier = "Cell"
 class GameUICollectionVC: UICollectionViewController {
 
     var delegate: NumOfPairsPickerDelegate?
-    var numOfPairs = 0
+    var numOfPairs = 1
+    var sections: (numberOfSections: Int, numberOfItemsInSection: Int) = (1, 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,9 @@ class GameUICollectionVC: UICollectionViewController {
             numOfPairs = delegate.getPickerViewSelectedNumOfPairs()
         }
         print("Selected num of pairs \(numOfPairs)")
+        
+        sections = dividePairsIntoSections(numberOfPairs: numOfPairs)
+        print("min is \(sections.numberOfSections) and max is \(sections.numberOfItemsInSection)")
 
         // Do any additional setup after loading the view.
     }
@@ -50,13 +54,13 @@ class GameUICollectionVC: UICollectionViewController {
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 12
+        return sections.numberOfSections
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 1
+        return sections.numberOfItemsInSection
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -98,5 +102,9 @@ class GameUICollectionVC: UICollectionViewController {
     
     }
     */
+    
+    func dividePairsIntoSections(numberOfPairs: Int) -> (numberOfSections: Int, numberOfItemsInSection: Int) {
+        return (2, 3)
+    }
 
 }
