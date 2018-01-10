@@ -9,7 +9,7 @@
 import UIKit
 
 protocol NumOfPairsPickerDelegate {
-    func getPickerViewSelectedRow() -> String
+    func getPickerViewSelectedNumOfPairs() -> Int
 }
 
 class DifficultyVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, NumOfPairsPickerDelegate {
@@ -45,13 +45,14 @@ class DifficultyVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
         }
     }
     
-    func getPickerViewSelectedRow() -> String {
+    func getPickerViewSelectedNumOfPairs() -> Int {
         let pickerSelectedRow = pickerView.selectedRow(inComponent: 0)
+        var selectedNumOfPairsStr = "0"
         if pickerSelectedRow != -1 {
-            return availableNumOfPairs[pickerSelectedRow]
-        } else {
-            return "-1"
+            selectedNumOfPairsStr = availableNumOfPairs[pickerSelectedRow]
         }
+        let selectedNumOfPairs = Int(selectedNumOfPairsStr)
+        return selectedNumOfPairs ?? 0
     }
     
 }
