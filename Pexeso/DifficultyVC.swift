@@ -8,7 +8,11 @@
 
 import UIKit
 
-class DifficultyVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+protocol NumOfPairsPickerDelegate {
+    func getPickerViewSelectedRow() -> String
+}
+
+class DifficultyVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, NumOfPairsPickerDelegate {
     
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var pairsLabel: UILabel!
@@ -33,6 +37,21 @@ class DifficultyVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
     
     @IBAction func startButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "VCDifficultyToVCGame", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? GameUICollectionVC {
+            destination.delegate = self
+        }
+    }
+    
+    func getPickerViewSelectedRow() -> String {
+        let pickerSelectedRow = pickerView.selectedRow(inComponent: 0)
+        if pickerSelectedRow != -1 {
+            return availableNumOfPairs[pickerSelectedRow]
+        } else {
+            return "-1"
+        }
     }
     
 }

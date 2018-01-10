@@ -12,6 +12,8 @@ private let reuseIdentifier = "Cell"
 
 class GameUICollectionVC: UICollectionViewController {
 
+    var delegate: NumOfPairsPickerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +22,7 @@ class GameUICollectionVC: UICollectionViewController {
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        print("Selected num of pairs \(delegate?.getPickerViewSelectedRow())")
 
         // Do any additional setup after loading the view.
     }
