@@ -1,24 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aPi-Ec-lTc">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="hgi-t4-IYO">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <navigationController id="aPi-Ec-lTc" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iNb-Uw-oGs">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="b7w-zg-Q7j" kind="relationship" relationship="rootViewController" id="2Ma-PU-CFT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dMe-Rz-HiT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-377" y="14"/>
+        </scene>
+        <!--Difficulty-->
+        <scene sceneID="K1i-vg-Rys">
+            <objects>
+                <viewController title="Difficulty" id="b7w-zg-Q7j" customClass="DifficultyVC" customModule="Pexeso" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eYR-ZK-lNb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SpU-y3-Rau">
+                                <rect key="frame" x="16" y="593" width="343" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="Start game"/>
+                                <connections>
+                                    <action selector="startButtonPressed:" destination="b7w-zg-Q7j" eventType="touchUpInside" id="4w8-Pd-BSe"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please specify the number of card pairs" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOW-Me-Vec">
+                                <rect key="frame" x="16" y="64" width="343" height="57.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nic-NP-V08">
+                                <rect key="frame" x="16" y="138" width="375" height="410"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="b7w-zg-Q7j" id="4kr-9J-rCi"/>
+                                    <outlet property="delegate" destination="b7w-zg-Q7j" id="VVD-1p-Kkh"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pairs: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYd-6i-qby">
+                                <rect key="frame" x="16" y="556" width="343" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nic-NP-V08" firstAttribute="trailing" secondItem="ZAG-km-93o" secondAttribute="trailing" constant="16" id="0BY-lc-7vr"/>
+                            <constraint firstItem="ZAG-km-93o" firstAttribute="bottom" secondItem="SpU-y3-Rau" secondAttribute="bottom" constant="20" id="DuQ-Jn-LUu"/>
+                            <constraint firstItem="ZAG-km-93o" firstAttribute="trailing" secondItem="gYd-6i-qby" secondAttribute="trailing" constant="16" id="JIm-N6-WUc"/>
+                            <constraint firstItem="SpU-y3-Rau" firstAttribute="top" secondItem="gYd-6i-qby" secondAttribute="bottom" constant="8" id="K5K-hq-bG6"/>
+                            <constraint firstItem="fOW-Me-Vec" firstAttribute="leading" secondItem="ZAG-km-93o" secondAttribute="leading" constant="16" id="PFz-cM-Z8v"/>
+                            <constraint firstItem="ZAG-km-93o" firstAttribute="trailing" secondItem="fOW-Me-Vec" secondAttribute="trailing" constant="16" id="UZa-Pc-hq7"/>
+                            <constraint firstItem="nic-NP-V08" firstAttribute="top" secondItem="fOW-Me-Vec" secondAttribute="bottom" constant="16" id="Ypc-gd-duf"/>
+                            <constraint firstItem="gYd-6i-qby" firstAttribute="top" secondItem="nic-NP-V08" secondAttribute="bottom" constant="8" id="ZI8-Ba-TNt"/>
+                            <constraint firstItem="gYd-6i-qby" firstAttribute="leading" secondItem="ZAG-km-93o" secondAttribute="leading" constant="16" id="Zrw-Bz-RYr"/>
+                            <constraint firstItem="nic-NP-V08" firstAttribute="leading" secondItem="ZAG-km-93o" secondAttribute="leading" constant="16" id="jLC-4T-3xl"/>
+                            <constraint firstItem="ZAG-km-93o" firstAttribute="trailing" secondItem="SpU-y3-Rau" secondAttribute="trailing" constant="16" id="ksE-gV-JKq"/>
+                            <constraint firstItem="fOW-Me-Vec" firstAttribute="top" secondItem="ZAG-km-93o" secondAttribute="top" id="ohN-BQ-7mX"/>
+                            <constraint firstItem="SpU-y3-Rau" firstAttribute="leading" secondItem="ZAG-km-93o" secondAttribute="leading" constant="16" id="zjE-eT-Fak"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZAG-km-93o"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Difficulty" id="iP3-hW-YhF"/>
+                    <connections>
+                        <outlet property="pairsLabel" destination="gYd-6i-qby" id="A36-MX-YNx"/>
+                        <outlet property="pickerView" destination="nic-NP-V08" id="mYw-11-OZy"/>
+                        <segue destination="RRH-aK-U85" kind="show" identifier="VCDifficultyToVCGame" id="asH-vH-idI"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lEF-lX-hm3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="412" y="13.943028485757123"/>
+        </scene>
+        <!--Game-->
+        <scene sceneID="Kud-TH-lRD">
+            <objects>
+                <collectionViewController title="Game" id="RRH-aK-U85" customClass="GameUICollectionVC" customModule="Pexeso" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="IWw-14-fhp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="La5-tI-rEF">
+                            <size key="itemSize" width="80" height="80"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="VCm-gb-R7W">
+                                <rect key="frame" x="0.0" y="10" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="RRH-aK-U85" id="kUz-fV-RgQ"/>
+                            <outlet property="delegate" destination="RRH-aK-U85" id="Gb2-1X-VPC"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T9Z-V1-UBi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1242" y="14"/>
         </scene>
     </scenes>
 </document>
