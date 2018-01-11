@@ -13,7 +13,7 @@ private let reuseIdentifier = "Cell"
 class GameUICollectionVC: UICollectionViewController {
 
     var delegate: NumOfPairsPickerDelegate?
-    var numOfPairs = 1
+    var numberOfPairs = 1
     var sections: (numberOfSections: Int, numberOfItemsInSection: Int) = (1, 1)
     
     override func viewDidLoad() {
@@ -25,12 +25,12 @@ class GameUICollectionVC: UICollectionViewController {
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         if let delegate = delegate {
-            numOfPairs = delegate.getPickerViewSelectedNumOfPairs()
+            numberOfPairs = delegate.getPickerViewSelectedNumOfPairs()
         }
-        print("Selected num of pairs \(numOfPairs)")
+        print("Selected num of pairs \(numberOfPairs)")
         
-        sections = dividePairsIntoSections(numberOfPairs: numOfPairs)
-        print("min is \(sections.numberOfSections) and max is \(sections.numberOfItemsInSection)")
+        sections = dividePairsIntoSections(numberOfPairs: numberOfPairs)
+        print("numberOfSections is \(sections.numberOfSections) and numberOfItemsInSection is \(sections.numberOfItemsInSection)")
 
         // Do any additional setup after loading the view.
     }
@@ -104,7 +104,7 @@ class GameUICollectionVC: UICollectionViewController {
     */
     
     func dividePairsIntoSections(numberOfPairs: Int) -> (numberOfSections: Int, numberOfItemsInSection: Int) {
-        return (2, 3)
+        return (numberOfPairs, 2)
     }
 
 }
