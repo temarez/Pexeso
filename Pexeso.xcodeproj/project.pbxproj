@@ -43,6 +43,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A30ABBB7200782E70014F12B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A333E26520056FC500E0898E /* AppDelegate.swift */,
+				A333E26C20056FC500E0898E /* Assets.xcassets */,
+				A333E26E20056FC500E0898E /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		A333E25920056FC500E0898E = {
 			isa = PBXGroup;
 			children = (
@@ -62,15 +72,13 @@
 		A333E26420056FC500E0898E /* Pexeso */ = {
 			isa = PBXGroup;
 			children = (
-				A333E26520056FC500E0898E /* AppDelegate.swift */,
+				A30ABBB7200782E70014F12B /* Supporting Files */,
 				A333E26720056FC500E0898E /* ViewController.swift */,
 				A333E26920056FC500E0898E /* Main.storyboard */,
 				A3E596DF2006299E000BA132 /* GameUICollectionVC.swift */,
 				A333E27720057B4F00E0898E /* DifficultyVC.swift */,
 				A30ABBB3200781320014F12B /* Card.swift */,
 				A30ABBB52007820A0014F12B /* Concentration.swift */,
-				A333E26C20056FC500E0898E /* Assets.xcassets */,
-				A333E26E20056FC500E0898E /* LaunchScreen.storyboard */,
 				A333E27120056FC500E0898E /* Info.plist */,
 			);
 			path = Pexeso;
