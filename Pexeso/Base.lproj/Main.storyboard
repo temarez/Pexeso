@@ -35,7 +35,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SpU-y3-Rau">
-                                <rect key="frame" x="16" y="593" width="343" height="54"/>
+                                <rect key="frame" x="16" y="605" width="343" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="Start game"/>
                                 <connections>
@@ -43,45 +43,59 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please specify the number of card pairs" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOW-Me-Vec">
-                                <rect key="frame" x="16" y="64" width="343" height="57.5"/>
+                                <rect key="frame" x="16" y="74" width="343" height="57.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nic-NP-V08">
-                                <rect key="frame" x="16" y="138" width="375" height="410"/>
+                                <rect key="frame" x="16" y="333.5" width="343" height="216"/>
                                 <connections>
                                     <outlet property="dataSource" destination="b7w-zg-Q7j" id="4kr-9J-rCi"/>
                                     <outlet property="delegate" destination="b7w-zg-Q7j" id="VVD-1p-Kkh"/>
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pairs: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYd-6i-qby">
-                                <rect key="frame" x="16" y="556" width="343" height="29"/>
+                                <rect key="frame" x="16" y="568" width="343" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ASh-86-un1">
+                                <rect key="frame" x="94" y="139.5" width="186" height="186"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="186" id="83U-eR-seO"/>
+                                    <constraint firstAttribute="width" constant="186" id="aZ9-hC-SOx"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="back"/>
+                                <connections>
+                                    <action selector="btnFlip:" destination="b7w-zg-Q7j" eventType="touchUpInside" id="Oa3-DG-SAI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="nic-NP-V08" firstAttribute="trailing" secondItem="ZAG-km-93o" secondAttribute="trailing" constant="16" id="0BY-lc-7vr"/>
-                            <constraint firstItem="ZAG-km-93o" firstAttribute="bottom" secondItem="SpU-y3-Rau" secondAttribute="bottom" constant="20" id="DuQ-Jn-LUu"/>
-                            <constraint firstItem="ZAG-km-93o" firstAttribute="trailing" secondItem="gYd-6i-qby" secondAttribute="trailing" constant="16" id="JIm-N6-WUc"/>
-                            <constraint firstItem="SpU-y3-Rau" firstAttribute="top" secondItem="gYd-6i-qby" secondAttribute="bottom" constant="8" id="K5K-hq-bG6"/>
-                            <constraint firstItem="fOW-Me-Vec" firstAttribute="leading" secondItem="ZAG-km-93o" secondAttribute="leading" constant="16" id="PFz-cM-Z8v"/>
-                            <constraint firstItem="ZAG-km-93o" firstAttribute="trailing" secondItem="fOW-Me-Vec" secondAttribute="trailing" constant="16" id="UZa-Pc-hq7"/>
-                            <constraint firstItem="nic-NP-V08" firstAttribute="top" secondItem="fOW-Me-Vec" secondAttribute="bottom" constant="16" id="Ypc-gd-duf"/>
-                            <constraint firstItem="gYd-6i-qby" firstAttribute="top" secondItem="nic-NP-V08" secondAttribute="bottom" constant="8" id="ZI8-Ba-TNt"/>
-                            <constraint firstItem="gYd-6i-qby" firstAttribute="leading" secondItem="ZAG-km-93o" secondAttribute="leading" constant="16" id="Zrw-Bz-RYr"/>
-                            <constraint firstItem="nic-NP-V08" firstAttribute="leading" secondItem="ZAG-km-93o" secondAttribute="leading" constant="16" id="jLC-4T-3xl"/>
-                            <constraint firstItem="ZAG-km-93o" firstAttribute="trailing" secondItem="SpU-y3-Rau" secondAttribute="trailing" constant="16" id="ksE-gV-JKq"/>
-                            <constraint firstItem="fOW-Me-Vec" firstAttribute="top" secondItem="ZAG-km-93o" secondAttribute="top" id="ohN-BQ-7mX"/>
-                            <constraint firstItem="SpU-y3-Rau" firstAttribute="leading" secondItem="ZAG-km-93o" secondAttribute="leading" constant="16" id="zjE-eT-Fak"/>
+                            <constraint firstItem="fOW-Me-Vec" firstAttribute="top" secondItem="ZAG-km-93o" secondAttribute="top" constant="10" id="1E8-xh-FM4"/>
+                            <constraint firstItem="nic-NP-V08" firstAttribute="top" secondItem="ASh-86-un1" secondAttribute="bottom" constant="8" id="5jk-bi-WC9"/>
+                            <constraint firstItem="ZAG-km-93o" firstAttribute="trailing" secondItem="fOW-Me-Vec" secondAttribute="trailing" constant="16" id="897-qZ-Qms"/>
+                            <constraint firstItem="nic-NP-V08" firstAttribute="leading" secondItem="ZAG-km-93o" secondAttribute="leading" constant="16" id="H7Z-mA-KdG"/>
+                            <constraint firstItem="SpU-y3-Rau" firstAttribute="top" secondItem="gYd-6i-qby" secondAttribute="bottom" constant="8" id="Hh1-qk-oIW"/>
+                            <constraint firstItem="ZAG-km-93o" firstAttribute="bottom" secondItem="SpU-y3-Rau" secondAttribute="bottom" constant="8" id="HzU-X5-DdA"/>
+                            <constraint firstItem="gYd-6i-qby" firstAttribute="top" relation="greaterThanOrEqual" secondItem="nic-NP-V08" secondAttribute="bottom" constant="8" id="M1T-HU-coH"/>
+                            <constraint firstItem="ZAG-km-93o" firstAttribute="trailing" secondItem="nic-NP-V08" secondAttribute="trailing" constant="16" id="ebY-Ze-tfG"/>
+                            <constraint firstItem="gYd-6i-qby" firstAttribute="leading" secondItem="ZAG-km-93o" secondAttribute="leading" constant="16" id="iAz-Mb-ZRS"/>
+                            <constraint firstItem="ASh-86-un1" firstAttribute="centerX" secondItem="ZAG-km-93o" secondAttribute="centerX" id="iaE-d9-Qgo"/>
+                            <constraint firstItem="ZAG-km-93o" firstAttribute="trailing" secondItem="gYd-6i-qby" secondAttribute="trailing" constant="16" id="kDM-wO-pSK"/>
+                            <constraint firstItem="fOW-Me-Vec" firstAttribute="leading" secondItem="ZAG-km-93o" secondAttribute="leading" constant="16" id="mrY-Yp-Mmm"/>
+                            <constraint firstItem="ASh-86-un1" firstAttribute="top" secondItem="fOW-Me-Vec" secondAttribute="bottom" constant="8" id="qYF-Su-Mz1"/>
+                            <constraint firstItem="ZAG-km-93o" firstAttribute="trailing" secondItem="SpU-y3-Rau" secondAttribute="trailing" constant="16" id="w4D-fN-y4M"/>
+                            <constraint firstItem="SpU-y3-Rau" firstAttribute="leading" secondItem="ZAG-km-93o" secondAttribute="leading" constant="16" id="xiD-QS-ZGU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZAG-km-93o"/>
                     </view>
                     <navigationItem key="navigationItem" title="Difficulty" id="iP3-hW-YhF"/>
                     <connections>
+                        <outlet property="btnCard" destination="ASh-86-un1" id="usm-fF-Atw"/>
                         <outlet property="pairsLabel" destination="gYd-6i-qby" id="A36-MX-YNx"/>
                         <outlet property="pickerView" destination="nic-NP-V08" id="mYw-11-OZy"/>
                         <segue destination="RRH-aK-U85" kind="show" identifier="VCDifficultyToVCGame" id="asH-vH-idI"/>
@@ -112,6 +126,18 @@
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnP-x1-wQW">
+                                            <rect key="frame" x="17" y="25" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button">
+                                                <color key="titleColor" red="0.95831897889999995" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="touchCard:" destination="RRH-aK-U85" eventType="touchUpInside" id="9k0-Yx-3Dh"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
                                 </view>
                             </collectionViewCell>
                         </cells>
@@ -126,4 +152,7 @@
             <point key="canvasLocation" x="1242" y="14"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="back" width="186" height="186"/>
+    </resources>
 </document>
