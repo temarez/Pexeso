@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A30ABBB4200781320014F12B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30ABBB3200781320014F12B /* Card.swift */; };
 		A333E26620056FC500E0898E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A333E26520056FC500E0898E /* AppDelegate.swift */; };
 		A333E26820056FC500E0898E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A333E26720056FC500E0898E /* ViewController.swift */; };
 		A333E26B20056FC500E0898E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A333E26920056FC500E0898E /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A30ABBB3200781320014F12B /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		A333E26220056FC500E0898E /* Pexeso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pexeso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A333E26520056FC500E0898E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A333E26720056FC500E0898E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				A333E26920056FC500E0898E /* Main.storyboard */,
 				A3E596DF2006299E000BA132 /* GameUICollectionVC.swift */,
 				A333E27720057B4F00E0898E /* DifficultyVC.swift */,
+				A30ABBB3200781320014F12B /* Card.swift */,
 				A333E26C20056FC500E0898E /* Assets.xcassets */,
 				A333E26E20056FC500E0898E /* LaunchScreen.storyboard */,
 				A333E27120056FC500E0898E /* Info.plist */,
@@ -144,6 +147,7 @@
 			files = (
 				A333E26820056FC500E0898E /* ViewController.swift in Sources */,
 				A3E596E02006299E000BA132 /* GameUICollectionVC.swift in Sources */,
+				A30ABBB4200781320014F12B /* Card.swift in Sources */,
 				A333E27820057B4F00E0898E /* DifficultyVC.swift in Sources */,
 				A333E26620056FC500E0898E /* AppDelegate.swift in Sources */,
 			);
