@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -120,25 +121,34 @@
                             <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="VCm-gb-R7W">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="VCm-gb-R7W" customClass="CardCollectionViewCell" customModule="Pexeso" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="10" width="80" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnP-x1-wQW">
-                                            <rect key="frame" x="17" y="25" width="46" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnP-x1-wQW">
+                                            <rect key="frame" x="11" y="11" width="58" height="58"/>
                                             <state key="normal" title="Button">
                                                 <color key="titleColor" red="0.95831897889999995" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                             <connections>
+                                                <action selector="cardBtnClicked:" destination="VCm-gb-R7W" eventType="touchUpInside" id="Ifr-6r-lWo"/>
                                                 <action selector="touchCard:" destination="RRH-aK-U85" eventType="touchUpInside" id="9k0-Yx-3Dh"/>
                                             </connections>
                                         </button>
                                     </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstItem="WnP-x1-wQW" firstAttribute="top" secondItem="VCm-gb-R7W" secondAttribute="topMargin" constant="3" id="ESf-8A-f9h"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="WnP-x1-wQW" secondAttribute="bottom" constant="3" id="gZC-H2-KgR"/>
+                                    <constraint firstItem="WnP-x1-wQW" firstAttribute="leading" secondItem="VCm-gb-R7W" secondAttribute="leadingMargin" constant="3" id="qSl-K5-QIp"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="WnP-x1-wQW" secondAttribute="trailing" constant="3" id="sft-Mu-165"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="cardButton" destination="WnP-x1-wQW" id="You-Sl-YSP"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>

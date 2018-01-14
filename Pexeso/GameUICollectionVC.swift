@@ -32,6 +32,10 @@ class GameUICollectionVC: UICollectionViewController {
         sections = dividePairsIntoSections(numberOfPairs: numberOfPairs)
         print("numberOfSections is \(sections.numberOfSections) and numberOfItemsInSection is \(sections.numberOfItemsInSection)")
 
+        
+        // TODO: check below
+        //(collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = cellSize
+        
         // Do any additional setup after loading the view.
     }
 
@@ -68,8 +72,19 @@ class GameUICollectionVC: UICollectionViewController {
     
         // Configure the cell
     
-        cell.backgroundColor = UIColor.cyan
+        cell.layer.borderWidth = 1.0
+        cell.layer.borderColor = UIColor.red.cgColor
+        
+        // TODO: this is not working
+        if let cardCell = cell as? CardCollectionViewCell {
+            cardCell.cardButton.addTarget(self, action: #selector(cardBtnClicked), for: UIControlEvents.touchUpInside)
+        }
+        
         return cell
+    }
+    
+    @objc func cardBtnClicked(sender: UIButton) {
+        print("Card button clicked - from GameUICollectionVC")
     }
 
     // MARK: UICollectionViewDelegate
