@@ -21,6 +21,11 @@ struct Card
         return  identifierFactory
     }
     
+    // TODO: Implement below "convertTo..." methods and later depending on selected database (in ) use one of these methods by means of switch construction in code:
+    // func convertToRealmObject() -> Object { }
+    // func convertToCoreDataObject() -> NSManagedObject { }
+    // Here we may use "Abstract Factory" pattern
+
     init() {
         self.identifier = Card.getUniqueIdentifier()
     }
