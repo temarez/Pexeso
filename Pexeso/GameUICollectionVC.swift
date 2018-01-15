@@ -23,7 +23,7 @@ class GameUICollectionVC: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         if let delegate = delegate {
             numberOfPairs = delegate.getPickerViewSelectedNumOfPairs()
         }
@@ -68,17 +68,17 @@ class GameUICollectionVC: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? CardCollectionViewCell else {
+            fatalError("Oops: can not get the proper cell CardCollectionViewCell")
+        }
+        
         // Configure the cell
     
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.red.cgColor
         
-        // TODO: this is not working
-        if let cardCell = cell as? CardCollectionViewCell {
-            cardCell.cardButton.addTarget(self, action: #selector(cardBtnClicked), for: UIControlEvents.touchUpInside)
-        }
+        // TODO: this is not working since cardButton is nil
+        // cell.cardButton.addTarget(self, action: #selector(cardBtnClicked), for: UIControlEvents.touchUpInside)
         
         return cell
     }
