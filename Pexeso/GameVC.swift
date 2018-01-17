@@ -12,11 +12,32 @@ private let reuseIdentifier = "Cell"
 
 class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var collectionView: UICollectionView?
+
+    var delegate: NumOfPairsPickerDelegate?
+    var numberOfPairs = 2
+    var sections: (numberOfSections: Int, numberOfItemsInSection: Int) = (1, 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.dataSource = self
         collectionView?.delegate = self
+        
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Register cell classes
+        //self.collectionView!.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        if let delegate = delegate {
+            numberOfPairs = delegate.getPickerViewSelectedNumOfPairs()
+        }
+        print("Selected num of pairs \(numberOfPairs)")
+        
+        sections = dividePairsIntoSections(numberOfPairs: numberOfPairs)
+        print("numberOfSections is \(sections.numberOfSections) and numberOfItemsInSection is \(sections.numberOfItemsInSection)")
+
+        
+        // TODO: check below
+        //(collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = cellSize
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,8 +57,14 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     // MARK: UICollectionViewDataSource
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return sections.numberOfSections
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return sections.numberOfItemsInSection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -57,5 +84,13 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         return cell
     }
-
+    
+    @objc func cardBtnClicked(sender: UIButton) {
+        print("Card button clicked - from GameUICollectionVC")
+    }
+    
+    func dividePairsIntoSections(numberOfPairs: Int) -> (numberOfSections: Int, numberOfItemsInSection: Int) {
+        return (numberOfPairs, 2)
+    }
+    
 }
