@@ -131,7 +131,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Za8-20-PVa">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Za8-20-PVa">
                                                     <rect key="frame" x="8" y="8" width="84" height="84"/>
                                                     <connections>
                                                         <action selector="cardBtnClicked:" destination="YH7-NW-TIi" eventType="touchUpInside" id="E3k-eD-7fB"/>
