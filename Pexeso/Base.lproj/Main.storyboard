@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -99,7 +98,7 @@
                         <outlet property="btnCard" destination="ASh-86-un1" id="usm-fF-Atw"/>
                         <outlet property="pairsLabel" destination="gYd-6i-qby" id="A36-MX-YNx"/>
                         <outlet property="pickerView" destination="nic-NP-V08" id="mYw-11-OZy"/>
-                        <segue destination="RRH-aK-U85" kind="show" identifier="VCDifficultyToVCGame" id="asH-vH-idI"/>
+                        <segue destination="2iy-G1-YyD" kind="show" identifier="VCDifficultyToVCGame" id="ONP-ze-twv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lEF-lX-hm3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -107,59 +106,47 @@
             <point key="canvasLocation" x="412" y="13.943028485757123"/>
         </scene>
         <!--Game-->
-        <scene sceneID="Kud-TH-lRD">
+        <scene sceneID="cf8-XO-stO">
             <objects>
-                <collectionViewController title="Game" id="RRH-aK-U85" customClass="GameUICollectionVC" customModule="Pexeso" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="IWw-14-fhp">
+                <viewController title="Game" id="2iy-G1-YyD" customClass="GameVC" customModule="Pexeso" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="shz-Uy-BbF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CaN-cH-i1m" customClass="GameUICollectionView" customModule="Pexeso" customModuleProvider="target">
+                                <rect key="frame" x="10" y="74" width="355" height="583"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CkY-VG-K6y">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="YH7-NW-TIi" customClass="CardCollectionViewCell" customModule="Pexeso" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="La5-tI-rEF">
-                            <size key="itemSize" width="80" height="80"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="VCm-gb-R7W" customClass="CardCollectionViewCell" customModule="Pexeso" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="10" width="80" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnP-x1-wQW">
-                                            <rect key="frame" x="11" y="11" width="58" height="58"/>
-                                            <state key="normal" title="Button">
-                                                <color key="titleColor" red="0.95831897889999995" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="cardBtnClicked:" destination="VCm-gb-R7W" eventType="touchUpInside" id="Ifr-6r-lWo"/>
-                                                <action selector="touchCard:" destination="RRH-aK-U85" eventType="touchUpInside" id="9k0-Yx-3Dh"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                </view>
-                                <constraints>
-                                    <constraint firstItem="WnP-x1-wQW" firstAttribute="top" secondItem="VCm-gb-R7W" secondAttribute="topMargin" constant="3" id="ESf-8A-f9h"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="WnP-x1-wQW" secondAttribute="bottom" constant="3" id="gZC-H2-KgR"/>
-                                    <constraint firstItem="WnP-x1-wQW" firstAttribute="leading" secondItem="VCm-gb-R7W" secondAttribute="leadingMargin" constant="3" id="qSl-K5-QIp"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="WnP-x1-wQW" secondAttribute="trailing" constant="3" id="sft-Mu-165"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="cardButton" destination="WnP-x1-wQW" id="You-Sl-YSP"/>
-                                </connections>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="RRH-aK-U85" id="kUz-fV-RgQ"/>
-                            <outlet property="delegate" destination="RRH-aK-U85" id="Gb2-1X-VPC"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T9Z-V1-UBi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="e45-85-C3a" firstAttribute="bottom" secondItem="CaN-cH-i1m" secondAttribute="bottom" constant="10" id="2jI-si-Mwq"/>
+                            <constraint firstItem="CaN-cH-i1m" firstAttribute="leading" secondItem="e45-85-C3a" secondAttribute="leading" constant="10" id="JWy-vR-99C"/>
+                            <constraint firstItem="e45-85-C3a" firstAttribute="trailing" secondItem="CaN-cH-i1m" secondAttribute="trailing" constant="10" id="TjG-fF-h43"/>
+                            <constraint firstItem="CaN-cH-i1m" firstAttribute="top" secondItem="e45-85-C3a" secondAttribute="top" constant="10" id="VR9-PK-dqI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="e45-85-C3a"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D2T-hW-T52" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1242" y="14"/>
+            <point key="canvasLocation" x="1262" y="14"/>
         </scene>
     </scenes>
     <resources>
