@@ -39,21 +39,6 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         // TODO: check below
         //(collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = cellSize
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
     // MARK: UICollectionViewDataSource
     
@@ -74,13 +59,12 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         // Configure the cell
         
-        cell.cardButton?.setImage(#imageLiteral(resourceName: "i14"), for: UIControlState.normal)
+        cell.cardButton.setImage(#imageLiteral(resourceName: "i14"), for: UIControlState.normal)
         
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.red.cgColor
         
-        // TODO: this is not working since cardButton is nil
-        // cell.cardButton.addTarget(self, action: #selector(cardBtnClicked), for: UIControlEvents.touchUpInside)
+        cell.cardButton.addTarget(self, action: #selector(cardBtnClicked), for: UIControlEvents.touchUpInside)
         
         return cell
     }
