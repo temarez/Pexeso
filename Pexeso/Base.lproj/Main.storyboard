@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -130,15 +131,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Za8-20-PVa">
-                                                    <rect key="frame" x="20" y="20" width="60" height="60"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Za8-20-PVa">
+                                                    <rect key="frame" x="8" y="8" width="84" height="84"/>
                                                     <connections>
                                                         <action selector="cardBtnClicked:" destination="YH7-NW-TIi" eventType="touchUpInside" id="E3k-eD-7fB"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Za8-20-PVa" secondAttribute="trailing" id="CLv-a7-Dep"/>
+                                            <constraint firstItem="Za8-20-PVa" firstAttribute="leading" secondItem="YH7-NW-TIi" secondAttribute="leadingMargin" id="XNu-IC-AUi"/>
+                                            <constraint firstItem="Za8-20-PVa" firstAttribute="top" secondItem="YH7-NW-TIi" secondAttribute="topMargin" id="fBq-2l-76D"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="Za8-20-PVa" secondAttribute="bottom" id="neZ-QP-HJK"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="cardButton" destination="Za8-20-PVa" id="n6N-1F-Njv"/>
                                         </connections>
