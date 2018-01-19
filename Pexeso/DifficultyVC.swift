@@ -55,22 +55,4 @@ class DifficultyVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
         return selectedNumOfPairs
     }
     
-    @IBOutlet weak var btnCard: UIButton!
-    var isOpen = false
-    
-    // "touch up inside"
-    @IBAction func btnFlip(_ sender: Any) {
-        if isOpen {
-            isOpen = false
-            let image = UIImage(named: "back")
-            btnCard.setImage(image, for: .normal)
-            UIView.transition(with: btnCard, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-        } else {
-            isOpen = true
-            let image = UIImage(named: "i01")
-            btnCard.setImage(image, for: .normal)
-            UIView.transition(with: btnCard, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
-        }
-    }
-    
 }

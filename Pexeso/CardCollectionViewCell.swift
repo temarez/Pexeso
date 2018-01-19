@@ -11,8 +11,20 @@ import UIKit
 class CardCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var cardButton: UIButton!
+    var isOpen = false
     
     @IBAction func cardBtnClicked(_ sender: UIButton) {
-        print("Card button clicked - from CardCollectionViewCell")
+        //print("Card button clicked - from CardCollectionViewCell")
+        if isOpen {
+            isOpen = false
+            let image = UIImage(named: "back")
+            cardButton.setImage(image, for: .normal)
+            UIView.transition(with: cardButton, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+        } else {
+            isOpen = true
+            let image = UIImage(named: "i01")
+            cardButton.setImage(image, for: .normal)
+            UIView.transition(with: cardButton, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
+        }
     }
 }
