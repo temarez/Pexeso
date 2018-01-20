@@ -25,7 +25,7 @@ class CardView: UIView {
     }
     */
     
-    func cardsMatchAnimation(view: UIView, completion: (() -> Swift.Void)? = nil)  {
+    func cardsMatchAnimation(view: UIView)  {
         let animator = UIViewPropertyAnimator(
             duration: Constants.matchCardAnimationDuration,
             curve: .linear ,
@@ -34,23 +34,6 @@ class CardView: UIView {
                 view.transform = CGAffineTransform.identity.scaledBy(x: Constants.matchCardAnimationScaleDown,
                                                                      y: Constants.matchCardAnimationScaleDown)
                 view.alpha = 0
-        })
-        animator.addCompletion({ position in
-            UIViewPropertyAnimator.runningPropertyAnimator(
-                withDuration: Constants.matchCardAnimationDuration,
-                delay: 0, options: [],
-                animations: {
-                    
-            },
-                completion: { position in
-                    view.isHidden = true
-                    view.alpha = 1
-                    view.transform = .identity
-            }
-            )
-        })
-        animator.addCompletion({ position in
-            completion?()
         })
         animator.startAnimation()
     }

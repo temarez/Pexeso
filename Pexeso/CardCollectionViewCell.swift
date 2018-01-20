@@ -15,14 +15,13 @@ class CardCollectionViewCell: UICollectionViewCell {
     
     @IBAction func cardBtnClicked(_ sender: UIButton) {
         let cardView = CardView()
-        cardView.cardsMatchAnimation(view: cardButton, completion: nil)
-        //cardView.cardsMatchAnimation(view: sender, completion: nil)
         //print("Card button clicked - from CardCollectionViewCell")
         if isOpen {
             isOpen = false
             let image = UIImage(named: "back")
             cardButton.setImage(image, for: .normal)
             UIView.transition(with: cardButton, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+            cardView.cardsMatchAnimation(view: cardButton)
         } else {
             isOpen = true
             let image = UIImage(named: "i01")
