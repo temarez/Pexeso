@@ -9,15 +9,8 @@
 import UIKit
 
 struct Constants {
-    static var flipCardAnimationDuration: TimeInterval = 0.6
     static var matchCardAnimationDuration: TimeInterval = 0.6
-    static var matchCardAnimationScaleUp: CGFloat = 3.0
     static var matchCardAnimationScaleDown: CGFloat = 0.1
-    static var behaviorResistance: CGFloat = 0
-    static var behaviorElasticity: CGFloat = 1.0
-    static var behaviorPushMagnitudeMinimum: CGFloat = 0.5
-    static var behaviorPushMagnitudeRandomFactor: CGFloat = 1.0
-    static var cardsPerMainViewWidth: CGFloat = 5
 }
 
 class CardView: UIView {
@@ -38,17 +31,16 @@ class CardView: UIView {
             curve: .linear ,
             animations: {
                 view.center = view.superview!.center
-                view.transform = CGAffineTransform.identity.scaledBy(x: Constants.matchCardAnimationScaleUp,
-                                                                     y: Constants.matchCardAnimationScaleUp)
+                view.transform = CGAffineTransform.identity.scaledBy(x: Constants.matchCardAnimationScaleDown,
+                                                                     y: Constants.matchCardAnimationScaleDown)
+                view.alpha = 0
         })
         animator.addCompletion({ position in
             UIViewPropertyAnimator.runningPropertyAnimator(
                 withDuration: Constants.matchCardAnimationDuration,
                 delay: 0, options: [],
                 animations: {
-                    view.transform = CGAffineTransform.identity.scaledBy(x: Constants.matchCardAnimationScaleDown,
-                                                                         y: Constants.matchCardAnimationScaleDown)
-                    view.alpha = 0
+                    
             },
                 completion: { position in
                     view.isHidden = true
