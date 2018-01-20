@@ -14,6 +14,9 @@ class CardCollectionViewCell: UICollectionViewCell {
     var isOpen = false
     
     @IBAction func cardBtnClicked(_ sender: UIButton) {
+        let cardView = CardView()
+        cardView.cardsMatchAnimation(view: cardButton, completion: nil)
+        //cardView.cardsMatchAnimation(view: sender, completion: nil)
         //print("Card button clicked - from CardCollectionViewCell")
         if isOpen {
             isOpen = false
