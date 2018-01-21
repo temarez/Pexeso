@@ -55,4 +55,12 @@ class DifficultyVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
         return selectedNumOfPairs
     }
     
+    @IBAction func sharePressed(_ sender: UIButton) {
+        let activityVC = UIActivityViewController(activityItems: ["www.google.com"], applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        
+        self.present(activityVC, animated: true, completion: nil)
+    }
+    
+    
 }
