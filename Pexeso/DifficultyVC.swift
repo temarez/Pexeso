@@ -58,7 +58,9 @@ class DifficultyVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
     @IBAction func sharePressed(_ sender: UIButton) {
         let activityVC = UIActivityViewController(activityItems: ["www.google.com"], applicationActivities: nil)
         activityVC.popoverPresentationController?.sourceView = self.view
-        
+        activityVC.excludedActivityTypes = [
+            UIActivityType(rawValue: "com.apple.mobilenotes.SharingExtension")
+        ]
         self.present(activityVC, animated: true, completion: nil)
     }
     
