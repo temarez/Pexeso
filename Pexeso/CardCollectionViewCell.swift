@@ -20,13 +20,13 @@ class CardCollectionViewCell: UICollectionViewCell {
             isOpen = false
             let image = UIImage(named: "back")
             cardButton.setImage(image, for: .normal)
-            UIView.transition(with: cardButton, duration: 0.3, options: .transitionFlipFromLeft, animations: nil, completion: nil)
+            cardView.cardCloseAnimation(view: cardButton)
             cardView.cardsMatchAnimation(view: cardButton)
         } else {
             isOpen = true
             let image = UIImage(named: "i01")
             cardButton.setImage(image, for: .normal)
-            UIView.transition(with: cardButton, duration: 0.3, options: .transitionFlipFromRight, animations: nil, completion: nil)
+            cardView.cardOpenAnimation(view: cardButton)
         }
     }
 }

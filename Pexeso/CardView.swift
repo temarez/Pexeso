@@ -11,6 +11,8 @@ import UIKit
 struct Constants {
     static var matchCardAnimationDuration: TimeInterval = 0.6
     static var matchCardAnimationScaleDown: CGFloat = 0.1
+    static var openCardAnimationDuration: TimeInterval = 0.3
+    static var closeCardAnimationDuration: TimeInterval = 0.3
 }
 
 class CardView: UIView {
@@ -36,6 +38,14 @@ class CardView: UIView {
                 view.alpha = 0
         })
         animator.startAnimation()
+    }
+    
+    func cardOpenAnimation(view: UIView) {
+        UIView.transition(with: view, duration: Constants.openCardAnimationDuration, options: .transitionFlipFromRight, animations: nil, completion: nil)
+    }
+    
+    func cardCloseAnimation (view: UIView) {
+        UIView.transition(with: view, duration: Constants.closeCardAnimationDuration, options: .transitionFlipFromLeft, animations: nil, completion: nil)
     }
 
 }
