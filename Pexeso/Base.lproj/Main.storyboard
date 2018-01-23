@@ -155,7 +155,7 @@
                         <viewLayoutGuide key="safeArea" id="e45-85-C3a"/>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="CaN-cH-i1m" id="2cx-O9-VhL"/>
+                        <outlet property="collectionView" destination="CaN-cH-i1m" id="wjM-wn-oez"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D2T-hW-T52" userLabel="First Responder" sceneMemberID="firstResponder"/>
