@@ -8,6 +8,34 @@
 
 import Foundation
 
+class Pexeso {
+    var cards = [Card]() // Array<Card>
+    
+    init(numberOfPairsOfCards: Int) {
+        for _ in 1...numberOfPairsOfCards {
+            let card = Card()
+            cards += [card, card] //Same as twice calling cards.append(card)
+        }
+        cards.shuffle()
+    }
+}
+
+// Extension to the `MutableCollection` protocol (to which Array struct conforms) - add a shuffle() method
+extension MutableCollection {
+    /// Shuffles the contents of this collection.
+    mutating func shuffle() {
+        let c = count
+        guard c > 1 else { return }
+        
+        for (firstUnshuffled, unshuffledCount) in zip(indices, stride(from: c, to: 1, by: -1)) {
+            let d: IndexDistance = numericCast(arc4random_uniform(numericCast(unshuffledCount)))
+            let i = index(firstUnshuffled, offsetBy: d)
+            swapAt(firstUnshuffled, i)
+        }
+    }
+}
+
+// TODO: delete below part later
 class Concentration
 {
     var cards = [Card]() // Array<Card>

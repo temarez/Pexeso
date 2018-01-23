@@ -11,7 +11,7 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    @IBOutlet weak var collectionView: UICollectionView?
+    @IBOutlet weak var collectionView: GameUICollectionView?
 
     var delegate: NumOfPairsPickerDelegate?
     var numberOfPairs = 2
@@ -35,7 +35,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         sections = dividePairsIntoSections(numberOfPairs: numberOfPairs)
         print("numberOfSections is \(sections.numberOfSections) and numberOfItemsInSection is \(sections.numberOfItemsInSection)")
 
-        
+        initPexesoGame()
         // TODO: check below
         //(collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = cellSize
     }
@@ -82,7 +82,16 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         return (numberOfPairs, 2)
     }
     
-    // Below part is inspired by Stanford CS 193P courses (start)
+    // MARK: below part is an attempt to implement logics
+    lazy var pexesoGame: Pexeso = Pexeso(numberOfPairsOfCards: numberOfPairs)
+
+    func initPexesoGame() {
+        for card in pexesoGame.cards {
+            print(card.identifier)
+        }
+    }
+    
+    // MARK: Below part is inspired by Stanford CS 193P courses (start)
     
     lazy var game: Concentration =
         Concentration(numberOfPairsOfCards: (cardButtons.count+1) / 2)
