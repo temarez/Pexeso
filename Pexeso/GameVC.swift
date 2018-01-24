@@ -53,13 +53,17 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? CardCollectionViewCell else {
+        let rawCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        guard let cell = rawCell as? CardCollectionViewCell else {
             fatalError("Oops: can not get the proper cell CardCollectionViewCell")
         }
-        
+        // int currentIndex = indexPath.section
+        // print(String(indexPath.section) + " | " + String(indexPath.row))
         // Configure the cell
-        
-        cell.cardButton.setImage(#imageLiteral(resourceName: "i14"), for: UIControlState.normal)
+        let imageName = "i0" + String(indexPath.section+1);
+        let image = UIImage(named: imageName)
+        cell.cardButton.setImage(image, for: UIControlState.normal)
+        //cell.cardButton.setImage(#imageLiteral(resourceName: "i14"), for: UIControlState.normal)
         
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.red.cgColor
@@ -89,6 +93,26 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         for card in pexesoGame.cards {
             print(card.identifier)
         }
+        
+        if let colView = collectionView {
+            for cell in colView.visibleCells { // as [CardCollectionViewCell]
+                print(cell)
+                if let cardCell = cell as? CardCollectionViewCell {
+                    cardCell.cardButton.setTitle("MY CELL", for: .normal)
+                }
+            }
+        }
+
+        /*
+        if let colView = collectionView {
+            for cell in colView.visibleCells { // as [CardCollectionViewCell]
+                print(cell)
+                if let cardCell = cell as CardCollectionViewCell {
+                    cardCell
+                }
+            }
+        }
+        */
     }
     
     // MARK: Below part is inspired by Stanford CS 193P courses (start)
