@@ -57,10 +57,12 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         guard let cell = rawCell as? CardCollectionViewCell else {
             fatalError("Oops: can not get the proper cell CardCollectionViewCell")
         }
-        // int currentIndex = indexPath.section
-        // print(String(indexPath.section) + " | " + String(indexPath.row))
+        
+        let currentCellNumber = indexPath.section * sections.numberOfItemsInSection + indexPath.row + 1
+        //print("INDEX: " + String(currentCellNumber) + "[" + String(indexPath.section) + "," + String(indexPath.row) + "]")
+
         // Configure the cell
-        let imageName = "i0" + String(indexPath.section+1);
+        let imageName = "i0" + String(currentCellNumber);
         let image = UIImage(named: imageName)
         cell.cardButton.setImage(image, for: UIControlState.normal)
         //cell.cardButton.setImage(#imageLiteral(resourceName: "i14"), for: UIControlState.normal)
