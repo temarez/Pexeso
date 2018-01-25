@@ -156,11 +156,27 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="CaN-cH-i1m" id="wjM-wn-oez"/>
+                        <segue destination="7Pp-lc-LLZ" kind="show" id="Nkn-gT-bQq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D2T-hW-T52" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1261.5999999999999" y="13.943028485757123"/>
+        </scene>
+        <!--High Scores-->
+        <scene sceneID="A5e-ot-4yn">
+            <objects>
+                <viewController title="High Scores" id="7Pp-lc-LLZ" customClass="HighScoresVC" customModule="Pexeso" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wxx-4v-arw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Mk1-BN-jwD"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pRd-f3-AT1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2265" y="14"/>
         </scene>
     </scenes>
 </document>
