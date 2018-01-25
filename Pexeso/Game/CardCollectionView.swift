@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameUICollectionView: UICollectionView {
+class CardCollectionView: UICollectionView {
 
     /*
     // Only override draw() if you perform custom drawing.

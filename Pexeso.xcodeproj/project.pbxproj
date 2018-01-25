@@ -20,7 +20,7 @@
 		A3ECAD2B200BF5D5003DD911 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ECAD2A200BF5D5003DD911 /* CardCollectionViewCell.swift */; };
 		A3ED3111201A16A400CDE7AF /* HighScoresVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ED3110201A16A400CDE7AF /* HighScoresVC.swift */; };
 		A3F86CE7200F5CEB007A496F /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F86CE6200F5CEB007A496F /* GameVC.swift */; };
-		A3F86CE9200F5DE9007A496F /* GameUICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F86CE8200F5DE9007A496F /* GameUICollectionView.swift */; };
+		A3F86CE9200F5DE9007A496F /* CardCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F86CE8200F5DE9007A496F /* CardCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +39,7 @@
 		A3ECAD2A200BF5D5003DD911 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		A3ED3110201A16A400CDE7AF /* HighScoresVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoresVC.swift; sourceTree = "<group>"; };
 		A3F86CE6200F5CEB007A496F /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
-		A3F86CE8200F5DE9007A496F /* GameUICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUICollectionView.swift; sourceTree = "<group>"; };
+		A3F86CE8200F5DE9007A496F /* CardCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +97,7 @@
 		A3ED3112201A226B00CDE7AF /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				A3F86CE8200F5DE9007A496F /* GameUICollectionView.swift */,
+				A3F86CE8200F5DE9007A496F /* CardCollectionView.swift */,
 				A3ECAD2A200BF5D5003DD911 /* CardCollectionViewCell.swift */,
 				A3421D4F2012A57B0073A16D /* CardView.swift */,
 				A3F86CE6200F5CEB007A496F /* GameVC.swift */,
@@ -179,7 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3F86CE9200F5DE9007A496F /* GameUICollectionView.swift in Sources */,
+				A3F86CE9200F5DE9007A496F /* CardCollectionView.swift in Sources */,
 				A3421D502012A57B0073A16D /* CardView.swift in Sources */,
 				A333E26820056FC500E0898E /* ViewController.swift in Sources */,
 				A3F86CE7200F5CEB007A496F /* GameVC.swift in Sources */,

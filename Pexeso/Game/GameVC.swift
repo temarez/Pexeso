@@ -11,7 +11,7 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    @IBOutlet weak var collectionView: GameUICollectionView?
+    @IBOutlet weak var collectionView: CardCollectionView?
 
     var delegate: NumOfPairsPickerDelegate?
     var numberOfPairs = 2
