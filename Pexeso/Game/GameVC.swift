@@ -36,6 +36,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         print("numberOfSections is \(sections.numberOfSections) and numberOfItemsInSection is \(sections.numberOfItemsInSection)")
 
         initPexesoGame()
+        myTimerStart()
         // TODO: check below
         //(collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = cellSize
     }
@@ -127,6 +128,29 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
         */
     }
+    
+    // MARK: Timer-related part
+    
+    var seconds = 30
+    var timer = Timer()
+    
+    func myTimerStart() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(myTimerCounter), userInfo: nil, repeats: true)
+    }
+    
+    @objc func myTimerCounter() {
+        seconds -= 1
+        timeLabel.text = "Time: \(seconds)"
+        if (seconds == 0) {
+            myTimerStop()
+        }
+    }
+    
+    func myTimerStop() {
+        timer.invalidate()
+        seconds = 30
+    }
+
     
     // MARK: Below part is inspired by Stanford CS 193P courses (start)
     
