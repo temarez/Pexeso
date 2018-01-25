@@ -65,4 +65,9 @@ class DifficultyVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
     }
     
     
+    @IBAction func highScoresPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "DifficultyVC2HighScoresVC", sender: nil)
+    }
+    
+    
 }

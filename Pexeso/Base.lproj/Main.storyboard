@@ -70,6 +70,14 @@
                                     <action selector="sharePressed:" destination="b7w-zg-Q7j" eventType="touchUpInside" id="IC1-eI-MV2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQr-Js-eZO">
+                                <rect key="frame" x="58" y="318" width="270" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="High Scores"/>
+                                <connections>
+                                    <action selector="highScoresPressed:" destination="b7w-zg-Q7j" eventType="touchUpInside" id="EG0-vX-Pd1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -93,6 +101,7 @@
                         <outlet property="pairsLabel" destination="gYd-6i-qby" id="A36-MX-YNx"/>
                         <outlet property="pickerView" destination="nic-NP-V08" id="mYw-11-OZy"/>
                         <segue destination="2iy-G1-YyD" kind="show" identifier="VCDifficultyToVCGame" id="ONP-ze-twv"/>
+                        <segue destination="7Pp-lc-LLZ" kind="show" identifier="DifficultyVC2HighScoresVC" id="A6I-uf-hWj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lEF-lX-hm3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -156,12 +165,12 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="CaN-cH-i1m" id="wjM-wn-oez"/>
-                        <segue destination="7Pp-lc-LLZ" kind="show" id="Nkn-gT-bQq"/>
+                        <segue destination="7Pp-lc-LLZ" kind="show" identifier="GameVC2HighScoresVC" id="Nkn-gT-bQq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D2T-hW-T52" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1261.5999999999999" y="13.943028485757123"/>
+            <point key="canvasLocation" x="1425" y="14"/>
         </scene>
         <!--High Scores-->
         <scene sceneID="A5e-ot-4yn">
@@ -176,7 +185,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pRd-f3-AT1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2265" y="14"/>
+            <point key="canvasLocation" x="858" y="872"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="A6I-uf-hWj"/>
+    </inferredMetricsTieBreakers>
 </document>
