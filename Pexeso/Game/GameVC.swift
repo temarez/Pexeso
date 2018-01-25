@@ -82,6 +82,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     @objc func cardBtnClicked(sender: UIButton) {
         print("Card button clicked - from GameUICollectionVC")
+        flipCount += 1
     }
     
     func dividePairsIntoSections(numberOfPairs: Int) -> (numberOfSections: Int, numberOfItemsInSection: Int) {
@@ -89,7 +90,17 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     // MARK: below part is an attempt to implement logics
+    
+    @IBOutlet weak var flipsLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
     lazy var pexesoGame: Pexeso = Pexeso(numberOfPairsOfCards: numberOfPairs)
+    
+    var flipCount = 0 {
+        didSet {
+            flipsLabel.text = "Flips: \(flipCount)"
+        }
+    }
 
     func initPexesoGame() {
         for card in pexesoGame.cards {
@@ -121,14 +132,6 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     lazy var game: Concentration =
         Concentration(numberOfPairsOfCards: (cardButtons.count+1) / 2)
-    
-    var flipCount = 0 {
-        didSet {
-            flipCountLabel.text = "Flips: \(flipCount)"
-        }
-    }
-    
-    @IBOutlet weak var flipCountLabel: UILabel! // TODO:
     
     @IBOutlet var cardButtons: [UIButton]! // TODO:
     

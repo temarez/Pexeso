@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -109,7 +110,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CaN-cH-i1m" customClass="CardCollectionView" customModule="Pexeso" customModuleProvider="target">
-                                <rect key="frame" x="10" y="74" width="355" height="583"/>
+                                <rect key="frame" x="10" y="105" width="355" height="552"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CkY-VG-K6y">
                                     <size key="itemSize" width="100" height="100"/>
@@ -145,24 +146,44 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flips: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VJD-2I-Yoc">
+                                <rect key="frame" x="10" y="74" width="187.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnJ-il-3lE">
+                                <rect key="frame" x="207.5" y="74" width="157.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="e45-85-C3a" firstAttribute="bottom" secondItem="CaN-cH-i1m" secondAttribute="bottom" constant="10" id="2jI-si-Mwq"/>
+                            <constraint firstItem="VJD-2I-Yoc" firstAttribute="leading" secondItem="e45-85-C3a" secondAttribute="leading" constant="10" id="Htz-of-AFQ"/>
                             <constraint firstItem="CaN-cH-i1m" firstAttribute="leading" secondItem="e45-85-C3a" secondAttribute="leading" constant="10" id="JWy-vR-99C"/>
+                            <constraint firstItem="tnJ-il-3lE" firstAttribute="leading" secondItem="VJD-2I-Yoc" secondAttribute="trailing" constant="10" id="KNp-PQ-OuE"/>
+                            <constraint firstItem="VJD-2I-Yoc" firstAttribute="top" secondItem="e45-85-C3a" secondAttribute="top" constant="10" id="OsA-NX-mZS"/>
                             <constraint firstItem="e45-85-C3a" firstAttribute="trailing" secondItem="CaN-cH-i1m" secondAttribute="trailing" constant="10" id="TjG-fF-h43"/>
-                            <constraint firstItem="CaN-cH-i1m" firstAttribute="top" secondItem="e45-85-C3a" secondAttribute="top" constant="10" id="VR9-PK-dqI"/>
+                            <constraint firstItem="CaN-cH-i1m" firstAttribute="top" secondItem="VJD-2I-Yoc" secondAttribute="bottom" constant="10" id="VR9-PK-dqI"/>
+                            <constraint firstItem="e45-85-C3a" firstAttribute="trailing" secondItem="tnJ-il-3lE" secondAttribute="trailing" constant="10" id="joy-Y9-iZp"/>
+                            <constraint firstItem="VJD-2I-Yoc" firstAttribute="width" secondItem="shz-Uy-BbF" secondAttribute="width" multiplier="0.5" id="tc2-FU-OmT"/>
+                            <constraint firstItem="tnJ-il-3lE" firstAttribute="top" secondItem="e45-85-C3a" secondAttribute="top" constant="10" id="zgb-hI-bnt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="e45-85-C3a"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="CaN-cH-i1m" id="wjM-wn-oez"/>
+                        <outlet property="flipsLabel" destination="VJD-2I-Yoc" id="70M-PE-1Rx"/>
+                        <outlet property="timeLabel" destination="tnJ-il-3lE" id="Kdq-sZ-eco"/>
                         <segue destination="7Pp-lc-LLZ" kind="show" identifier="GameVC2HighScoresVC" id="Nkn-gT-bQq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D2T-hW-T52" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1425" y="14"/>
+            <point key="canvasLocation" x="1424.8" y="13.943028485757123"/>
         </scene>
         <!--High Scores-->
         <scene sceneID="A5e-ot-4yn">
@@ -181,6 +202,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="A6I-uf-hWj"/>
+        <segue reference="Nkn-gT-bQq"/>
     </inferredMetricsTieBreakers>
 </document>
