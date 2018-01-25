@@ -12,7 +12,9 @@ class HighScoresVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(performShare))
+        self.navigationItem.rightBarButtonItem = shareButton
+        
         // Do any additional setup after loading the view.
     }
 
@@ -31,5 +33,14 @@ class HighScoresVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @objc func performShare() {
+        let activityVC = UIActivityViewController(activityItems: ["www.google.com"], applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        activityVC.excludedActivityTypes = [
+            UIActivityType(rawValue: "com.apple.mobilenotes.SharingExtension")
+        ]
+        self.present(activityVC, animated: true, completion: nil)
+    }
 
 }
