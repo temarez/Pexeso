@@ -8,6 +8,10 @@
 
 import UIKit
 
+struct GameConstants {
+    static let timeIntervalDefault: TimeInterval = 30
+}
+
 private let reuseIdentifier = "Cell"
 
 class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -131,7 +135,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     // MARK: Timer-related part
     
-    var seconds = 30
+    var seconds = GameConstants.timeIntervalDefault
     var timer = Timer()
     
     func myTimerStart() {
@@ -140,7 +144,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     @objc func myTimerCounter() {
         seconds -= 1
-        timeLabel.text = "Time: \(seconds)"
+        timeLabel.text = "Time: " + String(Int(seconds)) // 
         if (seconds == 0) {
             myTimerStop()
         }
@@ -148,7 +152,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     func myTimerStop() {
         timer.invalidate()
-        seconds = 30
+        seconds = GameConstants.timeIntervalDefault
     }
 
     
