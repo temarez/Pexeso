@@ -109,10 +109,30 @@
 			path = StartScreen;
 			sourceTree = "<group>";
 		};
+		A3697626201B27D9006CB6C3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A30ABBB3200781320014F12B /* Card.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A3697627201B2810006CB6C3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A3F86CE6200F5CEB007A496F /* GameVC.swift */,
+				A30ABBB52007820A0014F12B /* Concentration.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		A3BEA19E201A59EC009AADAB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A3F86CE8200F5DE9007A496F /* CardCollectionView.swift */,
+				A3ECAD2A200BF5D5003DD911 /* CardCollectionViewCell.swift */,
 				A3697623201B1B59006CB6C3 /* UILabelWithTimer.swift */,
+				A3421D4F2012A57B0073A16D /* CardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -120,13 +140,9 @@
 		A3ED3112201A226B00CDE7AF /* GameScreen */ = {
 			isa = PBXGroup;
 			children = (
+				A3697626201B27D9006CB6C3 /* Model */,
 				A3BEA19E201A59EC009AADAB /* View */,
-				A3F86CE8200F5DE9007A496F /* CardCollectionView.swift */,
-				A3ECAD2A200BF5D5003DD911 /* CardCollectionViewCell.swift */,
-				A3421D4F2012A57B0073A16D /* CardView.swift */,
-				A3F86CE6200F5CEB007A496F /* GameVC.swift */,
-				A30ABBB3200781320014F12B /* Card.swift */,
-				A30ABBB52007820A0014F12B /* Concentration.swift */,
+				A3697627201B2810006CB6C3 /* Controller */,
 			);
 			path = GameScreen;
 			sourceTree = "<group>";
