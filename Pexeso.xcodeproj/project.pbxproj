@@ -17,6 +17,7 @@
 		A333E27020056FC500E0898E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A333E26E20056FC500E0898E /* LaunchScreen.storyboard */; };
 		A333E27820057B4F00E0898E /* DifficultyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A333E27720057B4F00E0898E /* DifficultyVC.swift */; };
 		A3421D502012A57B0073A16D /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3421D4F2012A57B0073A16D /* CardView.swift */; };
+		A3697624201B1B59006CB6C3 /* UILabelWithTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3697623201B1B59006CB6C3 /* UILabelWithTimer.swift */; };
 		A3ECAD2B200BF5D5003DD911 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ECAD2A200BF5D5003DD911 /* CardCollectionViewCell.swift */; };
 		A3ED3111201A16A400CDE7AF /* HighScoresVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ED3110201A16A400CDE7AF /* HighScoresVC.swift */; };
 		A3F86CE7200F5CEB007A496F /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F86CE6200F5CEB007A496F /* GameVC.swift */; };
@@ -36,6 +37,7 @@
 		A333E27120056FC500E0898E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A333E27720057B4F00E0898E /* DifficultyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyVC.swift; sourceTree = "<group>"; };
 		A3421D4F2012A57B0073A16D /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		A3697623201B1B59006CB6C3 /* UILabelWithTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelWithTimer.swift; sourceTree = "<group>"; };
 		A3ECAD2A200BF5D5003DD911 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		A3ED3110201A16A400CDE7AF /* HighScoresVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoresVC.swift; sourceTree = "<group>"; };
 		A3F86CE6200F5CEB007A496F /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		A3BEA19E201A59EC009AADAB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A3697623201B1B59006CB6C3 /* UILabelWithTimer.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				A30ABBB4200781320014F12B /* Card.swift in Sources */,
 				A333E27820057B4F00E0898E /* DifficultyVC.swift in Sources */,
 				A3ECAD2B200BF5D5003DD911 /* CardCollectionViewCell.swift in Sources */,
+				A3697624201B1B59006CB6C3 /* UILabelWithTimer.swift in Sources */,
 				A3ED3111201A16A400CDE7AF /* HighScoresVC.swift in Sources */,
 				A333E26620056FC500E0898E /* AppDelegate.swift in Sources */,
 				A30ABBB62007820A0014F12B /* Concentration.swift in Sources */,

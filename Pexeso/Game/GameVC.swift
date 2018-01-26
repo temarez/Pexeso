@@ -8,9 +8,7 @@
 
 import UIKit
 
-struct GameConstants {
-    static let timeIntervalDefault: TimeInterval = 30
-}
+
 
 private let reuseIdentifier = "Cell"
 
@@ -40,10 +38,12 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         print("numberOfSections is \(sections.numberOfSections) and numberOfItemsInSection is \(sections.numberOfItemsInSection)")
 
         initPexesoGame()
-        myTimerStart()
+        timeLabel.myTimerStart(seconds: 20)
         // TODO: check below
         //(collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = cellSize
     }
+    
+    
     
     // MARK: UICollectionViewDataSource
     
@@ -97,7 +97,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     // MARK: below part is an attempt to implement logics
     
     @IBOutlet weak var flipsLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabelWithTimer!
     
     lazy var pexesoGame: Pexeso = Pexeso(numberOfPairsOfCards: numberOfPairs)
     
@@ -134,27 +134,6 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     // MARK: Timer-related part
-    
-    var seconds = GameConstants.timeIntervalDefault
-    var timer = Timer()
-    
-    func myTimerStart() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(myTimerCounter), userInfo: nil, repeats: true)
-    }
-    
-    @objc func myTimerCounter() {
-        seconds -= 1
-        timeLabel.text = "Time: " + String(Int(seconds)) // 
-        if (seconds == 0) {
-            myTimerStop()
-        }
-    }
-    
-    func myTimerStop() {
-        timer.invalidate()
-        seconds = GameConstants.timeIntervalDefault
-    }
-
     
     // MARK: Below part is inspired by Stanford CS 193P courses (start)
     
