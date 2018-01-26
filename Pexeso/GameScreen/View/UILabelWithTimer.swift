@@ -11,7 +11,7 @@ import UIKit
 class UILabelWithTimer: UILabel {
     
     private static let timeIntervalDefault: TimeInterval = 30.0
-    private var timeInterval: TimeInterval = timeIntervalDefault
+    private var timeInterval: TimeInterval = timeIntervalDefault // TODO: rename this in order to make it different from scheduledTimer(timeInterval
     private var timer = Timer()
     
     func myTimerStart(seconds: TimeInterval) {
