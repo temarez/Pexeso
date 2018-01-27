@@ -15,7 +15,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
 
     var delegate: NumOfPairsPickerDelegate?
     var numberOfPairs = 2
-    var sections: (numberOfSections: Int, numberOfItemsInSection: Int) = (1, 1)
+    var collectionViewSections: (numberOfSections: Int, numberOfItemsInSection: Int) = (1, 1)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +32,8 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
         print("Selected num of pairs \(numberOfPairs)")
         
-        sections = dividePairsIntoSections(numberOfPairs: numberOfPairs)
-        print("numberOfSections is \(sections.numberOfSections) and numberOfItemsInSection is \(sections.numberOfItemsInSection)")
+        collectionViewSections = dividePairsIntoSections(numberOfPairs: numberOfPairs)
+        print("numberOfSections is \(collectionViewSections.numberOfSections) and numberOfItemsInSection is \(collectionViewSections.numberOfItemsInSection)")
 
         timeLabel.myTimerStart(seconds: 20)
         // TODO: check below
@@ -43,13 +43,11 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     // MARK: UICollectionViewDataSource
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return sections.numberOfSections
+        return collectionViewSections.numberOfSections
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sections.numberOfItemsInSection
+        return collectionViewSections.numberOfItemsInSection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -58,8 +56,8 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             fatalError("Oops: can not get the proper cell CardCollectionViewCell")
         }
         
-        let currentCellNumber = indexPath.section * sections.numberOfItemsInSection + indexPath.row + 1
-        //print("INDEX: " + String(currentCellNumber) + "[" + String(indexPath.section) + "," + String(indexPath.row) + "]")
+        let currentCellNumber = indexPath.section * collectionViewSections.numberOfItemsInSection + indexPath.row
+        print("INDEX: " + String(currentCellNumber) + " [" + String(indexPath.section) + "," + String(indexPath.row) + "]")
 
         // Configure the cell
         let imageName = "i0" + String(currentCellNumber);
