@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 private let reuseIdentifier = "Cell"
 
 class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -37,13 +35,10 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         sections = dividePairsIntoSections(numberOfPairs: numberOfPairs)
         print("numberOfSections is \(sections.numberOfSections) and numberOfItemsInSection is \(sections.numberOfItemsInSection)")
 
-        initPexesoGame()
         timeLabel.myTimerStart(seconds: 20)
         // TODO: check below
         //(collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = cellSize
     }
-    
-    
     
     // MARK: UICollectionViewDataSource
     
@@ -124,34 +119,6 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             flipsLabel.text = "Flips: \(flipCount)"
         }
     }
-
-    func initPexesoGame() {
-        for card in pexesoGame.cards {
-            print(card.identifier)
-        }
-        
-        if let colView = collectionView {
-            for cell in colView.visibleCells { // as [CardCollectionViewCell]
-                print(cell)
-                if let cardCell = cell as? CardCollectionViewCell {
-                    cardCell.cardButton.setTitle("MY CELL", for: .normal)
-                }
-            }
-        }
-
-        /*
-        if let colView = collectionView {
-            for cell in colView.visibleCells { // as [CardCollectionViewCell]
-                print(cell)
-                if let cardCell = cell as CardCollectionViewCell {
-                    cardCell
-                }
-            }
-        }
-        */
-    }
-    
-    // MARK: Timer-related part
     
     // MARK: Below part is inspired by Stanford CS 193P courses (start)
     
