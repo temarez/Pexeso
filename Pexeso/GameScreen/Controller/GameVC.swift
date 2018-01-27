@@ -85,8 +85,26 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         return CGSize(width: 186, height: 186)
     }
     
+    func getSuperviewCollectionViewCell(view: UIView) -> UICollectionViewCell? {
+        var currentView = view
+        while currentView.superview != nil {
+            if currentView is UICollectionViewCell {
+                return currentView as? UICollectionViewCell
+            }
+            currentView = currentView.superview!
+        }
+        return nil
+    }
+    
     @objc func cardBtnClicked(sender: UIButton) {
-        print("Card button clicked - from GameUICollectionVC")
+        var indexPath: IndexPath? = nil
+        if let cell = getSuperviewCollectionViewCell(view: sender) {
+            indexPath = collectionView?.indexPath(for: cell)
+        }
+        
+        if let unwrapIndexPath = indexPath {
+            print("Card button clicked in cell " + String(unwrapIndexPath.section) + ", " + String(unwrapIndexPath.row))
+        }
         flipCount += 1
     }
     
