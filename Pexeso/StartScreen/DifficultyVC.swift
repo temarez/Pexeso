@@ -42,7 +42,7 @@ class DifficultyVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? GameVC {
-            destination.delegate = self
+            destination.numOfPairsPickerDelegate = self
         }
     }
     

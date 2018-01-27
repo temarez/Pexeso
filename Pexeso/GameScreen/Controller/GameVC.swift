@@ -10,12 +10,31 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
+class CollectionViewSections {
+    var numberOfSections: Int
+    var numberOfItemsInSection: Int
+    
+    func getCellIndex(indexPath: IndexPath) -> Int {
+        return indexPath.section * numberOfItemsInSection + indexPath.row
+    }
+    
+    init() {
+        numberOfSections = 1
+        numberOfItemsInSection = 1
+    }
+    
+    init(_ numberOfPairs: Int) {
+        numberOfSections = numberOfPairs
+        numberOfItemsInSection = 2 // TODO: implement
+    }
+}
+
 class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var collectionView: CardCollectionView?
 
-    var delegate: NumOfPairsPickerDelegate?
+    var numOfPairsPickerDelegate: NumOfPairsPickerDelegate?
     var numberOfPairs = 2
-    var collectionViewSections: (numberOfSections: Int, numberOfItemsInSection: Int) = (1, 1)
+    var collectionViewSections = CollectionViewSections()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,12 +46,14 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
 
         // Register cell classes
         //self.collectionView!.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        if let delegate = delegate {
+        
+        if let delegate = numOfPairsPickerDelegate {
             numberOfPairs = delegate.getPickerViewSelectedNumOfPairs()
         }
         print("Selected num of pairs \(numberOfPairs)")
+        collectionViewSections = CollectionViewSections(numberOfPairs)
         
-        collectionViewSections = dividePairsIntoSections(numberOfPairs: numberOfPairs)
+        //collectionViewSections = dividePairsIntoSections(numberOfPairs: numberOfPairs)
         print("numberOfSections is \(collectionViewSections.numberOfSections) and numberOfItemsInSection is \(collectionViewSections.numberOfItemsInSection)")
 
         timeLabel.myTimerStart(seconds: 20)
@@ -99,10 +120,6 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             print("Card button clicked in cell " + String(unwrapIndexPath.section) + ", " + String(unwrapIndexPath.row))
         }
         flipCount += 1
-    }
-    
-    func dividePairsIntoSections(numberOfPairs: Int) -> (numberOfSections: Int, numberOfItemsInSection: Int) {
-        return (numberOfPairs, 2)
     }
     
     // MARK: below part is an attempt to implement logics
