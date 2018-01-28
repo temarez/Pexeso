@@ -18,6 +18,14 @@ class CollectionViewSections {
         return indexPath.section * numberOfItemsInSection + indexPath.row
     }
     
+    // TODO: cover with unit tests for different numbers
+    func getCellIndexPath(index: Int) -> IndexPath {
+        var result = IndexPath()
+        result.section = index / numberOfItemsInSection // quotient
+        result.row = index % numberOfItemsInSection // remainder
+        return result
+    }
+    
     init() {
         numberOfSections = 1
         numberOfItemsInSection = 1
@@ -77,7 +85,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             fatalError("Oops: can not get the proper cell CardCollectionViewCell")
         }
         
-        let currentCellNumber = indexPath.section * collectionViewSections.numberOfItemsInSection + indexPath.row
+        let currentCellNumber = collectionViewSections.getCellIndex(indexPath: indexPath)
         print("INDEX: " + String(currentCellNumber) + " [" + String(indexPath.section) + "," + String(indexPath.row) + "]")
 
         // Configure the cell
