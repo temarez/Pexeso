@@ -10,6 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
+// TODO: move the code from this class to CardCollectionView
 class CollectionViewSections {
     var numberOfSections: Int
     var numberOfItemsInSection: Int
@@ -86,7 +87,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
         
         let currentCellNumber = collectionViewSections.getCellIndex(indexPath: indexPath)
-        print("INDEX: " + String(currentCellNumber) + " [" + String(indexPath.section) + "," + String(indexPath.row) + "]")
+        //print("INDEX: " + String(currentCellNumber) + " [" + String(indexPath.section) + "," + String(indexPath.row) + "]")
 
         // Configure the cell
         let imageName = "i0" + String(currentCellNumber);
@@ -125,7 +126,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
         
         if let unwrapIndexPath = indexPath {
-            print("Card button clicked in cell " + String(unwrapIndexPath.section) + ", " + String(unwrapIndexPath.row))
+            print("Card button clicked in cell " + String(unwrapIndexPath.section) + ", " + String(unwrapIndexPath.row) + " => " + String(collectionViewSections.getCellIndex(indexPath: unwrapIndexPath)))
         }
         flipCount += 1
     }
@@ -149,6 +150,20 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         Concentration(numberOfPairsOfCards: (cardButtons.count+1) / 2)
     
     @IBOutlet var cardButtons: [UIButton]! // TODO:
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        guard let unwrappedCollectionView = collectionView else {
+            return
+        }
+        
+        let collectionViewSize: CGSize = unwrappedCollectionView.frame.size
+        let width = Int(collectionViewSize.width.rounded(.up))
+        let height = Int(collectionViewSize.height.rounded(.up))
+        
+        print("viewDidLayoutSubviews() " + String(width) + "x" + String(height))
+    }
     
     @IBAction func touchCard(_ sender: UIButton) {
         flipCount += 1
