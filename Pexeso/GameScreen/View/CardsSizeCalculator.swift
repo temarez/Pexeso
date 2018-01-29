@@ -83,14 +83,14 @@ class CardsSizeCalculator {
         print("CollectionViewSize: \(collectionViewSize) larger \(collectionViewSize.largerSideSize()) smaller \(collectionViewSize.smallerSideSize())")
         
         var calculatedCardSize = CGSize(width: 186, height: 186) // TODO: get rid of hard-coded values, calculate with collectionViewSize
-        
+        /*
         if(collectionViewSections.numberOfSections > collectionViewSections.numberOfItemsInSection) {
             calculatedCardSize.height = calcCardSingleSideSize(sideSize: collectionViewSize.largerSideSize(), cardsNum: collectionViewSections.numberOfSections, spacing: spacingBetweenCards)
             
             calculatedCardSize.width = collectionViewSize.smallerSideSize() / CGFloat(collectionViewSections.numberOfItemsInSection)
         }
         else {
-        }
+        }*/
         
         //CGFloat larger collectionViewSize.largerSideSize()
         

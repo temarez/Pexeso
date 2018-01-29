@@ -37,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SpU-y3-Rau">
-                                <rect key="frame" x="16" y="605" width="343" height="54"/>
+                                <rect key="frame" x="10" y="523" width="355" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="Start game"/>
                                 <connections>
@@ -45,47 +45,54 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please specify the number of card pairs" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOW-Me-Vec">
-                                <rect key="frame" x="16" y="74" width="343" height="57.5"/>
+                                <rect key="frame" x="10" y="74" width="355" height="57.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nic-NP-V08">
-                                <rect key="frame" x="16" y="333.5" width="343" height="216"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nic-NP-V08">
+                                <rect key="frame" x="10" y="142" width="355" height="332"/>
                                 <connections>
                                     <outlet property="dataSource" destination="b7w-zg-Q7j" id="4kr-9J-rCi"/>
                                     <outlet property="delegate" destination="b7w-zg-Q7j" id="VVD-1p-Kkh"/>
                                 </connections>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pairs: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYd-6i-qby">
-                                <rect key="frame" x="16" y="568" width="343" height="29"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQr-Js-eZO">
-                                <rect key="frame" x="58" y="318" width="270" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQr-Js-eZO">
+                                <rect key="frame" x="10" y="597" width="355" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="SZX-sE-tly"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="High Scores"/>
                                 <connections>
                                     <action selector="highScoresPressed:" destination="b7w-zg-Q7j" eventType="touchUpInside" id="EG0-vX-Pd1"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pairs: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYd-6i-qby">
+                                <rect key="frame" x="10" y="484" width="355" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fOW-Me-Vec" firstAttribute="top" secondItem="ZAG-km-93o" secondAttribute="top" constant="10" id="1E8-xh-FM4"/>
-                            <constraint firstItem="ZAG-km-93o" firstAttribute="trailing" secondItem="fOW-Me-Vec" secondAttribute="trailing" constant="16" id="897-qZ-Qms"/>
-                            <constraint firstItem="nic-NP-V08" firstAttribute="leading" secondItem="ZAG-km-93o" secondAttribute="leading" constant="16" id="H7Z-mA-KdG"/>
-                            <constraint firstItem="SpU-y3-Rau" firstAttribute="top" secondItem="gYd-6i-qby" secondAttribute="bottom" constant="8" id="Hh1-qk-oIW"/>
-                            <constraint firstItem="ZAG-km-93o" firstAttribute="bottom" secondItem="SpU-y3-Rau" secondAttribute="bottom" constant="8" id="HzU-X5-DdA"/>
-                            <constraint firstItem="gYd-6i-qby" firstAttribute="top" relation="greaterThanOrEqual" secondItem="nic-NP-V08" secondAttribute="bottom" constant="8" id="M1T-HU-coH"/>
-                            <constraint firstItem="ZAG-km-93o" firstAttribute="trailing" secondItem="nic-NP-V08" secondAttribute="trailing" constant="16" id="ebY-Ze-tfG"/>
-                            <constraint firstItem="gYd-6i-qby" firstAttribute="leading" secondItem="ZAG-km-93o" secondAttribute="leading" constant="16" id="iAz-Mb-ZRS"/>
-                            <constraint firstItem="ZAG-km-93o" firstAttribute="trailing" secondItem="gYd-6i-qby" secondAttribute="trailing" constant="16" id="kDM-wO-pSK"/>
-                            <constraint firstItem="fOW-Me-Vec" firstAttribute="leading" secondItem="ZAG-km-93o" secondAttribute="leading" constant="16" id="mrY-Yp-Mmm"/>
-                            <constraint firstItem="ZAG-km-93o" firstAttribute="trailing" secondItem="SpU-y3-Rau" secondAttribute="trailing" constant="16" id="w4D-fN-y4M"/>
-                            <constraint firstItem="SpU-y3-Rau" firstAttribute="leading" secondItem="ZAG-km-93o" secondAttribute="leading" constant="16" id="xiD-QS-ZGU"/>
+                            <constraint firstItem="ZAG-km-93o" firstAttribute="trailing" secondItem="fOW-Me-Vec" secondAttribute="trailing" constant="10" id="897-qZ-Qms"/>
+                            <constraint firstItem="ZAG-km-93o" firstAttribute="bottom" secondItem="bQr-Js-eZO" secondAttribute="bottom" constant="10" id="8t4-Df-2Gj"/>
+                            <constraint firstItem="ZAG-km-93o" firstAttribute="trailing" secondItem="bQr-Js-eZO" secondAttribute="trailing" constant="10" id="DlZ-6a-QRx"/>
+                            <constraint firstItem="nic-NP-V08" firstAttribute="leading" secondItem="ZAG-km-93o" secondAttribute="leading" constant="10" id="H7Z-mA-KdG"/>
+                            <constraint firstItem="SpU-y3-Rau" firstAttribute="top" secondItem="gYd-6i-qby" secondAttribute="bottom" constant="10" id="Hh1-qk-oIW"/>
+                            <constraint firstItem="nic-NP-V08" firstAttribute="top" secondItem="fOW-Me-Vec" secondAttribute="bottom" constant="10" id="Qv8-sh-pjL"/>
+                            <constraint firstItem="bQr-Js-eZO" firstAttribute="top" secondItem="SpU-y3-Rau" secondAttribute="bottom" constant="20" id="XQb-uL-d3T"/>
+                            <constraint firstItem="ZAG-km-93o" firstAttribute="trailing" secondItem="nic-NP-V08" secondAttribute="trailing" constant="10" id="ebY-Ze-tfG"/>
+                            <constraint firstItem="gYd-6i-qby" firstAttribute="leading" secondItem="ZAG-km-93o" secondAttribute="leading" constant="10" id="iAz-Mb-ZRS"/>
+                            <constraint firstItem="bQr-Js-eZO" firstAttribute="leading" secondItem="ZAG-km-93o" secondAttribute="leading" constant="10" id="kC0-MM-AML"/>
+                            <constraint firstItem="ZAG-km-93o" firstAttribute="trailing" secondItem="gYd-6i-qby" secondAttribute="trailing" constant="10" id="kDM-wO-pSK"/>
+                            <constraint firstItem="fOW-Me-Vec" firstAttribute="leading" secondItem="ZAG-km-93o" secondAttribute="leading" constant="10" id="mrY-Yp-Mmm"/>
+                            <constraint firstItem="gYd-6i-qby" firstAttribute="top" secondItem="nic-NP-V08" secondAttribute="bottom" constant="10" id="uCm-ed-jlS"/>
+                            <constraint firstItem="ZAG-km-93o" firstAttribute="trailing" secondItem="SpU-y3-Rau" secondAttribute="trailing" constant="10" id="w4D-fN-y4M"/>
+                            <constraint firstItem="SpU-y3-Rau" firstAttribute="leading" secondItem="ZAG-km-93o" secondAttribute="leading" constant="10" id="xiD-QS-ZGU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZAG-km-93o"/>
                     </view>
@@ -202,6 +209,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Nkn-gT-bQq"/>
+        <segue reference="A6I-uf-hWj"/>
     </inferredMetricsTieBreakers>
 </document>
