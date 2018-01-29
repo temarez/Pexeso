@@ -21,10 +21,9 @@ class CollectionViewSections {
     
     // TODO: cover with unit tests for different numbers
     func getCellIndexPath(index: Int) -> IndexPath {
-        var result = IndexPath()
-        result.section = index / numberOfItemsInSection // quotient
-        result.row = index % numberOfItemsInSection // remainder
-        return result
+        let row = index % numberOfItemsInSection
+        let section = index / numberOfItemsInSection
+        return IndexPath(row: row, section: section)
     }
     
     init() {
@@ -64,7 +63,6 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         collectionViewSections = CollectionViewSections(numberOfPairs)
         cardsSizeCalculator.collectionViewSections = collectionViewSections
         
-        //collectionViewSections = dividePairsIntoSections(numberOfPairs: numberOfPairs)
         print("numberOfSections is \(collectionViewSections.numberOfSections) and numberOfItemsInSection is \(collectionViewSections.numberOfItemsInSection)")
 
         timeLabel.myTimerStart(seconds: 20)
@@ -89,7 +87,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
         
         let currentCellNumber = collectionViewSections.getCellIndex(indexPath: indexPath)
-        //print("INDEX: " + String(currentCellNumber) + " [" + String(indexPath.section) + "," + String(indexPath.row) + "]")
+        print("INDEX: " + String(currentCellNumber) + " [" + String(indexPath.section) + "," + String(indexPath.row) + "]")
 
         // Configure the cell
         let imageName = "i0" + String(currentCellNumber);
@@ -132,6 +130,35 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             print("Card button clicked in cell " + String(unwrapIndexPath.section) + ", " + String(unwrapIndexPath.row) + " => " + String(collectionViewSections.getCellIndex(indexPath: unwrapIndexPath)))
         }
         flipCount += 1
+        updateViewFromModelTodo()
+    }
+    
+    func updateViewFromModelTodo() {
+        // Go through all cells in collectionView
+        for index in 0..<numberOfPairs {
+            print("Going ghtough card number \(index) of \(numberOfPairs)")
+            var indexPath = collectionViewSections.getCellIndexPath(index: index)
+            if let currentCell = collectionView?.cellForItem(at: indexPath) as? CardCollectionViewCell {
+                currentCell.cardButton.setImage(nil, for: .normal)
+                currentCell.cardButton.setTitle(String(index), for: .normal)
+                currentCell.cardButton.backgroundColor = .brown
+            }
+            
+        }
+        
+        /*
+        for index in cardButtons.indices {
+            let button = cardButtons[index]
+            let card = game.cards[index]
+            if card.isFaceUp {
+                button.setTitle(emoji(for: card), for: UIControlState.normal)
+                button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            } else {
+                button.setTitle("", for: UIControlState.normal)
+                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0.9960669949)
+            }
+        }
+        */
     }
     
     // MARK: below part is an attempt to implement logics
@@ -168,9 +195,10 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         let width = Int(collectionViewSize.width.rounded(.up))
         let height = Int(collectionViewSize.height.rounded(.up))
         
-        print("viewDidLayoutSubviews() " + String(width) + "x" + String(height))
+        //print("viewDidLayoutSubviews() " + String(width) + "x" + String(height))
     }
     
+    /*
     @IBAction func touchCard(_ sender: UIButton) {
         flipCount += 1
         if let cardNumber = cardButtons.index(of: sender) {
@@ -192,19 +220,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             }
         }
     }
-    
-    var emojiChoices = ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🌍", "🍎"]
-    
-    var emoji = [Int:String]()
-    
-    func emoji(for card: Card) -> String {
-        if emoji[card.identifier] == nil, emojiChoices.count > 0 {
-            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
-            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
-        }
-        
-        return emoji[card.identifier] ?? "?"
-    }
+ */
     
     // Above part is inspired by Stanford CS 193P courses (end)
     

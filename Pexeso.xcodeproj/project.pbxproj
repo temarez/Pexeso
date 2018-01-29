@@ -22,6 +22,7 @@
 		A3ED3111201A16A400CDE7AF /* HighScoresVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ED3110201A16A400CDE7AF /* HighScoresVC.swift */; };
 		A3F86CE7200F5CEB007A496F /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F86CE6200F5CEB007A496F /* GameVC.swift */; };
 		A3F86CE9200F5DE9007A496F /* CardCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F86CE8200F5DE9007A496F /* CardCollectionView.swift */; };
+		A3FB8FC4201F5C340080C6D6 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FB8FC3201F5C340080C6D6 /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		A3ED3110201A16A400CDE7AF /* HighScoresVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoresVC.swift; sourceTree = "<group>"; };
 		A3F86CE6200F5CEB007A496F /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
 		A3F86CE8200F5DE9007A496F /* CardCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionView.swift; sourceTree = "<group>"; };
+		A3FB8FC3201F5C340080C6D6 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				A3F86CE6200F5CEB007A496F /* GameVC.swift */,
+				A3FB8FC3201F5C340080C6D6 /* Theme.swift */,
 				A30ABBB52007820A0014F12B /* Concentration.swift */,
 			);
 			path = Controller;
@@ -226,6 +229,7 @@
 				A3BF9BF6201E906800B5DF48 /* CardsSizeCalculator.swift in Sources */,
 				A3421D502012A57B0073A16D /* CardView.swift in Sources */,
 				A3F86CE7200F5CEB007A496F /* GameVC.swift in Sources */,
+				A3FB8FC4201F5C340080C6D6 /* Theme.swift in Sources */,
 				A321EEFC2015458F00CDB1A9 /* Score.swift in Sources */,
 				A30ABBB4200781320014F12B /* Card.swift in Sources */,
 				A333E27820057B4F00E0898E /* DifficultyVC.swift in Sources */,
