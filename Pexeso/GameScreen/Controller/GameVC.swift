@@ -39,22 +39,26 @@ class CollectionViewSections {
 
 class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var collectionView: CardCollectionView?
+    @IBOutlet weak var flipsLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabelWithTimer!
 
     var numOfPairsPickerDelegate: NumOfPairsPickerDelegate?
     var numberOfPairs = 2
     var collectionViewSections = CollectionViewSections()
     var cardsSizeCalculator = CardsSizeCalculator()
     
+    lazy var pexesoGame: Pexeso = Pexeso(numberOfPairsOfCards: numberOfPairs)
+    
+    var flipCount = 0 {
+        didSet {
+            flipsLabel.text = "Flips: \(flipCount)"
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.dataSource = self
         collectionView?.delegate = self
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        //self.collectionView!.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         if let delegate = numOfPairsPickerDelegate {
             numberOfPairs = delegate.getPickerViewSelectedNumOfPairs()
@@ -66,8 +70,6 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         print("numberOfSections is \(collectionViewSections.numberOfSections) and numberOfItemsInSection is \(collectionViewSections.numberOfItemsInSection)")
 
         timeLabel.myTimerStart(seconds: 20)
-        // TODO: check below
-        //(collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = cellSize
     }
     
     // MARK: UICollectionViewDataSource
@@ -152,21 +154,9 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     func updateViewFromModelTodo() {
-        /*
-        let numberOfCards = numberOfPairs * 2
-        // Go through all cells in collectionView
-        for index in 0..<numberOfCards {
-            print("Going through card number \(index) of \(numberOfCards)")
-            let indexPath = collectionViewSections.getCellIndexPath(index: index)
-            if let currentCell = collectionView?.cellForItem(at: indexPath) as? CardCollectionViewCell {
-                currentCell.cardButton.setImage(nil, for: .normal)
-                currentCell.cardButton.setTitle(String(index), for: .normal)
-                currentCell.cardButton.backgroundColor = .brown
-            }
-        }
-        */
         let theme = Theme() // TODO:
         
+        // let numberOfCards = numberOfPairs * 2
         // for index in 0..<numberOfCards
         for (cardIndex, card) in pexesoGame.cards.enumerated() {
             //print("\(cardIndex) CARD ID \(card.identifier)")
@@ -183,34 +173,9 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
                 }
             }
         }
-        
-        /*
-        for index in cardButtons.indices {
-            let button = cardButtons[index]
-            let card = game.cards[index]
-            if card.isFaceUp {
-                button.setTitle(emoji(for: card), for: UIControlState.normal)
-                button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            } else {
-                button.setTitle("", for: UIControlState.normal)
-                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0.9960669949)
-            }
-        }
-        */
     }
     
     // MARK: below part is an attempt to implement logics
-    
-    @IBOutlet weak var flipsLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabelWithTimer!
-    
-    lazy var pexesoGame: Pexeso = Pexeso(numberOfPairsOfCards: numberOfPairs)
-    
-    var flipCount = 0 {
-        didSet {
-            flipsLabel.text = "Flips: \(flipCount)"
-        }
-    }
     
     override func viewDidLayoutSubviews() {
         // TODO: see willRotateToInterfaceOrientation
