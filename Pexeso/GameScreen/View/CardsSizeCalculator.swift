@@ -38,8 +38,6 @@ extension CGSize {
             smallerSide = RectSide.width
         case .width:
             smallerSide = RectSide.height
-        default:
-            smallerSide = RectSide.width
         }
         return smallerSide
     }
@@ -50,8 +48,6 @@ extension CGSize {
             return self.height
         case .width:
             return self.width
-        default:
-            return self.height
         }
     }
     
