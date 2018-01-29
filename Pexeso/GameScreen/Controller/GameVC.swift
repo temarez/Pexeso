@@ -62,6 +62,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
         print("Selected num of pairs \(numberOfPairs)")
         collectionViewSections = CollectionViewSections(numberOfPairs)
+        cardsSizeCalculator.collectionViewSections = collectionViewSections
         
         //collectionViewSections = dividePairsIntoSections(numberOfPairs: numberOfPairs)
         print("numberOfSections is \(collectionViewSections.numberOfSections) and numberOfItemsInSection is \(collectionViewSections.numberOfItemsInSection)")
@@ -163,6 +164,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
         
         let collectionViewSize: CGSize = unwrappedCollectionView.frame.size
+        cardsSizeCalculator.collectionViewSize = unwrappedCollectionView.frame.size
         let width = Int(collectionViewSize.width.rounded(.up))
         let height = Int(collectionViewSize.height.rounded(.up))
         
