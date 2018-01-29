@@ -135,18 +135,17 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             let cardNumber = collectionViewSections.getCellIndex(indexPath: unwrapIndexPath)
             let card = pexesoGame.cards[cardNumber]
             pexesoGame.chooseCard(at: cardNumber)
-            let cardView = CardView()
             if card.isFaceUp {
                 card.isFaceUp = false
                 let image = UIImage(named: "back")
                 sender.setImage(image, for: .normal)
-                cardView.cardCloseAnimation(view: sender)
-                cardView.cardsMatchAnimation(view: sender)
+                sender.cardCloseAnimation()
+                sender.cardsMatchAnimation()
             } else {
                 card.isFaceUp = true
                 let image = UIImage(named: "i01")
                 sender.setImage(image, for: .normal)
-                cardView.cardOpenAnimation(view: sender)
+                sender.cardOpenAnimation()
             }
             updateViewFromModelTodo()
         }

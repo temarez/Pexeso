@@ -135,9 +135,6 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Za8-20-PVa">
                                                     <rect key="frame" x="8" y="8" width="84" height="84"/>
-                                                    <connections>
-                                                        <action selector="cardBtnClicked:" destination="YH7-NW-TIi" eventType="touchUpInside" id="E3k-eD-7fB"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </view>
@@ -209,6 +206,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="A6I-uf-hWj"/>
+        <segue reference="Nkn-gT-bQq"/>
     </inferredMetricsTieBreakers>
 </document>
