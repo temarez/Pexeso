@@ -122,6 +122,8 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     @objc func cardBtnClicked(sender: UIButton) {
+        flipCount += 1
+        
         var indexPath: IndexPath? = nil
         if let cell = getSuperviewCollectionViewCell(view: sender) {
             indexPath = collectionView?.indexPath(for: cell)
@@ -130,11 +132,24 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         if let unwrapIndexPath = indexPath {
             print("Card button clicked in cell " + String(unwrapIndexPath.section) + ", " + String(unwrapIndexPath.row) + " => " + String(collectionViewSections.getCellIndex(indexPath: unwrapIndexPath)))
             
-            let cardNumber = collectionViewSections.getCellIndex(indexPath: unwrapIndexPath) //cardButtons.index(of: sender) {
+            let cardNumber = collectionViewSections.getCellIndex(indexPath: unwrapIndexPath)
+            let card = pexesoGame.cards[cardNumber]
             pexesoGame.chooseCard(at: cardNumber)
+            let cardView = CardView()
+            if card.isFaceUp {
+                card.isFaceUp = false
+                let image = UIImage(named: "back")
+                sender.setImage(image, for: .normal)
+                cardView.cardCloseAnimation(view: sender)
+                cardView.cardsMatchAnimation(view: sender)
+            } else {
+                card.isFaceUp = true
+                let image = UIImage(named: "i01")
+                sender.setImage(image, for: .normal)
+                cardView.cardOpenAnimation(view: sender)
+            }
             updateViewFromModelTodo()
         }
-        flipCount += 1
     }
     
     func updateViewFromModelTodo() {
@@ -155,7 +170,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         // for index in 0..<numberOfCards
         for (cardIndex, card) in pexesoGame.cards.enumerated() {
-            print("\(cardIndex) CARD ID \(card.identifier)")
+            //print("\(cardIndex) CARD ID \(card.identifier)")
             let indexPath = collectionViewSections.getCellIndexPath(index: cardIndex)
             if let currentCell = collectionView?.cellForItem(at: indexPath) as? CardCollectionViewCell {
                 if let button = currentCell.cardButton {

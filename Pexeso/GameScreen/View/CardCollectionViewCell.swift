@@ -14,6 +14,7 @@ class CardCollectionViewCell: UICollectionViewCell {
     var isOpen = false
     
     @IBAction func cardBtnClicked(_ sender: UIButton) {
+        /*
         let cardView = CardView()
         //print("Card button clicked - from CardCollectionViewCell")
         if isOpen {
@@ -28,5 +29,6 @@ class CardCollectionViewCell: UICollectionViewCell {
             cardButton.setImage(image, for: .normal)
             cardView.cardOpenAnimation(view: cardButton)
         }
+         */
     }
 }
