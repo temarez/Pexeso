@@ -92,7 +92,8 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         // Configure the cell
         let imageName = "i0" + String(currentCellNumber);
         let image = UIImage(named: imageName)
-        cell.cardButton.setImage(image, for: UIControlState.normal)
+        cell.cardButton.setTitle(String(currentCellNumber), for: .normal)
+        //cell.cardButton.setImage(image, for: UIControlState.normal)
         //cell.cardButton.setImage(#imageLiteral(resourceName: "i14"), for: UIControlState.normal)
         
         cell.layer.borderWidth = 1.0
@@ -134,16 +135,16 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     func updateViewFromModelTodo() {
+        let numberOfCards = numberOfPairs * 2
         // Go through all cells in collectionView
-        for index in 0..<numberOfPairs {
-            print("Going ghtough card number \(index) of \(numberOfPairs)")
-            var indexPath = collectionViewSections.getCellIndexPath(index: index)
+        for index in 0..<numberOfCards {
+            print("Going through card number \(index) of \(numberOfCards)")
+            let indexPath = collectionViewSections.getCellIndexPath(index: index)
             if let currentCell = collectionView?.cellForItem(at: indexPath) as? CardCollectionViewCell {
                 currentCell.cardButton.setImage(nil, for: .normal)
                 currentCell.cardButton.setTitle(String(index), for: .normal)
                 currentCell.cardButton.backgroundColor = .brown
             }
-            
         }
         
         /*
