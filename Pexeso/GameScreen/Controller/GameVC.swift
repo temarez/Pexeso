@@ -44,6 +44,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     var numOfPairsPickerDelegate: NumOfPairsPickerDelegate?
     var numberOfPairs = 2
     var collectionViewSections = CollectionViewSections()
+    var cardsSizeCalculator = CardsSizeCalculator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,7 +107,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // TODO: calculate using UIScreen.main.bounds.size.height and UIScreen.main.bounds.size.width
         // TODO: see CardsSizeCalculator
-        return CGSize(width: 186, height: 186)
+        return cardsSizeCalculator.cardSize
     }
     
     func getSuperviewCollectionViewCell(view: UIView) -> UICollectionViewCell? {
@@ -153,6 +154,8 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     @IBOutlet var cardButtons: [UIButton]! // TODO:
     
     override func viewDidLayoutSubviews() {
+        // TODO: see willRotateToInterfaceOrientation
+        // TODO: see didRotateFromInterfaceOrientation
         super.viewDidLayoutSubviews()
         
         guard let unwrappedCollectionView = collectionView else {

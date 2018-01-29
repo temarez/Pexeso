@@ -10,17 +10,16 @@ import UIKit
 
 class CardsSizeCalculator {
     
-    public let cardMaxWidth = 1024
-    public let cardMaxHeight = 1024
-
-    public var cardMaxSize: CGSize {
-        return CGSize(width: CGFloat(cardMaxWidth), height: CGFloat(cardMaxHeight))
+    public let cardSizeMax = CGSize(width: 1024, height: 1024)
+    
+    // public var collectionViewSize: CGSize
+    
+    public var cardSize: CGSize {
+        return CGSize(width: 186, height: 186) // TODO: get rid of hard-coded values, calculate with collectionViewSize
     }
     
     init() {
         
     }
-    
-    
     
 }
