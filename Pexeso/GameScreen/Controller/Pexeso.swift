@@ -33,7 +33,7 @@ class Pexeso {
     }
     
     func chooseCard(at index: Int) {
-        assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)) : Choosen index not in the cards")
+        assert(cards.indices.contains(index), "Pexeso.chooseCard(at: \(index)) : Choosen index not in the cards")
         if !cards[index].isMatched {
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
                 if cards[matchIndex].identifier == cards[index].identifier {
@@ -49,7 +49,7 @@ class Pexeso {
     }
     
     init(numberOfPairsOfCards: Int) {
-        assert(numberOfPairsOfCards > 0, "Concentration.init(\(numberOfPairsOfCards)): you must have at least one pair of cards")
+        assert(numberOfPairsOfCards > 0, "Pexeso.init(\(numberOfPairsOfCards)): you must have at least one pair of cards")
         for _ in 1...numberOfPairsOfCards {
             let card = Card()
             cards += [card, card] //Same as twice calling cards.append(card)

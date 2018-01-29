@@ -129,12 +129,16 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         if let unwrapIndexPath = indexPath {
             print("Card button clicked in cell " + String(unwrapIndexPath.section) + ", " + String(unwrapIndexPath.row) + " => " + String(collectionViewSections.getCellIndex(indexPath: unwrapIndexPath)))
+            
+            let cardNumber = collectionViewSections.getCellIndex(indexPath: unwrapIndexPath) //cardButtons.index(of: sender) {
+            pexesoGame.chooseCard(at: cardNumber)
+            updateViewFromModelTodo()
         }
         flipCount += 1
-        updateViewFromModelTodo()
     }
     
     func updateViewFromModelTodo() {
+        /*
         let numberOfCards = numberOfPairs * 2
         // Go through all cells in collectionView
         for index in 0..<numberOfCards {
@@ -144,6 +148,25 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
                 currentCell.cardButton.setImage(nil, for: .normal)
                 currentCell.cardButton.setTitle(String(index), for: .normal)
                 currentCell.cardButton.backgroundColor = .brown
+            }
+        }
+        */
+        let theme = Theme() // TODO:
+        
+        // for index in 0..<numberOfCards
+        for (cardIndex, card) in pexesoGame.cards.enumerated() {
+            print("\(cardIndex) CARD ID \(card.identifier)")
+            let indexPath = collectionViewSections.getCellIndexPath(index: cardIndex)
+            if let currentCell = collectionView?.cellForItem(at: indexPath) as? CardCollectionViewCell {
+                if let button = currentCell.cardButton {
+                    if card.isFaceUp {
+                        button.setTitle(theme.image(for: card), for: UIControlState.normal)
+                        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                    } else {
+                        button.setTitle("", for: UIControlState.normal)
+                        button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0.9960669949)
+                    }
+                }
             }
         }
         
@@ -175,13 +198,6 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
     }
     
-    // MARK: Below part is inspired by Stanford CS 193P courses (start)
-    
-    lazy var game: Concentration =
-        Concentration(numberOfPairsOfCards: (cardButtons.count+1) / 2)
-    
-    @IBOutlet var cardButtons: [UIButton]! // TODO:
-    
     override func viewDidLayoutSubviews() {
         // TODO: see willRotateToInterfaceOrientation
         // TODO: see didRotateFromInterfaceOrientation
@@ -198,31 +214,5 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         //print("viewDidLayoutSubviews() " + String(width) + "x" + String(height))
     }
-    
-    /*
-    @IBAction func touchCard(_ sender: UIButton) {
-        flipCount += 1
-        if let cardNumber = cardButtons.index(of: sender) {
-            game.chooseCard(at: cardNumber)
-            updateViewFromModel()
-        }
-    }
-    
-    func updateViewFromModel() {
-        for index in cardButtons.indices {
-            let button = cardButtons[index]
-            let card = game.cards[index]
-            if card.isFaceUp {
-                button.setTitle(emoji(for: card), for: UIControlState.normal)
-                button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            } else {
-                button.setTitle("", for: UIControlState.normal)
-                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0.9960669949)
-            }
-        }
-    }
- */
-    
-    // Above part is inspired by Stanford CS 193P courses (end)
     
 }
