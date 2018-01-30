@@ -132,28 +132,29 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
         
         if let unwrapIndexPath = indexPath {
-            print("Card button clicked in cell " + String(unwrapIndexPath.section) + ", " + String(unwrapIndexPath.row) + " => " + String(collectionViewSections.getCellIndex(indexPath: unwrapIndexPath)))
-            
             let cardNumber = collectionViewSections.getCellIndex(indexPath: unwrapIndexPath)
             let card = pexesoGame.cards[cardNumber]
+            
+            print("Card button clicked in cell " + String(unwrapIndexPath.section) + ", " + String(unwrapIndexPath.row) + " => index = " + String(collectionViewSections.getCellIndex(indexPath: unwrapIndexPath)) + " card ID = \(card.identifier)")
+            
             pexesoGame.chooseCard(at: cardNumber)
             if card.isFaceUp {
-                card.isFaceUp = false
-                let image = UIImage(named: "back")
-                sender.setImage(image, for: .normal)
+                //card.isFaceUp = false
+                //let image = UIImage(named: "back")
+                //sender.setImage(image, for: .normal)
                 sender.cardCloseAnimation()
-                sender.cardsMatchAnimation()
+                //sender.cardsMatchAnimation()
             } else {
-                card.isFaceUp = true
-                let image = UIImage(named: "i01")
-                sender.setImage(image, for: .normal)
+                //card.isFaceUp = true
+                //let image = UIImage(named: "i01")
+                //sender.setImage(image, for: .normal)
                 sender.cardOpenAnimation()
             }
-            updateViewFromModelTodo()
+            updateViewFromModel()
         }
     }
     
-    func updateViewFromModelTodo() {
+    func updateViewFromModel() {
         let theme = Theme() // TODO:
         
         // let numberOfCards = numberOfPairs * 2
@@ -167,7 +168,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
                         button.setTitle(theme.image(for: card), for: UIControlState.normal)
                         button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
                     } else {
-                        button.setTitle("", for: UIControlState.normal)
+                        button.setTitle("CLOSE", for: UIControlState.normal)
                         button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0.9960669949)
                     }
                 }
