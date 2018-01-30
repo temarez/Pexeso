@@ -10,26 +10,26 @@ import UIKit
 
 class UILabelWithTimer: UILabel {
     
-    private static let timeIntervalDefault: TimeInterval = 30.0
-    private var timeInterval: TimeInterval = timeIntervalDefault // TODO: rename this in order to make it different from scheduledTimer(timeInterval
+    private static let counterValueDefault: TimeInterval = 30.0
+    private var counterValue: TimeInterval = counterValueDefault
     private var timer = Timer()
     
     func myTimerStart(seconds: TimeInterval) {
-        timeInterval = seconds
+        counterValue = seconds
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(myTimerCounter), userInfo: nil, repeats: true)
     }
     
     @objc func myTimerCounter() {
-        timeInterval -= 1
-        self.text = "Time: " + String(Int(timeInterval))
-        if (timeInterval == 0) {
+        counterValue -= 1
+        self.text = "Time: " + String(Int(counterValue))
+        if (counterValue == 0) {
             myTimerStop()
         }
     }
     
     func myTimerStop() {
         timer.invalidate()
-        timeInterval = UILabelWithTimer.timeIntervalDefault
+        counterValue = UILabelWithTimer.counterValueDefault
     }
 
 }
