@@ -18,6 +18,7 @@
 		A3421D502012A57B0073A16D /* UIViewAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3421D4F2012A57B0073A16D /* UIViewAnimations.swift */; };
 		A3697624201B1B59006CB6C3 /* UILabelWithTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3697623201B1B59006CB6C3 /* UILabelWithTimer.swift */; };
 		A3BF9BF6201E906800B5DF48 /* CardsSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BF9BF5201E906800B5DF48 /* CardsSizeCalculator.swift */; };
+		A3EAFD7220207A3400A5C819 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A3EAFD7120207A3400A5C819 /* Settings.bundle */; };
 		A3ECAD2B200BF5D5003DD911 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ECAD2A200BF5D5003DD911 /* CardCollectionViewCell.swift */; };
 		A3ED3111201A16A400CDE7AF /* HighScoresVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ED3110201A16A400CDE7AF /* HighScoresVC.swift */; };
 		A3F86CE7200F5CEB007A496F /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F86CE6200F5CEB007A496F /* GameVC.swift */; };
@@ -39,6 +40,7 @@
 		A3421D4F2012A57B0073A16D /* UIViewAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewAnimations.swift; sourceTree = "<group>"; };
 		A3697623201B1B59006CB6C3 /* UILabelWithTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelWithTimer.swift; sourceTree = "<group>"; };
 		A3BF9BF5201E906800B5DF48 /* CardsSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsSizeCalculator.swift; sourceTree = "<group>"; };
+		A3EAFD7120207A3400A5C819 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Pexeso/Settings.bundle; sourceTree = SOURCE_ROOT; };
 		A3ECAD2A200BF5D5003DD911 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		A3ED3110201A16A400CDE7AF /* HighScoresVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoresVC.swift; sourceTree = "<group>"; };
 		A3F86CE6200F5CEB007A496F /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				A3F86CE6200F5CEB007A496F /* GameVC.swift */,
+				A3EAFD7120207A3400A5C819 /* Settings.bundle */,
 				A3FB8FC3201F5C340080C6D6 /* Theme.swift */,
 				A30ABBB52007820A0014F12B /* Pexeso.swift */,
 			);
@@ -212,6 +215,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3EAFD7220207A3400A5C819 /* Settings.bundle in Resources */,
 				A333E27020056FC500E0898E /* LaunchScreen.storyboard in Resources */,
 				A333E26D20056FC500E0898E /* Assets.xcassets in Resources */,
 				A333E26B20056FC500E0898E /* Main.storyboard in Resources */,
