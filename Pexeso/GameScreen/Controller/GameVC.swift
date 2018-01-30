@@ -32,8 +32,8 @@ class CollectionViewSections {
     }
     
     init(_ numberOfPairs: Int) {
-        numberOfSections = numberOfPairs
-        numberOfItemsInSection = 2 // TODO: implement
+        numberOfSections = 1 // TODO: implement more sopisticated way with multiple numberOfSections
+        numberOfItemsInSection = numberOfPairs * 2
     }
 }
 
@@ -69,7 +69,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         print("numberOfSections is \(collectionViewSections.numberOfSections) and numberOfItemsInSection is \(collectionViewSections.numberOfItemsInSection)")
 
-        timeLabel.myTimerStart(seconds: 20)
+        timeLabel.myTimerStart(seconds: TimeInterval(numberOfPairs*4))
     }
     
     // MARK: UICollectionViewDataSource
@@ -95,6 +95,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         let imageName = "i0" + String(currentCellNumber);
         let image = UIImage(named: imageName)
         cell.cardButton.setTitle(String(currentCellNumber), for: .normal)
+        //cell.cardButton.setTitle(String(pexesoEngine.cards[indexPath.item].identifier), for: .normal)
         //cell.cardButton.setImage(image, for: UIControlState.normal)
         //cell.cardButton.setImage(#imageLiteral(resourceName: "i14"), for: UIControlState.normal)
         
