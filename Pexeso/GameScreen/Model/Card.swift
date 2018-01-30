@@ -8,24 +8,27 @@
 
 import Foundation
 
-class Card {
+class Card: Hashable {
     var isFaceUp = false
     var isMatched = false
     var identifier: Int
     
-    static var identifierFactory = 0
+    private static var identifierFactory = 0
     
-    static func getUniqueIdentifier() -> Int {
+    private static func getUniqueIdentifier() -> Int {
         identifierFactory += 1
-        return  identifierFactory
+        return identifierFactory
     }
-    
-    // TODO: Implement below "convertTo..." methods and later depending on selected database (in ) use one of these methods by means of switch construction in code:
-    // func convertToRealmObject() -> Object { }
-    // func convertToCoreDataObject() -> NSManagedObject { }
-    // Here we may use "Abstract Factory" pattern
 
     init() {
         self.identifier = Card.getUniqueIdentifier()
+    }
+    
+    var hashValue: Int {
+        return identifier
+    }
+    
+    static func == (lhs: Card, rhs: Card) -> Bool {
+        return lhs.identifier == rhs.identifier
     }
 }
