@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Pexeso {
+class PexesoEngine {
     private(set) var cards = [Card]() // Array<Card>
     
     private var indexOfOneAndOnlyFaceUpCard: Int? {

@@ -47,7 +47,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     var collectionViewSections = CollectionViewSections()
     var cardsSizeCalculator = CardsSizeCalculator()
     
-    lazy var pexesoGame: Pexeso = Pexeso(numberOfPairsOfCards: numberOfPairs)
+    lazy var pexesoEngine: PexesoEngine = PexesoEngine(numberOfPairsOfCards: numberOfPairs)
     
     var flipCount = 0 {
         didSet {
@@ -133,11 +133,11 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         if let unwrapIndexPath = indexPath {
             let cardNumber = collectionViewSections.getCellIndex(indexPath: unwrapIndexPath)
-            let card = pexesoGame.cards[cardNumber]
+            let card = pexesoEngine.cards[cardNumber]
             
             print("Card button clicked in cell " + String(unwrapIndexPath.section) + ", " + String(unwrapIndexPath.row) + " => index = " + String(collectionViewSections.getCellIndex(indexPath: unwrapIndexPath)) + " card ID = \(card.identifier)")
             
-            pexesoGame.chooseCard(at: cardNumber)
+            pexesoEngine.chooseCard(at: cardNumber)
             if card.isFaceUp {
                 //card.isFaceUp = false
                 //let image = UIImage(named: "back")
@@ -159,7 +159,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         // let numberOfCards = numberOfPairs * 2
         // for index in 0..<numberOfCards
-        for (cardIndex, card) in pexesoGame.cards.enumerated() {
+        for (cardIndex, card) in pexesoEngine.cards.enumerated() {
             //print("\(cardIndex) CARD ID \(card.identifier)")
             let indexPath = collectionViewSections.getCellIndexPath(index: cardIndex)
             if let currentCell = collectionView?.cellForItem(at: indexPath) as? CardCollectionViewCell {

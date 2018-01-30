@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A30ABBB4200781320014F12B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30ABBB3200781320014F12B /* Card.swift */; };
-		A30ABBB62007820A0014F12B /* Pexeso.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30ABBB52007820A0014F12B /* Pexeso.swift */; };
+		A30ABBB62007820A0014F12B /* PexesoEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30ABBB52007820A0014F12B /* PexesoEngine.swift */; };
 		A321EEFC2015458F00CDB1A9 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = A321EEFB2015458F00CDB1A9 /* Score.swift */; };
 		A333E26620056FC500E0898E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A333E26520056FC500E0898E /* AppDelegate.swift */; };
 		A333E26B20056FC500E0898E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A333E26920056FC500E0898E /* Main.storyboard */; };
@@ -28,7 +28,7 @@
 
 /* Begin PBXFileReference section */
 		A30ABBB3200781320014F12B /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		A30ABBB52007820A0014F12B /* Pexeso.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pexeso.swift; sourceTree = "<group>"; };
+		A30ABBB52007820A0014F12B /* PexesoEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PexesoEngine.swift; sourceTree = "<group>"; };
 		A321EEFB2015458F00CDB1A9 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		A333E26220056FC500E0898E /* Pexeso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pexeso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A333E26520056FC500E0898E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,8 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				A3F86CE6200F5CEB007A496F /* GameVC.swift */,
-				A3FB8FC3201F5C340080C6D6 /* Theme.swift */,
-				A30ABBB52007820A0014F12B /* Pexeso.swift */,
+				A30ABBB52007820A0014F12B /* PexesoEngine.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -142,6 +141,7 @@
 				A3697623201B1B59006CB6C3 /* UILabelWithTimer.swift */,
 				A3421D4F2012A57B0073A16D /* UIViewAnimations.swift */,
 				A3BF9BF5201E906800B5DF48 /* CardsSizeCalculator.swift */,
+				A3FB8FC3201F5C340080C6D6 /* Theme.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -241,7 +241,7 @@
 				A3697624201B1B59006CB6C3 /* UILabelWithTimer.swift in Sources */,
 				A3ED3111201A16A400CDE7AF /* HighScoresVC.swift in Sources */,
 				A333E26620056FC500E0898E /* AppDelegate.swift in Sources */,
-				A30ABBB62007820A0014F12B /* Pexeso.swift in Sources */,
+				A30ABBB62007820A0014F12B /* PexesoEngine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
