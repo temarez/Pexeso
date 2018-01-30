@@ -66,6 +66,30 @@
 			<key>MaximumValueImage</key>
 			<string></string>
 		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Key</key>
+			<string>dbType</string>
+			<key>DefaultValue</key>
+			<string>one</string>
+			<key>Title</key>
+			<string>MultiValue</string>
+			<key>Titles</key>
+			<array>
+				<string>one</string>
+				<string>two</string>
+				<string>three</string>
+				<string>four</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<string>one</string>
+				<string>two</string>
+				<string>three</string>
+				<string>four</string>
+			</array>
+		</dict>
 	</array>
 </dict>
 </plist>
