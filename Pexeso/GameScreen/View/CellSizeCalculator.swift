@@ -63,41 +63,21 @@ extension CGSize {
     
 }
 
-class CardsSizeCalculator {
+class CellSizeCalculator {
     
-    public let cardSizeMax = CGSize(width: 1024, height: 1024)
+    public let cellSizeMax = CGSize(width: 1024, height: 1024)
     public let spacingBetweenCards = 10
     public var collectionViewSize: CGSize
     public var collectionViewSections: CollectionViewSections
     
-    private func calcCardSingleSideSize(sideSize: CGFloat, cardsNum: Int, spacing: Int) -> CGFloat {
-        if cardsNum < 1 {
-            return sideSize
-        }
-        return sideSize / CGFloat((cardsNum-1)*spacing)
-    }
-    
-    public var cardSize: CGSize {
-        /*
-        print("CARD_SIZE")
-        print("CollectionViewSize: \(collectionViewSize) larger \(collectionViewSize.largerSide()) smaller \(collectionViewSize.smallerSide())")
-        print("CollectionViewSize: \(collectionViewSize) larger \(collectionViewSize.largerSideSize()) smaller \(collectionViewSize.smallerSideSize())")
-        */
-        var calculatedCardSize = CGSize(width: 186, height: 186) // TODO: get rid of hard-coded values, calculate with collectionViewSize
-        /*
-        if(collectionViewSections.numberOfSections > collectionViewSections.numberOfItemsInSection) {
-            calculatedCardSize.height = calcCardSingleSideSize(sideSize: collectionViewSize.largerSideSize(), cardsNum: collectionViewSections.numberOfSections, spacing: spacingBetweenCards)
-         
-            calculatedCardSize.width = collectionViewSize.smallerSideSize() / CGFloat(collectionViewSections.numberOfItemsInSection)
-        }
-        else {
-        }*/
-        
-        //CGFloat larger collectionViewSize.largerSideSize()
-        
-        //print("SECTIONS: \(collectionViewSections.numberOfSections) x \(collectionViewSections.numberOfItemsInSection)")
-        //print("CALC CARD SIZE: \(calculatedCardSize.width) x \(calculatedCardSize.height)")
+    public func cellSize(collectionViewFrameSize: CGSize) -> CGSize {
+        var calculatedCardSize = CGSize(width: 200, height: 200) // TODO: get rid of hard-coded values, calculate with collectionViewSize
 
+        if(collectionViewFrameSize.width == 716.0) { // this is for landscape orientation
+            calculatedCardSize = CGSize(width: 100, height: 100)
+        } else if(collectionViewFrameSize.width == 394.0) { // this is for portrait orientation
+            calculatedCardSize = CGSize(width: 186, height: 186)
+        }
         return calculatedCardSize
     }
     

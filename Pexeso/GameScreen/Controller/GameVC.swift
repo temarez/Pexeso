@@ -47,7 +47,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     var numOfPairsPickerDelegate: NumOfPairsPickerDelegate?
     var numberOfPairs = 2
     var collectionViewSections = CollectionViewSections()
-    var cardsSizeCalculator = CardsSizeCalculator()
+    var cellSizeCalculator = CellSizeCalculator()
     
     var pexesoEngine: PexesoEngine?
     
@@ -69,7 +69,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
         print("Selected num of pairs \(numberOfPairs)")
         collectionViewSections = CollectionViewSections(numberOfPairs)
-        cardsSizeCalculator.collectionViewSections = collectionViewSections
+        cellSizeCalculator.collectionViewSections = collectionViewSections
         
         print("numberOfSections is \(collectionViewSections.numberOfSections) and numberOfItemsInSection is \(collectionViewSections.numberOfItemsInSection)")
         startNewGame()
@@ -99,8 +99,22 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // TODO: calculate using UIScreen.main.bounds.size.height and UIScreen.main.bounds.size.width
         // TODO: see CardsSizeCalculator
-        return cardsSizeCalculator.cardSize
+        return cellSizeCalculator.cellSize(collectionViewFrameSize: collectionView.frame.size)
     }
+    
+    /**/
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
+    }
+    /**/
     
     func getSuperviewCollectionViewCell(view: UIView) -> UICollectionViewCell? {
         var currentView = view
@@ -122,11 +136,12 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
         
         let collectionViewSize: CGSize = unwrappedCollectionView.frame.size
-        cardsSizeCalculator.collectionViewSize = unwrappedCollectionView.frame.size
+        cellSizeCalculator.collectionViewSize = unwrappedCollectionView.frame.size
         let width = Int(collectionViewSize.width.rounded(.up))
         let height = Int(collectionViewSize.height.rounded(.up))
         
-        //print("viewDidLayoutSubviews() " + String(width) + "x" + String(height))
+        print("viewDidLayoutSubviews() " + String(width) + "x" + String(height))
+        print(cellSizeCalculator.collectionViewSize)
     }
     
     // MARK: new attempt to implement logics
