@@ -181,7 +181,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
                 if card.isMatched {
                     //button.setTitle("!", for: .normal)
                 } else {
-                    button.frame.size = CGSize(width: 100, height: 100) // TODO: here I have to do inversion of what cardsMatchAnimation() is doing i.e. CGAffineTransform with default or inversed values
+                    button.cardsMatchAnimationUndo()
                     if card.isFaceUp {
                         button.setImage(theme.image(for: card), for: .normal)
                     } else {

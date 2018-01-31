@@ -17,7 +17,15 @@ struct AnimationsConstants {
 
 extension UIView {
     
-    func cardsMatchAnimation()  {
+    func cardsMatchAnimationUndo() {
+        self.alpha = 1
+        self.center = self.superview!.center
+        self.transform = CGAffineTransform.identity.scaledBy(
+            x: 1-AnimationsConstants.matchCardAnimationScaleDown,
+            y: 1-AnimationsConstants.matchCardAnimationScaleDown)
+    }
+    
+    func cardsMatchAnimation() {
         let animator = UIViewPropertyAnimator(
             duration: AnimationsConstants.matchCardAnimationDuration,
             curve: .linear ,
