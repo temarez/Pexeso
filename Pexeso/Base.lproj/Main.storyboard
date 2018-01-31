@@ -44,14 +44,8 @@
                                     <action selector="startButtonPressed:" destination="b7w-zg-Q7j" eventType="touchUpInside" id="4w8-Pd-BSe"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please specify the number of card pairs" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOW-Me-Vec">
-                                <rect key="frame" x="10" y="74" width="355" height="57.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nic-NP-V08">
-                                <rect key="frame" x="10" y="142" width="355" height="332"/>
+                                <rect key="frame" x="10" y="141.5" width="355" height="332.5"/>
                                 <connections>
                                     <outlet property="dataSource" destination="b7w-zg-Q7j" id="4kr-9J-rCi"/>
                                     <outlet property="delegate" destination="b7w-zg-Q7j" id="VVD-1p-Kkh"/>
@@ -70,6 +64,12 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pairs: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYd-6i-qby">
                                 <rect key="frame" x="10" y="484" width="355" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Please specify the number of card pairs" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOW-Me-Vec">
+                                <rect key="frame" x="10" y="76" width="355" height="57.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

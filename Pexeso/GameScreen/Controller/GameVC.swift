@@ -74,7 +74,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         pexesoEngine = PexesoEngine(numberOfPairsOfCards: numberOfPairs)
         pexesoEngine?.gameEventsDelegate = self
 
-        timeLabel.myTimerStart(seconds: TimeInterval(numberOfPairs*4))
+        timeLabel.myTimerStart(seconds: TimeInterval(numberOfPairs*5))
     }
     
     // MARK: UICollectionViewDataSource
@@ -235,10 +235,11 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     func gameEventVictory() {
         print("Event: Victory")
-        let alertController = UIAlertController(title: "Victory", message: "You won. Do you wish to replay", preferredStyle: .alert)
+        timeLabel.myTimerStop()
+        let alertController = UIAlertController(title: "Victory", message: "You won. Do you wish to replay?", preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-            // TODO: Go to high scores screen
+            self.performSegue(withIdentifier: "GameVC2HighScoresVC", sender: nil)
         }
         alertController.addAction(cancelAction)
         
