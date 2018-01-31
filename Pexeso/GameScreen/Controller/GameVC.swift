@@ -70,11 +70,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         cardsSizeCalculator.collectionViewSections = collectionViewSections
         
         print("numberOfSections is \(collectionViewSections.numberOfSections) and numberOfItemsInSection is \(collectionViewSections.numberOfItemsInSection)")
-
-        pexesoEngine = PexesoEngine(numberOfPairsOfCards: numberOfPairs)
-        pexesoEngine?.gameEventsDelegate = self
-
-        timeLabel.myTimerStart(seconds: TimeInterval(numberOfPairs*5))
+        startNewGame()
     }
     
     // MARK: UICollectionViewDataSource
@@ -115,11 +111,8 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         return nil
     }
     
-    // MARK: below part is an attempt to implement logics
-    
+    // TODO: get rid of this, use viewWillTransition() instead ( willRotateToInterfaceOrientation / didRotateFromInterfaceOrientation are deprecated)
     override func viewDidLayoutSubviews() {
-        // TODO: see willRotateToInterfaceOrientation
-        // TODO: see didRotateFromInterfaceOrientation
         super.viewDidLayoutSubviews()
         
         guard let unwrappedCollectionView = collectionView else {
@@ -136,20 +129,18 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     // MARK: new attempt to implement logics
     
+    func startNewGame() {
+        pexesoEngine = PexesoEngine(numberOfPairsOfCards: numberOfPairs)
+        pexesoEngine?.gameEventsDelegate = self
+        timeLabel.myTimerStart(seconds: TimeInterval(numberOfPairs*5))
+    }
+    
     func getButtonByCardIndex(_ cardIndex: Int) -> UIButton? {
         let indexPath = collectionViewSections.getCellIndexPath(index: cardIndex)
         if let cell = collectionView?.cellForItem(at: indexPath) as? CardCollectionViewCell {
             return cell.cardButton
         }
         return nil
-        /*
-        for cardBtn in cardButtons {
-            if cardBtn.tag == cardIndex {
-                return cardBtn
-            }
-        }
-        return nil
-         */
     }
     
     @objc func cardBtnClicked(sender: UIButton) {
@@ -163,7 +154,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         if let unwrapIndexPath = indexPath {
             let cardNumber = collectionViewSections.getCellIndex(indexPath: unwrapIndexPath)
             if let card = pexesoEngine?.cards[cardNumber] {
-                print("Card button clicked in cell " + String(unwrapIndexPath.section) + ", " + String(unwrapIndexPath.row) + " => index = " + String(collectionViewSections.getCellIndex(indexPath: unwrapIndexPath)) + " card ID = \(card.identifier)")
+                print("Card clicked in cell " + String(unwrapIndexPath.section) + ", " + String(unwrapIndexPath.row) + " => card index = " + String(collectionViewSections.getCellIndex(indexPath: unwrapIndexPath)) + " card ID = \(card.identifier)")
                 
                 sender.cardOpenAnimation() // TODO: is this necessary?
                 pexesoEngine?.chooseCard(at: cardNumber)
@@ -173,19 +164,18 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
     }
     
+    // TODO: is this necessary
     func updateViewFromModel() {
         guard let pexesoEngine = pexesoEngine else {
             return
         }
         for (cardIndex, card) in pexesoEngine.cards.enumerated() {
-            //print("\(cardIndex) CARD ID \(card.identifier)")
             if let button = getButtonByCardIndex(cardIndex) {
                 if card.isMatched {
-                    button.setTitle("!", for: .normal)
+                    //button.setTitle("!", for: .normal)
                 } else {
                     if card.isFaceUp {
                         button.setImage(theme.image(for: card), for: .normal)
-                        //button.setTitle(String("[\(cardIndex)] \(card.identifier)"), for: .normal)
                     } else {
                         button.setImage(theme.imageBack(), for: .normal)
                     }
@@ -236,6 +226,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     func gameEventVictory() {
         print("Event: Victory")
         timeLabel.myTimerStop()
+        // TODO: add some delay here and maybe even animation or user
         let alertController = UIAlertController(title: "Victory", message: "You won. Do you wish to replay?", preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
@@ -244,7 +235,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         alertController.addAction(cancelAction)
         
         let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
-            // TODO: Start a new game
+            self.startNewGame()
         }
         alertController.addAction(OKAction)
         
