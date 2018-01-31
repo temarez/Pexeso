@@ -34,6 +34,8 @@ class CollectionViewSections {
     init(_ numberOfPairs: Int) {
         numberOfSections = 1 // TODO: implement more sopisticated way with multiple numberOfSections
         numberOfItemsInSection = numberOfPairs * 2
+        // TODO: we have to set here numberOfSections = numberOfPairs * 2 and numberOfItemsInSection = 1
+        // we will have multiple sections with single item in each and it will allow us to use UIEdgeInsets in order to set gaps between sections
     }
 }
 
@@ -111,7 +113,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         return nil
     }
     
-    // TODO: get rid of this, use viewWillTransition() instead ( willRotateToInterfaceOrientation / didRotateFromInterfaceOrientation are deprecated)
+    // TODO: use viewWillTransition() instead
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -132,8 +134,13 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     func startNewGame() {
         pexesoEngine = PexesoEngine(numberOfPairsOfCards: numberOfPairs)
         pexesoEngine?.gameEventsDelegate = self
-        timeLabel.myTimerStart(seconds: TimeInterval(numberOfPairs*5))
+        flipCount = 0
+        timeLabel.myTimerStart(seconds: TimeInterval(numberOfPairs*5)) // TODO: move constant to separate struct
+        updateViewFromModel()
+        // make buttons visible and in default state again!!!
     }
+    
+    // func eventTimerEnd() TODO: implement
     
     func getButtonByCardIndex(_ cardIndex: Int) -> UIButton? {
         let indexPath = collectionViewSections.getCellIndexPath(index: cardIndex)
@@ -174,6 +181,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
                 if card.isMatched {
                     //button.setTitle("!", for: .normal)
                 } else {
+                    button.frame.size = CGSize(width: 100, height: 100) // TODO: here I have to do inversion of what cardsMatchAnimation() is doing i.e. CGAffineTransform with default or inversed values
                     if card.isFaceUp {
                         button.setImage(theme.image(for: card), for: .normal)
                     } else {
