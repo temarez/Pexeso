@@ -93,24 +93,8 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             fatalError("Oops: can not get the proper cell CardCollectionViewCell")
         }
         
-        let currentCellNumber = collectionViewSections.getCellIndex(indexPath: indexPath)
-        cell.cardButton.backgroundColor = .gray
+        cell.cardButton.setImage(theme.imageBack(), for: .normal)
         cell.cardButton.addTarget(self, action: #selector(cardBtnClicked), for: UIControlEvents.touchUpInside)
-        /*
-        print("INDEX: " + String(currentCellNumber) + " [" + String(indexPath.section) + "," + String(indexPath.row) + "]")
-
-        // Configure the cell
-        let imageName = "i0" + String(currentCellNumber);
-        let image = UIImage(named: imageName)
-        cell.cardButton.setTitle(String(currentCellNumber), for: .normal)
-        //cell.cardButton.setTitle(String(pexesoEngine.cards[indexPath.item].identifier), for: .normal)
-        //cell.cardButton.setImage(image, for: UIControlState.normal)
-        //cell.cardButton.setImage(#imageLiteral(resourceName: "i14"), for: UIControlState.normal)
-        
-        cell.layer.borderWidth = 1.0
-        cell.layer.borderColor = UIColor.red.cgColor
-        
-        */
         return cell
     }
     
@@ -200,10 +184,10 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
                     button.setTitle("!", for: .normal)
                 } else {
                     if card.isFaceUp {
-                        button.setTitle(theme.image(for: card), for: .normal)
+                        button.setImage(theme.image(for: card), for: .normal)
                         //button.setTitle(String("[\(cardIndex)] \(card.identifier)"), for: .normal)
                     } else {
-                        button.setTitle(theme.imageBack(), for: .normal)
+                        button.setImage(theme.imageBack(), for: .normal)
                     }
                 }
             }
@@ -214,7 +198,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         print("Event: Card Opened - \(cardIndex)")
         if let button = getButtonByCardIndex(cardIndex), let card = pexesoEngine?.cards[cardIndex] {
             button.cardOpenAnimation()
-            button.setTitle(theme.image(for: card), for: .normal)
+            button.setImage(theme.image(for: card), for: .normal)
             //button.setTitle(String("[\(cardIndex)] \(card.identifier)"), for: .normal)
         }
     }
@@ -223,7 +207,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         print("Event: Card Closed - \(cardIndex)")
         if let button = getButtonByCardIndex(cardIndex) {
             button.cardCloseAnimation()
-            button.setTitle(theme.imageBack(), for: .normal)
+            button.setImage(theme.imageBack(), for: .normal)
         }
     }
     
@@ -243,8 +227,8 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: { // use timer to pause so user can see selections - 0.7 sec
                 button1.cardCloseAnimation()
                 button2.cardCloseAnimation()
-                button1.setTitle(self.theme.imageBack(), for: .normal)
-                button2.setTitle(self.theme.imageBack(), for: .normal)
+                button1.setImage(self.theme.imageBack(), for: .normal)
+                button2.setImage(self.theme.imageBack(), for: .normal)
             })
         }
     }
