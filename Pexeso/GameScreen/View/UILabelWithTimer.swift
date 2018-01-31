@@ -12,25 +12,7 @@ class UILabelWithTimer: UILabel {
     
     private static let counterValueDefault: TimeInterval = 30.0
     private var counterValue: TimeInterval = counterValueDefault
-    private var timer = Timer()
-    
-    convenience init() {
-        self.init(frame: CGRect.zero)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        initializer()
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        initializer()
-    }
-    
-    func initializer() {
-        timer = Timer()
-    }
+    private lazy var timer = Timer()
     
     deinit {
         timer.invalidate()
