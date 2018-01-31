@@ -203,7 +203,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
                         button.setTitle(theme.image(for: card), for: .normal)
                         //button.setTitle(String("[\(cardIndex)] \(card.identifier)"), for: .normal)
                     } else {
-                        button.setTitle("?", for: .normal)
+                        button.setTitle(theme.imageBack(), for: .normal)
                     }
                 }
             }
@@ -223,7 +223,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         print("Event: Card Closed - \(cardIndex)")
         if let button = getButtonByCardIndex(cardIndex) {
             button.cardCloseAnimation()
-            button.setTitle(String("?"), for: .normal)
+            button.setTitle(theme.imageBack(), for: .normal)
         }
     }
     
@@ -243,8 +243,8 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: { // use timer to pause so user can see selections - 0.7 sec
                 button1.cardCloseAnimation()
                 button2.cardCloseAnimation()
-                button1.setTitle(String("?"), for: .normal)
-                button2.setTitle(String("?"), for: .normal)
+                button1.setTitle(self.theme.imageBack(), for: .normal)
+                button2.setTitle(self.theme.imageBack(), for: .normal)
             })
         }
     }

@@ -11,8 +11,8 @@ import UIKit
 class Theme {
     var name = "default"
     
-    var emoji = [Int:String]()
-    var emojiChoices = ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🌍", "🍎"]
+    private var emoji = [Int:String]()
+    private var emojiChoices = ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🌍", "🍎"]
     
     func image(for card: Card) -> String {
         if emoji[card.identifier] == nil, emojiChoices.count > 0 {
@@ -20,7 +20,11 @@ class Theme {
             emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
         }
         
-        return emoji[card.identifier] ?? "?"
+        return emoji[card.identifier] ?? imageBack()
+    }
+    
+    func imageBack() -> String {
+        return "BBB?"
     }
     
 }
