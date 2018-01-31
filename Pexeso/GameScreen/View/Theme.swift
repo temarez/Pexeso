@@ -11,16 +11,29 @@ import UIKit
 class Theme {
     var name = "default"
     
-    private var emoji = [Int:String]()
-    private var emojiChoices = ["🦇", "😱", "🙀", "😈", "🎃", "👻", "🍭", "🌍", "🍎"]
+    private var image = [Int:String]()
+    private var imageChoices: [String]
+    
+    init() {
+        imageChoices = [String]()
+        imageChoices.append("🦇")
+        imageChoices.append("😱")
+        imageChoices.append("🙀")
+        imageChoices.append("😈")
+        imageChoices.append("🎃")
+        imageChoices.append("👻")
+        imageChoices.append("🍭")
+        imageChoices.append("🌍")
+        imageChoices.append("🍎")
+    }
     
     func image(for card: Card) -> String {
-        if emoji[card.identifier] == nil, emojiChoices.count > 0 {
-            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
-            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+        if image[card.identifier] == nil, imageChoices.count > 0 {
+            let randomIndex = Int(arc4random_uniform(UInt32(imageChoices.count)))
+            image[card.identifier] = imageChoices.remove(at: randomIndex)
         }
         
-        return emoji[card.identifier] ?? imageBack()
+        return image[card.identifier] ?? imageBack()
     }
     
     func imageBack() -> String {
