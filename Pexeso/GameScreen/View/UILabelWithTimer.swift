@@ -14,6 +14,28 @@ class UILabelWithTimer: UILabel {
     private var counterValue: TimeInterval = counterValueDefault
     private var timer = Timer()
     
+    convenience init() {
+        self.init(frame: CGRect.zero)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initializer()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        initializer()
+    }
+    
+    func initializer() {
+        timer = Timer()
+    }
+    
+    deinit {
+        timer.invalidate()
+    }
+    
     func myTimerStart(seconds: TimeInterval) {
         counterValue = seconds
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(myTimerCounter), userInfo: nil, repeats: true)
