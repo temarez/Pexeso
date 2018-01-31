@@ -55,6 +55,8 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
     }
     
+    var theme = Theme()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.dataSource = self
@@ -198,7 +200,8 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
                     button.setTitle("!", for: .normal)
                 } else {
                     if card.isFaceUp {
-                        button.setTitle(String("[\(cardIndex)] \(card.identifier)"), for: .normal)
+                        button.setTitle(theme.image(for: card), for: .normal)
+                        //button.setTitle(String("[\(cardIndex)] \(card.identifier)"), for: .normal)
                     } else {
                         button.setTitle("?", for: .normal)
                     }
@@ -211,7 +214,8 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         print("Event: Card Opened - \(cardIndex)")
         if let button = getButtonByCardIndex(cardIndex), let card = pexesoEngine?.cards[cardIndex] {
             button.cardOpenAnimation()
-            button.setTitle(String("[\(cardIndex)] \(card.identifier)"), for: .normal)
+            button.setTitle(theme.image(for: card), for: .normal)
+            //button.setTitle(String("[\(cardIndex)] \(card.identifier)"), for: .normal)
         }
     }
     
