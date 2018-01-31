@@ -37,7 +37,7 @@ class CollectionViewSections {
     }
 }
 
-class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, GameEventsDelegate {
     @IBOutlet weak var collectionView: CardCollectionView?
     @IBOutlet weak var flipsLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabelWithTimer!
@@ -47,7 +47,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     var collectionViewSections = CollectionViewSections()
     var cardsSizeCalculator = CardsSizeCalculator()
     
-    lazy var pexesoEngine: PexesoEngine = PexesoEngine(numberOfPairsOfCards: numberOfPairs)
+    var pexesoEngine: PexesoEngine?
     
     var flipCount = 0 {
         didSet {
@@ -59,7 +59,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         super.viewDidLoad()
         collectionView?.dataSource = self
         collectionView?.delegate = self
-        
+
         if let delegate = numOfPairsPickerDelegate {
             numberOfPairs = delegate.getPickerViewSelectedNumOfPairs()
         }
@@ -68,6 +68,9 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         cardsSizeCalculator.collectionViewSections = collectionViewSections
         
         print("numberOfSections is \(collectionViewSections.numberOfSections) and numberOfItemsInSection is \(collectionViewSections.numberOfItemsInSection)")
+
+        pexesoEngine = PexesoEngine(numberOfPairsOfCards: numberOfPairs)
+        pexesoEngine?.gameEventsDelegate = self
 
         timeLabel.myTimerStart(seconds: TimeInterval(numberOfPairs*4))
     }
@@ -89,6 +92,9 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
         
         let currentCellNumber = collectionViewSections.getCellIndex(indexPath: indexPath)
+        cell.cardButton.backgroundColor = .gray
+        cell.cardButton.addTarget(self, action: #selector(cardBtnClicked), for: UIControlEvents.touchUpInside)
+        /*
         print("INDEX: " + String(currentCellNumber) + " [" + String(indexPath.section) + "," + String(indexPath.row) + "]")
 
         // Configure the cell
@@ -102,8 +108,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.red.cgColor
         
-        cell.cardButton.addTarget(self, action: #selector(cardBtnClicked), for: UIControlEvents.touchUpInside)
-        
+        */
         return cell
     }
     
@@ -124,59 +129,6 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         return nil
     }
     
-    @objc func cardBtnClicked(sender: UIButton) {
-        flipCount += 1
-        
-        var indexPath: IndexPath? = nil
-        if let cell = getSuperviewCollectionViewCell(view: sender) {
-            indexPath = collectionView?.indexPath(for: cell)
-        }
-        
-        if let unwrapIndexPath = indexPath {
-            let cardNumber = collectionViewSections.getCellIndex(indexPath: unwrapIndexPath)
-            let card = pexesoEngine.cards[cardNumber]
-            
-            print("Card button clicked in cell " + String(unwrapIndexPath.section) + ", " + String(unwrapIndexPath.row) + " => index = " + String(collectionViewSections.getCellIndex(indexPath: unwrapIndexPath)) + " card ID = \(card.identifier)")
-            
-            pexesoEngine.chooseCard(at: cardNumber)
-            if card.isFaceUp {
-                //card.isFaceUp = false
-                //let image = UIImage(named: "back")
-                //sender.setImage(image, for: .normal)
-                sender.cardCloseAnimation()
-                //sender.cardsMatchAnimation()
-            } else {
-                //card.isFaceUp = true
-                //let image = UIImage(named: "i01")
-                //sender.setImage(image, for: .normal)
-                sender.cardOpenAnimation()
-            }
-            updateViewFromModel()
-        }
-    }
-    
-    func updateViewFromModel() {
-        let theme = Theme() // TODO:
-        
-        // let numberOfCards = numberOfPairs * 2
-        // for index in 0..<numberOfCards
-        for (cardIndex, card) in pexesoEngine.cards.enumerated() {
-            //print("\(cardIndex) CARD ID \(card.identifier)")
-            let indexPath = collectionViewSections.getCellIndexPath(index: cardIndex)
-            if let currentCell = collectionView?.cellForItem(at: indexPath) as? CardCollectionViewCell {
-                if let button = currentCell.cardButton {
-                    if card.isFaceUp {
-                        button.setTitle(theme.image(for: card), for: UIControlState.normal)
-                        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-                    } else {
-                        button.setTitle("CLOSE", for: UIControlState.normal)
-                        button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0.9960669949)
-                    }
-                }
-            }
-        }
-    }
-    
     // MARK: below part is an attempt to implement logics
     
     override func viewDidLayoutSubviews() {
@@ -195,5 +147,120 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
         //print("viewDidLayoutSubviews() " + String(width) + "x" + String(height))
     }
+    
+    // MARK: new attempt to implement logics
+    
+    func getButtonByCardIndex(_ cardIndex: Int) -> UIButton? {
+        let indexPath = collectionViewSections.getCellIndexPath(index: cardIndex)
+        if let cell = collectionView?.cellForItem(at: indexPath) as? CardCollectionViewCell {
+            return cell.cardButton
+        }
+        return nil
+        /*
+        for cardBtn in cardButtons {
+            if cardBtn.tag == cardIndex {
+                return cardBtn
+            }
+        }
+        return nil
+         */
+    }
+    
+    @objc func cardBtnClicked(sender: UIButton) {
+        flipCount += 1
+        
+        var indexPath: IndexPath? = nil
+        if let cell = getSuperviewCollectionViewCell(view: sender) {
+            indexPath = collectionView?.indexPath(for: cell)
+        }
+        
+        if let unwrapIndexPath = indexPath {
+            let cardNumber = collectionViewSections.getCellIndex(indexPath: unwrapIndexPath)
+            if let card = pexesoEngine?.cards[cardNumber] {
+                print("Card button clicked in cell " + String(unwrapIndexPath.section) + ", " + String(unwrapIndexPath.row) + " => index = " + String(collectionViewSections.getCellIndex(indexPath: unwrapIndexPath)) + " card ID = \(card.identifier)")
+                
+                sender.cardOpenAnimation() // TODO: is this necessary?
+                pexesoEngine?.chooseCard(at: cardNumber)
+                pexesoEngine?.check()
+                //updateViewFromModel()
+            }
+        }
+    }
+    
+    func updateViewFromModel() {
+        guard let pexesoEngine = pexesoEngine else {
+            return
+        }
+        for (cardIndex, card) in pexesoEngine.cards.enumerated() {
+            //print("\(cardIndex) CARD ID \(card.identifier)")
+            if let button = getButtonByCardIndex(cardIndex) {
+                if card.isMatched {
+                    button.setTitle("!", for: .normal)
+                } else {
+                    if card.isFaceUp {
+                        button.setTitle(String("[\(cardIndex)] \(card.identifier)"), for: .normal)
+                    } else {
+                        button.setTitle("?", for: .normal)
+                    }
+                }
+            }
+        }
+    }
+    
+    func gameEventCardOpened(cardIndex: Int) {
+        print("Event: Card Opened - \(cardIndex)")
+        if let button = getButtonByCardIndex(cardIndex), let card = pexesoEngine?.cards[cardIndex] {
+            button.cardOpenAnimation()
+            button.setTitle(String("[\(cardIndex)] \(card.identifier)"), for: .normal)
+        }
+    }
+    
+    func gameEventCardClosed(cardIndex: Int) {
+        print("Event: Card Closed - \(cardIndex)")
+        if let button = getButtonByCardIndex(cardIndex) {
+            button.cardCloseAnimation()
+            button.setTitle(String("?"), for: .normal)
+        }
+    }
+    
+    func gameEventCardsMatched(card1Index: Int, card2Index: Int) {
+        print("Event: Cards Matched - \(card1Index) \(card2Index)")
+        if let button1 = getButtonByCardIndex(card1Index) {
+            button1.cardsMatchAnimation()
+        }
+        if let button2 = getButtonByCardIndex(card2Index) {
+            button2.cardsMatchAnimation()
+        }
+    }
+    
+    func gameEventCardsMismatched(card1Index: Int, card2Index: Int) {
+        print("Event: Cards Mismatched - \(card1Index) \(card2Index)")
+        if let button1 = getButtonByCardIndex(card1Index), let button2 = getButtonByCardIndex(card2Index) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: { // use timer to pause so user can see selections - 0.7 sec
+                button1.cardCloseAnimation()
+                button2.cardCloseAnimation()
+                button1.setTitle(String("?"), for: .normal)
+                button2.setTitle(String("?"), for: .normal)
+            })
+        }
+    }
+    
+    func gameEventVictory() {
+        print("Event: Victory")
+        let alertController = UIAlertController(title: "Victory", message: "You won. Do you wish to replay", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            // TODO: Go to high scores screen
+        }
+        alertController.addAction(cancelAction)
+        
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            // TODO: Start a new game
+        }
+        alertController.addAction(OKAction)
+        
+        present(alertController, animated: true)
+    }
+
     
 }
