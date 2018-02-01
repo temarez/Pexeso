@@ -10,8 +10,7 @@ import UIKit
 
 class UILabelWithTimer: UILabel {
     
-    private static let counterValueDefault: TimeInterval = 30.0
-    public var counterValue: TimeInterval = counterValueDefault
+    public var counterValue: TimeInterval = 0
     private lazy var timer = Timer()
     
     deinit {
@@ -19,12 +18,12 @@ class UILabelWithTimer: UILabel {
     }
     
     func myTimerStart(seconds: TimeInterval) {
-        counterValue = seconds
+        counterValue = 0
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(myTimerCounter), userInfo: nil, repeats: true)
     }
     
     @objc func myTimerCounter() {
-        counterValue -= 1
+        counterValue += 1
         self.text = "Time: " + String(Int(counterValue))
         if (counterValue == 0) {
             myTimerStop()
@@ -33,7 +32,6 @@ class UILabelWithTimer: UILabel {
     
     func myTimerStop() {
         timer.invalidate()
-        counterValue = UILabelWithTimer.counterValueDefault
     }
 
 }
