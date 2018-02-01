@@ -63,10 +63,12 @@ extension CGSize {
     
 }
 
-class CellSizeCalculator {
-    
-    public let cellSizeMax = CGSize(width: 1024, height: 1024)
-    public let spacingBetweenCards = 10
+struct CardSizeConstants {
+    static var cardSizeMax = CGSize(width: 1024, height: 1024)
+    static var spacingBetweenCards = 10
+}
+
+class CardSizeCalculator {
     public var collectionViewSize: CGSize
     public var collectionViewSections: CollectionViewSections
     
@@ -76,6 +78,9 @@ class CellSizeCalculator {
         //print("ShortSideSize: \(shortSideSize)")
         var calculatedCardWidth = CGFloat(1)
         var calculatedCardHeight = CGFloat(1)
+        
+        let rowsCollomnsNumber = Difficulty(numberOfCells/2).getRowsCollomnsNumber()
+        print("Fitting \(numberOfCells) cards to collection, it will be \(rowsCollomnsNumber.shortSide)x\(rowsCollomnsNumber.longSide)")
         
         if numberOfCells <= 12 {
             calculatedCardWidth = shortSideSize/3-16

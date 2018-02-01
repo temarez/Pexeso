@@ -47,7 +47,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     var numOfPairsPickerDelegate: NumOfPairsPickerDelegate?
     var numberOfPairs = 2
     var collectionViewSections = CollectionViewSections()
-    var cellSizeCalculator = CellSizeCalculator()
+    var cellSizeCalculator = CardSizeCalculator()
     
     var pexesoEngine: PexesoEngine?
     
