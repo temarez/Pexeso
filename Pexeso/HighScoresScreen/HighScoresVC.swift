@@ -81,7 +81,7 @@ class HighScoresVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         let user = users[indexPath.row]
         cell.nameLabel.text = (user.name ?? "Empty")
         cell.cardsNumberLabel.text = "Cards num: " + (user.surname ?? "Empty")
-        cell.scoreLabel.text = "Score: \(user.age )"
+        cell.scoreLabel.text = "Score: \(user.score )"
         
         return  cell
     }
@@ -90,16 +90,16 @@ class HighScoresVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     @IBAction func userSearchFieldEditingChanged(_ sender: Any) {
         users = UserService.instance.getUsersWithNames(nameFilter: userSearchField.text)
-        addUser(name: "Artem", surname: "Rieznikov", age: 32)
+        addUser(name: "Artem", surname: "Rieznikov", score: 32)
     }
     
-    func addUser(name: String, surname: String, age: Int) {
+    func addUser(name: String, surname: String, score: Int) {
         //UserService.instance.addUser(name: name, surname: surname, age: age)
 
         let user = UserService.instance.newUserMOInstance()
         user.name = name
         user.surname = surname
-        user.age = Int64(age)
+        user.score = Int64(score)
         
         guard UserService.instance.addEntity(entity: user, entityName: "UserMO") != nil else {
             print("Could not add object to database :-(")

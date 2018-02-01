@@ -14,6 +14,6 @@ public class UserMO: NSManagedObject {
 
     @NSManaged public var name: String?
     @NSManaged public var surname: String?
-    @NSManaged public var age: Int64
+    @NSManaged public var score: Int64
     
 }

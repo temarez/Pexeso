@@ -22,7 +22,7 @@ class UserService {
         return delegate.persistentContainer.viewContext
     }()
     
-    func addUser(name: String, surname: String, age: Int) {
+    func addUser(name: String, surname: String, score: Int) {
         guard let mo = NSEntityDescription.insertNewObject(forEntityName: "UserMO", into: moc) as? UserMO else {
             return
         }
@@ -31,7 +31,7 @@ class UserService {
         
         mo.name = name
         mo.surname = surname
-        mo.age = Int64(age)
+        mo.score = Int64(score)
         
         saveContext()
     }
@@ -68,8 +68,8 @@ class UserService {
     
     func getUsersWithNames(nameFilter: String?) -> [UserMO] {
         let fetchRequest = NSFetchRequest<UserMO>(entityName: "UserMO")
-        let ageSort = NSSortDescriptor(key: "age", ascending: true)
-        fetchRequest.sortDescriptors = [ageSort]
+        let scoreSort = NSSortDescriptor(key: "score", ascending: false)
+        fetchRequest.sortDescriptors = [scoreSort]
         if let myName = nameFilter {
             if !myName.isEmpty {
                 let predicate: NSPredicate = NSPredicate(format: "name CONTAINS[cd] %@", myName) // [cd] means case-insensitive and diacritic-insensitive
