@@ -202,17 +202,17 @@
                                 <rect key="frame" x="5" y="104" width="375" height="558"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="maleCell" rowHeight="90" id="cC1-Ha-v36" customClass="UserTVCell" customModule="MyFirstApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="maleCell" rowHeight="90" id="cC1-Ha-v36" customClass="UserTVCell" customModule="Pexeso">
                                         <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cC1-Ha-v36" id="qww-bq-avM" userLabel="cellContainer">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2A-Dv-VTI" userLabel="contentView" customClass="RoundedView" customModule="MyFirstApp" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2A-Dv-VTI" userLabel="contentView" customClass="RoundedView" customModule="Pexeso" customModuleProvider="target">
                                                     <rect key="frame" x="10" y="5" width="355" height="80"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userImage" translatesAutoresizingMaskIntoConstraints="NO" id="q4b-kf-CnI" userLabel="userImage" customClass="CircleImageView" customModule="MyFirstApp" customModuleProvider="target">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="q4b-kf-CnI" userLabel="userImage" customClass="CircleImageView" customModule="Pexeso" customModuleProvider="target">
                                                             <rect key="frame" x="10" y="13" width="55" height="55"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
@@ -315,7 +315,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="userImage" width="16" height="16"/>
+        <image name="back" width="186" height="186"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Nkn-gT-bQq"/>

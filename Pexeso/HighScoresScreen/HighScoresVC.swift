@@ -32,6 +32,11 @@ class HighScoresVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     func loadDataSource() {
         //UserService.instance.deleteAllUsers()
         self.users = UserService.instance.getAllUsers()
+        /*
+        for user in users {
+            print(user.surname)
+        }
+         */
     }
 
     /*
@@ -69,7 +74,7 @@ class HighScoresVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "maleCell") as? UserTVCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as? UserTVCell else {
             print("Something wrong")
             return UITableViewCell()
         }
