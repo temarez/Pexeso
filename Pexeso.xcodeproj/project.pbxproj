@@ -18,6 +18,8 @@
 		A3421D502012A57B0073A16D /* UIViewAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3421D4F2012A57B0073A16D /* UIViewAnimations.swift */; };
 		A3697624201B1B59006CB6C3 /* UILabelWithTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3697623201B1B59006CB6C3 /* UILabelWithTimer.swift */; };
 		A3826A0F2023466100879E2C /* Pexeso.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A3826A0D2023466100879E2C /* Pexeso.xcdatamodeld */; };
+		A3826A112023498200879E2C /* UserMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3826A102023498200879E2C /* UserMO.swift */; };
+		A3826A14202349CA00879E2C /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3826A13202349CA00879E2C /* UserService.swift */; };
 		A3BF9BF6201E906800B5DF48 /* CardSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BF9BF5201E906800B5DF48 /* CardSizeCalculator.swift */; };
 		A3EAFD7220207A3400A5C819 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A3EAFD7120207A3400A5C819 /* Settings.bundle */; };
 		A3ECAD2B200BF5D5003DD911 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ECAD2A200BF5D5003DD911 /* CardCollectionViewCell.swift */; };
@@ -41,6 +43,8 @@
 		A3421D4F2012A57B0073A16D /* UIViewAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewAnimations.swift; sourceTree = "<group>"; };
 		A3697623201B1B59006CB6C3 /* UILabelWithTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelWithTimer.swift; sourceTree = "<group>"; };
 		A3826A0E2023466100879E2C /* Pexeso.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pexeso.xcdatamodel; sourceTree = "<group>"; };
+		A3826A102023498200879E2C /* UserMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMO.swift; sourceTree = "<group>"; };
+		A3826A13202349CA00879E2C /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		A3BF9BF5201E906800B5DF48 /* CardSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSizeCalculator.swift; sourceTree = "<group>"; };
 		A3EAFD7120207A3400A5C819 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = "Pexeso/Supporting Files/Settings.bundle"; sourceTree = SOURCE_ROOT; };
 		A3ECAD2A200BF5D5003DD911 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -97,7 +101,7 @@
 				A3697622201B1933006CB6C3 /* HighScoresScreen */,
 				A333E26920056FC500E0898E /* Main.storyboard */,
 				A333E27120056FC500E0898E /* Info.plist */,
-				A3826A0D2023466100879E2C /* Pexeso.xcdatamodeld */,
+				A3826A122023499000879E2C /* CoreData */,
 			);
 			path = Pexeso;
 			sourceTree = "<group>";
@@ -134,6 +138,16 @@
 				A30ABBB52007820A0014F12B /* PexesoEngine.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		A3826A122023499000879E2C /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				A3826A0D2023466100879E2C /* Pexeso.xcdatamodeld */,
+				A3826A102023498200879E2C /* UserMO.swift */,
+				A3826A13202349CA00879E2C /* UserService.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		A3BEA19E201A59EC009AADAB /* View */ = {
@@ -235,6 +249,7 @@
 				A3F86CE9200F5DE9007A496F /* CardCollectionView.swift in Sources */,
 				A3BF9BF6201E906800B5DF48 /* CardSizeCalculator.swift in Sources */,
 				A3421D502012A57B0073A16D /* UIViewAnimations.swift in Sources */,
+				A3826A112023498200879E2C /* UserMO.swift in Sources */,
 				A3F86CE7200F5CEB007A496F /* GameVC.swift in Sources */,
 				A3FB8FC4201F5C340080C6D6 /* Theme.swift in Sources */,
 				A321EEFC2015458F00CDB1A9 /* Score.swift in Sources */,
@@ -243,6 +258,7 @@
 				A333E27820057B4F00E0898E /* DifficultyVC.swift in Sources */,
 				A3ECAD2B200BF5D5003DD911 /* CardCollectionViewCell.swift in Sources */,
 				A3697624201B1B59006CB6C3 /* UILabelWithTimer.swift in Sources */,
+				A3826A14202349CA00879E2C /* UserService.swift in Sources */,
 				A3ED3111201A16A400CDE7AF /* HighScoresVC.swift in Sources */,
 				A333E26620056FC500E0898E /* AppDelegate.swift in Sources */,
 				A30ABBB62007820A0014F12B /* PexesoEngine.swift in Sources */,
