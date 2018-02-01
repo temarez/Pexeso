@@ -113,9 +113,9 @@
 		A3697622201B1933006CB6C3 /* HighScoresScreen */ = {
 			isa = PBXGroup;
 			children = (
+				A3D57C082023CDD500C5D541 /* Model */,
 				A3A050A12023780E00C61114 /* View */,
-				A3ED3110201A16A400CDE7AF /* HighScoresVC.swift */,
-				A321EEFB2015458F00CDB1A9 /* Score.swift */,
+				A3D57C092023CE2400C5D541 /* Controller */,
 			);
 			path = HighScoresScreen;
 			sourceTree = "<group>";
@@ -175,6 +175,22 @@
 				A3FB8FC3201F5C340080C6D6 /* Theme.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		A3D57C082023CDD500C5D541 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A321EEFB2015458F00CDB1A9 /* Score.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A3D57C092023CE2400C5D541 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A3ED3110201A16A400CDE7AF /* HighScoresVC.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		A3ED3112201A226B00CDE7AF /* GameScreen */ = {
