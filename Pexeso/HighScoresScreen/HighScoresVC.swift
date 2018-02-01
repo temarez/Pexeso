@@ -24,13 +24,13 @@ class HighScoresVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(performShare))
-        self.navigationItem.rightBarButtonItem = shareButton
+        let clearAllScoresButton = UIBarButtonItem(barButtonSystemItem: .trash , target: self, action: #selector(performClearAllScores))
+        self.navigationItem.rightBarButtonItems = [shareButton, clearAllScoresButton]
         
          loadDataSource()
     }
     
     func loadDataSource() {
-        //UserService.instance.deleteAllUsers()
         self.users = UserService.instance.getAllUsers()
         /*
         for user in users {
@@ -106,6 +106,18 @@ class HighScoresVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             return
         }
         loadDataSource()
+    }
+    
+    @objc func performClearAllScores() {
+        let alert = UIAlertController(title: "Do you wish to clear all high scores?", message: "This operation can not be undone", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+            UserService.instance.deleteAllUsers()
+            self.loadDataSource()
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true)
     }
     
     @objc func performShare() {
