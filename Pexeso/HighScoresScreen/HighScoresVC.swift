@@ -14,6 +14,7 @@ class HighScoresVC: UIViewController, UITableViewDelegate, UITableViewDataSource
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userSearchField: UITextField!
+    
     var users: [UserMO] = [] {
         didSet {
             tableView.reloadData()
@@ -29,28 +30,8 @@ class HighScoresVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func loadDataSource() {
-        UserService.instance.deleteAllUsers()
-            self.users = UserService.instance.getAllUsers()
-    }
-    
-    func addUser(_ sender: Any) {
-        
-        let name = "Artem"
-        let surname = "Reznikov"
-        let age = 32
-        
-        //UserService.instance.addUser(name: name, surname: surname, age: age)
-        
-        let user = UserService.instance.newUserMOInstance()
-        user.name = name
-        user.surname = surname
-        user.age = Int64(age)
-        
-        guard UserService.instance.addEntity(entity: user, entityName: "UserMO") != nil else {
-            print("Could not add object to database :-(")
-            return
-        }
-        loadDataSource()
+        //UserService.instance.deleteAllUsers()
+        self.users = UserService.instance.getAllUsers()
     }
 
     /*
@@ -62,15 +43,6 @@ class HighScoresVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         // Pass the selected object to the new view controller.
     }
     */
-    
-    @objc func performShare() {
-        let activityVC = UIActivityViewController(activityItems: ["www.google.com"], applicationActivities: nil)
-        activityVC.popoverPresentationController?.sourceView = self.view
-        activityVC.excludedActivityTypes = [
-            UIActivityType(rawValue: "com.apple.mobilenotes.SharingExtension")
-        ]
-        self.present(activityVC, animated: true, completion: nil)
-    }
     
     // MARK: - functions that will make class conform to protocol 'UITableViewDataSource' an other table-related ones
     
@@ -108,8 +80,35 @@ class HighScoresVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         return  cell
     }
     
+    // MARK: - GUI-related functionality
+    
     @IBAction func userSearchFieldEditingChanged(_ sender: Any) {
         users = UserService.instance.getUsersWithNames(nameFilter: userSearchField.text)
+        addUser(name: "Artem", surname: "Rieznikov", age: 32)
+    }
+    
+    func addUser(name: String, surname: String, age: Int) {
+        //UserService.instance.addUser(name: name, surname: surname, age: age)
+
+        let user = UserService.instance.newUserMOInstance()
+        user.name = name
+        user.surname = surname
+        user.age = Int64(age)
+        
+        guard UserService.instance.addEntity(entity: user, entityName: "UserMO") != nil else {
+            print("Could not add object to database :-(")
+            return
+        }
+        loadDataSource()
+    }
+    
+    @objc func performShare() {
+        let activityVC = UIActivityViewController(activityItems: ["www.google.com"], applicationActivities: nil)
+        activityVC.popoverPresentationController?.sourceView = self.view
+        activityVC.excludedActivityTypes = [
+            UIActivityType(rawValue: "com.apple.mobilenotes.SharingExtension")
+        ]
+        self.present(activityVC, animated: true, completion: nil)
     }
 
 }
