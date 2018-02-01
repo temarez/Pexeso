@@ -10,6 +10,7 @@ import UIKit
 
 struct Difficulty {
     var numberOfCardPairs: Int = 1
+    // TODO: implement names like: Beginner, Novice, Advanced, Expert (Master)
     
     init(_ numberOfCardPairs: Int) {
         self.numberOfCardPairs = numberOfCardPairs
@@ -18,6 +19,7 @@ struct Difficulty {
     func getRowsCollomnsNumber() -> (shortSide: Int, longSide: Int) {
         switch numberOfCardPairs {
         case 1: return (shortSide: 1, longSide: 2)
+        case 2: return (shortSide: 2, longSide: 2)
         case 4: return (shortSide: 2, longSide: 4)
         case 6: return (shortSide: 3, longSide: 4)
         case 8: return (shortSide: 4, longSide: 4)
@@ -41,7 +43,7 @@ class DifficultyVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelega
     @IBOutlet weak var pairsLabel: UILabel!
     
     // I assume that the maximal possible number of pairs is 12 (24 cards) since minimal iPhone screen (320x480) may fit about 4x6 cards (in this case each card size will be 80x80 maximum)
-    let availableNumOfPairs = [Int](1...12)
+    let availableNumOfPairs: [Int] = [1, 2, 4, 6, 8, 10, 12]
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
