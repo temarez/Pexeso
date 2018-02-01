@@ -47,7 +47,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     var numOfPairsPickerDelegate: NumOfPairsPickerDelegate?
     var numberOfPairs = 2
     var collectionViewSections = CollectionViewSections()
-    var cellSizeCalculator = CardSizeCalculator()
+    var cardSizeCalculator = CardSizeCalculator()
     
     var pexesoEngine: PexesoEngine?
     
@@ -69,7 +69,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
         print("Selected num of pairs \(numberOfPairs)")
         collectionViewSections = CollectionViewSections(numberOfPairs)
-        cellSizeCalculator.collectionViewSections = collectionViewSections
+        cardSizeCalculator.collectionViewSections = collectionViewSections
         
         print("numberOfSections is \(collectionViewSections.numberOfSections) and numberOfItemsInSection is \(collectionViewSections.numberOfItemsInSection)")
         startNewGame()
@@ -97,9 +97,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // TODO: calculate using UIScreen.main.bounds.size.height and UIScreen.main.bounds.size.width
-        // TODO: see CardsSizeCalculator
-        return cellSizeCalculator.cellSize(collectionViewFrameSize: collectionView.frame.size, numberOfCells: numberOfPairs*2)
+        return cardSizeCalculator.getCardSize(collectionViewFrameSize: collectionView.frame.size, numberOfPairs: numberOfPairs)
     }
     
     /**/
@@ -127,22 +125,17 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         return nil
     }
     
-    // TODO: use viewWillTransition() instead
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        guard let unwrappedCollectionView = collectionView else {
-            return
+    /// This is better way of processing device rotation event then viewDidLayoutSubviews()
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        let orient = UIApplication.shared.statusBarOrientation
+        switch orient {
+        case .portrait:
+            print("Device is in portrait orientation")
+        default:
+            print("Device is in non-portrait orientation")
         }
-        
-        let collectionViewSize: CGSize = unwrappedCollectionView.frame.size
-        cellSizeCalculator.collectionViewSize = unwrappedCollectionView.frame.size
-        let width = Int(collectionViewSize.width.rounded(.up))
-        let height = Int(collectionViewSize.height.rounded(.up))
-        
-        print("viewDidLayoutSubviews() " + String(width) + "x" + String(height))
-        print(cellSizeCalculator.collectionViewSize)
     }
+    
     
     // MARK: new attempt to implement logics
     

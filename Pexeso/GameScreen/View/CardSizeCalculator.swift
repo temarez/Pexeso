@@ -69,24 +69,23 @@ struct CardSizeConstants {
 }
 
 class CardSizeCalculator {
-    public var collectionViewSize: CGSize
     public var collectionViewSections: CollectionViewSections
     
-    public func cellSize(collectionViewFrameSize: CGSize, numberOfCells: Int) -> CGSize {
-        
+    public func getCardSize(collectionViewFrameSize: CGSize, numberOfPairs: Int) -> CGSize {
+        let numberOfCards = numberOfPairs * 2
         let shortSideSize = collectionViewFrameSize.shortSideSize()
         //print("ShortSideSize: \(shortSideSize)")
         var calculatedCardWidth = CGFloat(1)
         var calculatedCardHeight = CGFloat(1)
         
-        let rowsCollomnsNumber = Difficulty(numberOfCells/2).getRowsCollomnsNumber()
-        print("Fitting \(numberOfCells) cards to collection, it will be \(rowsCollomnsNumber.shortSide)x\(rowsCollomnsNumber.longSide)")
+        let rowsCollomnsNumber = Difficulty(numberOfPairs).getRowsCollomnsNumber()
+        print("Fitting \(numberOfCards) cards to collection, it will be \(rowsCollomnsNumber.shortSide)x\(rowsCollomnsNumber.longSide)")
         
-        if numberOfCells <= 12 {
+        if numberOfCards <= 12 {
             calculatedCardWidth = shortSideSize/3-16
             calculatedCardHeight = shortSideSize/3-16
         }
-        else if numberOfCells <= 24 {
+        else if numberOfCards <= 24 {
             calculatedCardWidth = shortSideSize/4-14
             calculatedCardHeight = shortSideSize/4-14
         }
@@ -95,7 +94,7 @@ class CardSizeCalculator {
             calculatedCardHeight = shortSideSize/5-12
         }
 
-        var calculatedCardSize = CGSize(width: calculatedCardWidth, height: calculatedCardHeight)
+        let calculatedCardSize = CGSize(width: calculatedCardWidth, height: calculatedCardHeight)
         /*
         if(collectionViewFrameSize.width == 716.0) { // this is for landscape orientation
             calculatedCardSize = CGSize(width: 100, height: 100)
@@ -107,7 +106,6 @@ class CardSizeCalculator {
     }
     
     init() {
-        collectionViewSize = CGSize(width: 1, height: 1)
         collectionViewSections = CollectionViewSections()
     }
     
