@@ -245,15 +245,24 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         // TODO: add some delay here and maybe even animation or user
         let alertController = UIAlertController(title: "Victory", message: "You won. Do you wish to replay?", preferredStyle: .alert)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+        alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "Enter your name"
+        }
+        
+        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
             self.performSegue(withIdentifier: "GameVC2HighScoresVC", sender: nil)
         }
-        alertController.addAction(cancelAction)
+        alertController.addAction(actionCancel)
         
-        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+        let actionOK = UIAlertAction(title: "OK", style: .default, handler: {
+            alert -> Void in
+            let firstTextField = alertController.textFields![0] as UITextField
+            if let name = firstTextField.text {
+                print("Name: " + name)
+            }
             self.startNewGame()
-        }
-        alertController.addAction(OKAction)
+        })
+        alertController.addAction(actionOK)
         
         present(alertController, animated: true)
     }
