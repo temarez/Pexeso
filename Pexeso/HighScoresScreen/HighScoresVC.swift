@@ -32,22 +32,7 @@ class HighScoresVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func loadDataSource() {
         self.users = UserService.instance.getAllUsers()
-        /*
-        for user in users {
-            print(user.surname)
-        }
-         */
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     // MARK: - functions that will make class conform to protocol 'UITableViewDataSource' an other table-related ones
     
@@ -94,17 +79,7 @@ class HighScoresVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func addUser(name: String, surname: String, score: Int) {
-        //UserService.instance.addUser(name: name, surname: surname, age: age)
-
-        let user = UserService.instance.newUserMOInstance()
-        user.name = name
-        user.surname = surname
-        user.score = Int64(score)
-        
-        guard UserService.instance.addEntity(entity: user, entityName: "UserMO") != nil else {
-            print("Could not add object to database :-(")
-            return
-        }
+        UserService.instance.addUser(name: name, surname: surname, score: score)
         loadDataSource()
     }
     
