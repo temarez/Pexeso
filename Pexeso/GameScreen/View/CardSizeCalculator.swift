@@ -76,6 +76,12 @@ class CardSizeCalculator {
     private func respectAspectRatio(maxSize: CGSize) -> CGSize {
         var aspectRatioWidthToHeight = CardSizeConstants.aspectRatioWidthUnits / CardSizeConstants.aspectRatioHeightUnits
         var result = maxSize
+        
+        // For future implementation%
+        // there are 3 possible cases of ethalon aspect ratio: H>W, H<W, H=W
+        // The same way there are 3 cases of maxSize (H>W, H<W, H=W)
+        // You have to check combinations of all cases which is total 3 * 3 = 9 possible cases
+        
         /*
         switch result.longSide() {
         case .height:
