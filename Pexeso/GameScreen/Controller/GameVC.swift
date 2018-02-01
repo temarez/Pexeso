@@ -268,6 +268,10 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         }
         
         let actionCancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            let firstTextField = alertController.textFields![0] as UITextField
+            if let name = firstTextField.text {
+                UserService.instance.addUser(name: name, cardsPairsNumber: self.numberOfPairs, score: score)
+            }
             self.performSegue(withIdentifier: "GameVC2HighScoresVC", sender: nil)
         }
         alertController.addAction(actionCancel)
