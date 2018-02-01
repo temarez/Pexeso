@@ -65,12 +65,33 @@ extension CGSize {
 
 struct CardSizeConstants {
     static var cardSizeMax = CGSize(width: 1024, height: 1024)
-    static var minSpacingBetweenCards = 10 // TODO: implement
-    static var aspectRatio: Double = 1.0 // TODO: implement
+    static var minSpacingBetweenCards = 10
+    static var aspectRatioHeightUnits: CGFloat = 3.0 //1.0
+    static var aspectRatioWidthUnits: CGFloat = 4.0 // 1.0
 }
 
 class CardSizeCalculator {
     public var collectionViewSections: CollectionViewSections
+    
+    private func respectAspectRatio(maxSize: CGSize) -> CGSize {
+        var aspectRatioWidthToHeight = CardSizeConstants.aspectRatioWidthUnits / CardSizeConstants.aspectRatioHeightUnits
+        var result = maxSize
+        /*
+        switch result.longSide() {
+        case .height:
+            result.width = result.width / aspectRatioWidthToHeight
+        case .width:
+            result.height = result.height / aspectRatioWidthToHeight
+        }
+        
+        
+        let biggerSideSize = max(result.height , result.width)
+        let smallerSideSize = min(result.height , result.width)
+
+        var currentAspectRatio =
+        */
+        return result;
+    }
     
     public func getCardSize(collectionViewFrameSize: CGSize, numberOfPairs: Int) -> CGSize {
         let collectionViewShortSideSize = collectionViewFrameSize.shortSideSize()
@@ -85,11 +106,9 @@ class CardSizeCalculator {
         cardShortSideSize = collectionViewShortSideSize / CGFloat(rowsCollomnsNumber.shortSide)
         cardLongSideSize = collectionViewLongSideSize / CGFloat(rowsCollomnsNumber.longSide)
         
-        // TODO: Take into account minimal spacings (gaps) between cards
-        cardShortSideSize = cardShortSideSize - 20
-        cardLongSideSize = cardLongSideSize - 20
-        
-        // TODO: respect aspect ratio
+        // Take into account minimal spacings (gaps) between cards
+        cardShortSideSize = cardShortSideSize - CGFloat(rowsCollomnsNumber.shortSide+1 * CardSizeConstants.minSpacingBetweenCards)
+        cardLongSideSize = cardLongSideSize - CGFloat(rowsCollomnsNumber.longSide+1 * CardSizeConstants.minSpacingBetweenCards)
         
         // Apply the calculated short and long sides to height or width depending on what side is longer
         var calculatedCardSize: CGSize
@@ -99,6 +118,9 @@ class CardSizeCalculator {
         case .width:
             calculatedCardSize = CGSize(width: cardLongSideSize, height: cardShortSideSize)
         }
+        
+        // Respect aspect ratio
+        calculatedCardSize = respectAspectRatio(maxSize: calculatedCardSize)
         
         return calculatedCardSize
     }
