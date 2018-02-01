@@ -99,7 +99,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // TODO: calculate using UIScreen.main.bounds.size.height and UIScreen.main.bounds.size.width
         // TODO: see CardsSizeCalculator
-        return cellSizeCalculator.cellSize(collectionViewFrameSize: collectionView.frame.size)
+        return cellSizeCalculator.cellSize(collectionViewFrameSize: collectionView.frame.size, numberOfCells: numberOfPairs*2)
     }
     
     /**/

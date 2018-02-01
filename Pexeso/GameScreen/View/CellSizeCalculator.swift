@@ -69,15 +69,23 @@ class CellSizeCalculator {
     public let spacingBetweenCards = 10
     public var collectionViewSize: CGSize
     public var collectionViewSections: CollectionViewSections
-    
-    public func cellSize(collectionViewFrameSize: CGSize) -> CGSize {
+        
+    public func cellSize(collectionViewFrameSize: CGSize, numberOfCells: Int) -> CGSize {
         var calculatedCardSize = CGSize(width: 200, height: 200) // TODO: get rid of hard-coded values, calculate with collectionViewSize
+        if(numberOfCells == 4) {
+            calculatedCardSize = CGSize(width: 300, height: 300)
+        } else if(numberOfCells == 6) {
+            calculatedCardSize = CGSize(width: 200, height: 200)
+        } else if(numberOfCells == 8) {
+            calculatedCardSize = CGSize(width: 100, height: 100)
+        }
 
+        /*
         if(collectionViewFrameSize.width == 716.0) { // this is for landscape orientation
             calculatedCardSize = CGSize(width: 100, height: 100)
         } else if(collectionViewFrameSize.width == 394.0) { // this is for portrait orientation
             calculatedCardSize = CGSize(width: 186, height: 186)
-        }
+        }*/
         return calculatedCardSize
     }
     
