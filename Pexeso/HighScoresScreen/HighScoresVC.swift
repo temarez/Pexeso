@@ -65,7 +65,7 @@ class HighScoresVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         }
         let user = users[indexPath.row]
         cell.nameLabel.text = (user.name ?? "Unknown")
-        cell.cardsNumberLabel.text = "Cards pairs: " + (user.cardsPairsNumber ?? "Empty")
+        cell.cardsNumberLabel.text = "Cards pairs: \(user.cardsPairsNumber)"
         cell.scoreLabel.text = "Score: \(user.score)"
         
         return cell
@@ -75,10 +75,10 @@ class HighScoresVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     @IBAction func userSearchFieldEditingChanged(_ sender: Any) {
         users = UserService.instance.getUsersWithNames(nameFilter: userSearchField.text)
-        addUser(name: "Artem", cardsPairsNumber: "Rieznikov", score: 32)
+        addUser(name: "Artem", cardsPairsNumber: 11, score: 32)
     }
     
-    func addUser(name: String, cardsPairsNumber: String, score: Int) {
+    func addUser(name: String, cardsPairsNumber: Int, score: Int) {
         UserService.instance.addUser(name: name, cardsPairsNumber: cardsPairsNumber, score: score)
         loadDataSource()
     }

@@ -22,13 +22,13 @@ class UserService {
         return delegate.persistentContainer.viewContext
     }()
     
-    func addUser(name: String, cardsPairsNumber: String, score: Int) {
+    func addUser(name: String, cardsPairsNumber: Int, score: Int) {
         guard let mo = NSEntityDescription.insertNewObject(forEntityName: "UserMO", into: moc) as? UserMO else {
             return
         }
         
         mo.name = name
-        mo.cardsPairsNumber = cardsPairsNumber
+        mo.cardsPairsNumber = Int64(cardsPairsNumber)
         mo.score = Int64(score)
         
         saveContext()
