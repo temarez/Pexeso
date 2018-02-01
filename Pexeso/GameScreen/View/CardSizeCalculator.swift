@@ -73,7 +73,6 @@ class CardSizeCalculator {
     public var collectionViewSections: CollectionViewSections
     
     public func getCardSize(collectionViewFrameSize: CGSize, numberOfPairs: Int) -> CGSize {
-        let numberOfCards = numberOfPairs * 2
         let collectionViewShortSideSize = collectionViewFrameSize.shortSideSize()
         let collectionViewLongSideSize = collectionViewFrameSize.longSideSize()
 
@@ -86,17 +85,21 @@ class CardSizeCalculator {
         cardShortSideSize = collectionViewShortSideSize / CGFloat(rowsCollomnsNumber.shortSide)
         cardLongSideSize = collectionViewLongSideSize / CGFloat(rowsCollomnsNumber.longSide)
         
+        // TODO: Take into account minimal spacings (gaps) between cards
         cardShortSideSize = cardShortSideSize - 20
         cardLongSideSize = cardLongSideSize - 20
         
-        let calculatedCardSize = CGSize(width: cardShortSideSize, height: cardLongSideSize)
-        /*
-        if(collectionViewFrameSize.width == 716.0) { // this is for landscape orientation
-            calculatedCardSize = CGSize(width: 100, height: 100)
-        } else if(collectionViewFrameSize.width == 394.0) { // this is for portrait orientation
-            calculatedCardSize = CGSize(width: 186, height: 186)
-        }*/
-        //print("CalculatedCardSize: \(calculatedCardSize)")
+        // TODO: respect aspect ratio
+        
+        // Apply the calculated short and long sides to height or width depending on what side is longer
+        var calculatedCardSize: CGSize
+        switch collectionViewFrameSize.longSide() {
+        case .height:
+            calculatedCardSize = CGSize(width: cardShortSideSize, height: cardLongSideSize)
+        case .width:
+            calculatedCardSize = CGSize(width: cardLongSideSize, height: cardShortSideSize)
+        }
+        
         return calculatedCardSize
     }
     
