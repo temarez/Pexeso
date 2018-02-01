@@ -129,7 +129,12 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         return nil
     }
     
-    /// This is better way of processing device rotation event then viewDidLayoutSubviews()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionView?.collectionViewLayout.invalidateLayout()
+    }
+    
+    // TODO: it is a better to process device rotation event here, not in viewDidLayoutSubviews()
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         let orient = UIApplication.shared.statusBarOrientation
         switch orient {
