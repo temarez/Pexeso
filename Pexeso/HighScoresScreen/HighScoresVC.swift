@@ -109,12 +109,22 @@ class HighScoresVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     @objc func performShare() {
-        let activityVC = UIActivityViewController(activityItems: ["www.google.com"], applicationActivities: nil)
+        let screenForSharing = captureScreen()
+        let activityVC = UIActivityViewController(activityItems: [screenForSharing!], applicationActivities: nil)
         activityVC.popoverPresentationController?.sourceView = self.view
         activityVC.excludedActivityTypes = [
             UIActivityType(rawValue: "com.apple.mobilenotes.SharingExtension")
         ]
         self.present(activityVC, animated: true, completion: nil)
+    }
+    
+    func captureScreen() -> UIImage? {
+        let layer = UIApplication.shared.keyWindow!.layer
+        let scale = UIScreen.main.scale
+        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
+        layer.render(in: UIGraphicsGetCurrentContext()!)
+        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+        return screenshot
     }
 
 }
