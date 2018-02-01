@@ -66,7 +66,7 @@ class HighScoresVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         let user = users[indexPath.row]
         cell.nameLabel.text = (user.name ?? "Unknown")
         cell.cardsNumberLabel.text = "Cards pairs: \(user.cardsPairsNumber)"
-        cell.scoreLabel.text = "Score: \(user.score)"
+        cell.scoreLabel.text = "\(user.score)"
         
         return cell
     }
