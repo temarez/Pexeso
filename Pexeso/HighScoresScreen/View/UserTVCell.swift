@@ -9,7 +9,7 @@
 import UIKit
 
 class UserTVCell: UITableViewCell {
-
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
     

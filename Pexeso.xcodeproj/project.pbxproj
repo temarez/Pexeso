@@ -21,6 +21,7 @@
 		A3826A112023498200879E2C /* UserMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3826A102023498200879E2C /* UserMO.swift */; };
 		A3826A14202349CA00879E2C /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3826A13202349CA00879E2C /* UserService.swift */; };
 		A3A050A0202374B800C61114 /* UserTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A0509F202374B800C61114 /* UserTVCell.swift */; };
+		A3A050A32023787000C61114 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A050A22023787000C61114 /* RoundedView.swift */; };
 		A3BF9BF6201E906800B5DF48 /* CardSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BF9BF5201E906800B5DF48 /* CardSizeCalculator.swift */; };
 		A3EAFD7220207A3400A5C819 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A3EAFD7120207A3400A5C819 /* Settings.bundle */; };
 		A3ECAD2B200BF5D5003DD911 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ECAD2A200BF5D5003DD911 /* CardCollectionViewCell.swift */; };
@@ -47,6 +48,7 @@
 		A3826A102023498200879E2C /* UserMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMO.swift; sourceTree = "<group>"; };
 		A3826A13202349CA00879E2C /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		A3A0509F202374B800C61114 /* UserTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTVCell.swift; sourceTree = "<group>"; };
+		A3A050A22023787000C61114 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		A3BF9BF5201E906800B5DF48 /* CardSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSizeCalculator.swift; sourceTree = "<group>"; };
 		A3EAFD7120207A3400A5C819 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = "Pexeso/Supporting Files/Settings.bundle"; sourceTree = SOURCE_ROOT; };
 		A3ECAD2A200BF5D5003DD911 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -111,9 +113,9 @@
 		A3697622201B1933006CB6C3 /* HighScoresScreen */ = {
 			isa = PBXGroup;
 			children = (
+				A3A050A12023780E00C61114 /* View */,
 				A3ED3110201A16A400CDE7AF /* HighScoresVC.swift */,
 				A321EEFB2015458F00CDB1A9 /* Score.swift */,
-				A3A0509F202374B800C61114 /* UserTVCell.swift */,
 			);
 			path = HighScoresScreen;
 			sourceTree = "<group>";
@@ -151,6 +153,15 @@
 				A3826A13202349CA00879E2C /* UserService.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		A3A050A12023780E00C61114 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A3A0509F202374B800C61114 /* UserTVCell.swift */,
+				A3A050A22023787000C61114 /* RoundedView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		A3BEA19E201A59EC009AADAB /* View */ = {
@@ -251,6 +262,7 @@
 			files = (
 				A3F86CE9200F5DE9007A496F /* CardCollectionView.swift in Sources */,
 				A3BF9BF6201E906800B5DF48 /* CardSizeCalculator.swift in Sources */,
+				A3A050A32023787000C61114 /* RoundedView.swift in Sources */,
 				A3421D502012A57B0073A16D /* UIViewAnimations.swift in Sources */,
 				A3826A112023498200879E2C /* UserMO.swift in Sources */,
 				A3F86CE7200F5CEB007A496F /* GameVC.swift in Sources */,
