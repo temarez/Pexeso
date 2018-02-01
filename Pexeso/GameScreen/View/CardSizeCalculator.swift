@@ -66,36 +66,27 @@ extension CGSize {
 struct CardSizeConstants {
     static var cardSizeMax = CGSize(width: 1024, height: 1024)
     static var minSpacingBetweenCards = 10
-    static var aspectRatioHeightUnits: CGFloat = 3.0 //1.0
-    static var aspectRatioWidthUnits: CGFloat = 4.0 // 1.0
+    static var aspectRatioHeightUnits: CGFloat = 1.0
+    static var aspectRatioWidthUnits: CGFloat = 1.0
 }
 
 class CardSizeCalculator {
     public var collectionViewSections: CollectionViewSections
     
+    /// NOTE: This only works for H=W ratio (squares) currently
     private func respectAspectRatio(maxSize: CGSize) -> CGSize {
-        var aspectRatioWidthToHeight = CardSizeConstants.aspectRatioWidthUnits / CardSizeConstants.aspectRatioHeightUnits
+        let aspectRatioWidthToHeight = CardSizeConstants.aspectRatioWidthUnits / CardSizeConstants.aspectRatioHeightUnits
+        
         var result = maxSize
-        
-        // For future implementation%
-        // there are 3 possible cases of ethalon aspect ratio: H>W, H<W, H=W
-        // The same way there are 3 cases of maxSize (H>W, H<W, H=W)
-        // You have to check combinations of all cases which is total 3 * 3 = 9 possible cases
-        
-        /*
-        switch result.longSide() {
-        case .height:
-            result.width = result.width / aspectRatioWidthToHeight
-        case .width:
-            result.height = result.height / aspectRatioWidthToHeight
+        if(CardSizeConstants.aspectRatioHeightUnits==CardSizeConstants.aspectRatioWidthUnits) {
+            result = CGSize(width: result.shortSideSize(), height: result.shortSideSize())
+        } else {
+            result = CGSize(width: result.width / aspectRatioWidthToHeight, height: result.shortSideSize())
+            // TODO: Note for future implementation:
+            // there are 3 possible cases of ethalon aspect ratio: H>W, H<W, H=W
+            // The same way there are 3 cases of maxSize (H>W, H<W, H=W)
+            // You have to check combinations of all cases which is total 3 * 3 = 9 possible cases
         }
-        
-        
-        let biggerSideSize = max(result.height , result.width)
-        let smallerSideSize = min(result.height , result.width)
-
-        var currentAspectRatio =
-        */
         return result;
     }
     
