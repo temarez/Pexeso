@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "maleCell"
+private let reuseIdentifier = "scoreCell"
 
 class HighScoresVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 

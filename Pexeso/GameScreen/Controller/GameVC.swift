@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "maleCell"
+private let reuseIdentifier = "Cell"
 
 // TODO: move the code from this class to CardCollectionView
 class CollectionViewSections {
