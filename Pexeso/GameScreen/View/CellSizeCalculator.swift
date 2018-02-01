@@ -72,20 +72,25 @@ class CellSizeCalculator {
     
     public func cellSize(collectionViewFrameSize: CGSize, numberOfCells: Int) -> CGSize {
         
-        var calculatedCardSize = CGSize()
         let shortSideSize = collectionViewFrameSize.shortSideSize()
         //print("ShortSideSize: \(shortSideSize)")
-
+        var calculatedCardWidth = CGFloat(1)
+        var calculatedCardHeight = CGFloat(1)
+        
         if numberOfCells <= 12 {
-            calculatedCardSize = CGSize(width: shortSideSize/3-16, height: shortSideSize/3-16)
+            calculatedCardWidth = shortSideSize/3-16
+            calculatedCardHeight = shortSideSize/3-16
         }
         else if numberOfCells <= 24 {
-            calculatedCardSize = CGSize(width: shortSideSize/4-14, height: shortSideSize/4-14)
+            calculatedCardWidth = shortSideSize/4-14
+            calculatedCardHeight = shortSideSize/4-14
         }
         else {
-            calculatedCardSize = CGSize(width: shortSideSize/5-12, height: shortSideSize/5-12)
+            calculatedCardWidth = shortSideSize/5-12
+            calculatedCardHeight = shortSideSize/5-12
         }
 
+        var calculatedCardSize = CGSize(width: calculatedCardWidth, height: calculatedCardHeight)
         /*
         if(collectionViewFrameSize.width == 716.0) { // this is for landscape orientation
             calculatedCardSize = CGSize(width: 100, height: 100)
