@@ -17,6 +17,7 @@
 		A333E27820057B4F00E0898E /* DifficultyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A333E27720057B4F00E0898E /* DifficultyVC.swift */; };
 		A3421D502012A57B0073A16D /* UIViewAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3421D4F2012A57B0073A16D /* UIViewAnimations.swift */; };
 		A3697624201B1B59006CB6C3 /* UILabelWithTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3697623201B1B59006CB6C3 /* UILabelWithTimer.swift */; };
+		A39F5A19202309AD000D1089 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39F5A18202309AD000D1089 /* Difficulty.swift */; };
 		A3BF9BF6201E906800B5DF48 /* CellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BF9BF5201E906800B5DF48 /* CellSizeCalculator.swift */; };
 		A3EAFD7220207A3400A5C819 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A3EAFD7120207A3400A5C819 /* Settings.bundle */; };
 		A3ECAD2B200BF5D5003DD911 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ECAD2A200BF5D5003DD911 /* CardCollectionViewCell.swift */; };
@@ -39,6 +40,7 @@
 		A333E27720057B4F00E0898E /* DifficultyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyVC.swift; sourceTree = "<group>"; };
 		A3421D4F2012A57B0073A16D /* UIViewAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewAnimations.swift; sourceTree = "<group>"; };
 		A3697623201B1B59006CB6C3 /* UILabelWithTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelWithTimer.swift; sourceTree = "<group>"; };
+		A39F5A18202309AD000D1089 /* Difficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
 		A3BF9BF5201E906800B5DF48 /* CellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSizeCalculator.swift; sourceTree = "<group>"; };
 		A3EAFD7120207A3400A5C819 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = "Pexeso/Supporting Files/Settings.bundle"; sourceTree = SOURCE_ROOT; };
 		A3ECAD2A200BF5D5003DD911 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				A333E27720057B4F00E0898E /* DifficultyVC.swift */,
+				A39F5A18202309AD000D1089 /* Difficulty.swift */,
 			);
 			path = StartScreen;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 			files = (
 				A3F86CE9200F5DE9007A496F /* CardCollectionView.swift in Sources */,
 				A3BF9BF6201E906800B5DF48 /* CellSizeCalculator.swift in Sources */,
+				A39F5A19202309AD000D1089 /* Difficulty.swift in Sources */,
 				A3421D502012A57B0073A16D /* UIViewAnimations.swift in Sources */,
 				A3F86CE7200F5CEB007A496F /* GameVC.swift in Sources */,
 				A3FB8FC4201F5C340080C6D6 /* Theme.swift in Sources */,

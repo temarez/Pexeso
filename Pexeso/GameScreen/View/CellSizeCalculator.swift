@@ -15,7 +15,7 @@ enum RectSide {
 
 extension CGSize {
     
-    func largerSide() -> RectSide {
+    func longSide() -> RectSide {
         if(self.height >= self.width) {
             return RectSide.height
         }
@@ -24,16 +24,16 @@ extension CGSize {
         }
     }
     
-    func smallerSide() -> RectSide {
-        var smallerSide = RectSide.width
-        let largerSide = self.largerSide()
-        switch largerSide {
+    func shortSide() -> RectSide {
+        var shortSide = RectSide.width
+        let longSide = self.longSide()
+        switch longSide {
         case .height:
-            smallerSide = RectSide.width
+            shortSide = RectSide.width
         case .width:
-            smallerSide = RectSide.height
+            shortSide = RectSide.height
         }
-        return smallerSide
+        return shortSide
     }
     
     private func sideSize(side: RectSide) -> CGFloat {
@@ -45,12 +45,12 @@ extension CGSize {
         }
     }
     
-    func largerSideSize() -> CGFloat {
-        return sideSize(side: largerSide())
+    func longSideSize() -> CGFloat {
+        return sideSize(side: longSide())
     }
     
-    func smallerSideSize() -> CGFloat {
-        return sideSize(side: smallerSide())
+    func shortSideSize() -> CGFloat {
+        return sideSize(side: shortSide())
     }
     
     /*
@@ -69,7 +69,7 @@ class CellSizeCalculator {
     public let spacingBetweenCards = 10
     public var collectionViewSize: CGSize
     public var collectionViewSections: CollectionViewSections
-        
+    
     public func cellSize(collectionViewFrameSize: CGSize, numberOfCells: Int) -> CGSize {
         var calculatedCardSize = CGSize(width: 200, height: 200) // TODO: get rid of hard-coded values, calculate with collectionViewSize
         if(numberOfCells == 4) {
