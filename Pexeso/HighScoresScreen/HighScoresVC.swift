@@ -75,12 +75,6 @@ class HighScoresVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     @IBAction func userSearchFieldEditingChanged(_ sender: Any) {
         users = UserService.instance.getUsersWithNames(nameFilter: userSearchField.text)
-        addUser(name: "Artem", cardsPairsNumber: 11, score: 32)
-    }
-    
-    func addUser(name: String, cardsPairsNumber: Int, score: Int) {
-        UserService.instance.addUser(name: name, cardsPairsNumber: cardsPairsNumber, score: score)
-        loadDataSource()
     }
     
     @objc func performClearAllScores() {

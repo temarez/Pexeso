@@ -39,6 +39,10 @@ class CollectionViewSections {
     }
 }
 
+struct GameRulesConstants {
+    static var allowedTimeForPairToFlip = 5
+}
+
 class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, GameEventsDelegate {
     @IBOutlet weak var collectionView: CardCollectionView?
     @IBOutlet weak var flipsLabel: UILabel!
@@ -143,7 +147,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         pexesoEngine = PexesoEngine(numberOfPairsOfCards: numberOfPairs)
         pexesoEngine?.gameEventsDelegate = self
         flipCount = 0
-        timeLabel.myTimerStart(seconds: TimeInterval(numberOfPairs*5)) // TODO: move constant to separate struct
+        timeLabel.myTimerStart(seconds: TimeInterval(numberOfPairs * GameRulesConstants.allowedTimeForPairToFlip))
         updateViewFromModel()
         // make buttons visible and in default state again!!!
     }
@@ -242,8 +246,17 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     func gameEventVictory() {
         print("Event: Victory")
         timeLabel.myTimerStop()
+        let scoreForFlipsPcnt = Int(numberOfPairs * 2 * 100 / flipCount)
+        let bestPossibleTime = TimeInterval(numberOfPairs * GameRulesConstants.allowedTimeForPairToFlip)
+        var scoreForTime = TimeInterval(100)
+        if(timeLabel.counterValue > bestPossibleTime) {
+            scoreForTime = timeLabel.counterValue - bestPossibleTime
+        }
+        let scoreForTimePcnt = Int(scoreForTime)
+        let score = Int((scoreForFlipsPcnt + scoreForTimePcnt) / 2)
+        
         // TODO: add some delay here and maybe even animation or user
-        let alertController = UIAlertController(title: "Victory", message: "You won. Do you wish to replay?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Victory", message: "Congratulations, you've got \(score) points. Do you wish to replay?", preferredStyle: .alert)
         
         alertController.addTextField { (textField : UITextField!) -> Void in
             textField.placeholder = "Enter your name"
@@ -258,7 +271,7 @@ class GameVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             alert -> Void in
             let firstTextField = alertController.textFields![0] as UITextField
             if let name = firstTextField.text {
-                print("Name: " + name)
+                UserService.instance.addUser(name: name, cardsPairsNumber: self.numberOfPairs, score: score)
             }
             self.startNewGame()
         })

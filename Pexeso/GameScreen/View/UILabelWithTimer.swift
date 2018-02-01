@@ -11,7 +11,7 @@ import UIKit
 class UILabelWithTimer: UILabel {
     
     private static let counterValueDefault: TimeInterval = 30.0
-    private var counterValue: TimeInterval = counterValueDefault
+    public var counterValue: TimeInterval = counterValueDefault
     private lazy var timer = Timer()
     
     deinit {
