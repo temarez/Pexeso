@@ -15,7 +15,7 @@ class HighScoresVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userSearchField: UITextField!
     
-    var users: [UserMO] = [] {
+    var users: [ScoreMO] = [] {
         didSet {
             tableView.reloadData()
         }

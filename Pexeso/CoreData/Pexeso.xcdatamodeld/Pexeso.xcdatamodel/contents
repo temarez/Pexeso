@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D47" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="UserMO" representedClassName="UserMO" syncable="YES">
+    <entity name="ScoreMO" representedClassName="ScoreMO" syncable="YES">
         <attribute name="cardsPairsNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="score" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="UserMO" positionX="-2781" positionY="-522" width="128" height="90"/>
+        <element name="ScoreMO" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

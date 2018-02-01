@@ -1,5 +1,5 @@
 //
-//  UserMO.swift
+//  ScoreMO.swift
 //  Pexeso
 //
 //  Created by Artem Rieznikov on 01.02.18.
@@ -9,8 +9,8 @@
 import Foundation
 import CoreData
 
-@objc(UserMO)
-public class UserMO: NSManagedObject {
+@objc(ScoreMO)
+public class ScoreMO: NSManagedObject {
 
     @NSManaged public var name: String?
     @NSManaged public var cardsPairsNumber: Int64

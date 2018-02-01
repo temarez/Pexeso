@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+private let entityNameScore = "ScoreMO"
+
 class UserService {
     
     static let instance = UserService()
@@ -23,7 +25,7 @@ class UserService {
     }()
     
     func addUser(name: String, cardsPairsNumber: Int, score: Int) {
-        guard let mo = NSEntityDescription.insertNewObject(forEntityName: "UserMO", into: moc) as? UserMO else {
+        guard let mo = NSEntityDescription.insertNewObject(forEntityName: entityNameScore, into: moc) as? ScoreMO else {
             return
         }
         
@@ -43,7 +45,7 @@ class UserService {
     }
     
     func deleteAllUsers() {
-        let fetchRequest = NSFetchRequest<UserMO>(entityName: "UserMO")
+        let fetchRequest = NSFetchRequest<ScoreMO>(entityName: entityNameScore)
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
         do {
             try moc.execute(deleteRequest)
@@ -52,13 +54,13 @@ class UserService {
         }
     }
     
-    func getAllUsers() -> [UserMO] {
+    func getAllUsers() -> [ScoreMO] {
         return getUsersWithNames(nameFilter: nil)
     }
     
     /// Returns an array of users containing nameFilter in the name
-    func getUsersWithNames(nameFilter: String?) -> [UserMO] {
-        let fetchRequest = NSFetchRequest<UserMO>(entityName: "UserMO")
+    func getUsersWithNames(nameFilter: String?) -> [ScoreMO] {
+        let fetchRequest = NSFetchRequest<ScoreMO>(entityName: entityNameScore)
         let scoreSort = NSSortDescriptor(key: "score", ascending: false)
         fetchRequest.sortDescriptors = [scoreSort]
         if let myName = nameFilter {
@@ -67,7 +69,7 @@ class UserService {
                 fetchRequest.predicate = predicate
             }
         }
-        var users: [UserMO] = []
+        var users: [ScoreMO] = []
         do {
             users = try moc.fetch(fetchRequest)
         } catch {
