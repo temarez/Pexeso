@@ -8,21 +8,50 @@
 
 import UIKit
 
-class HighScoresVC: UIViewController {
+private let reuseIdentifier = "maleCell"
+
+class HighScoresVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var userSearchField: UITextField!
+    var users: [UserMO] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(performShare))
         self.navigationItem.rightBarButtonItem = shareButton
         
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+         loadDataSource()
     }
     
+    func loadDataSource() {
+        UserService.instance.deleteAllUsers()
+            self.users = UserService.instance.getAllUsers()
+    }
+    
+    func addUser(_ sender: Any) {
+        
+        let name = "Artem"
+        let surname = "Reznikov"
+        let age = 32
+        
+        //UserService.instance.addUser(name: name, surname: surname, age: age)
+        
+        let user = UserService.instance.newUserMOInstance()
+        user.name = name
+        user.surname = surname
+        user.age = Int64(age)
+        
+        guard UserService.instance.addEntity(entity: user, entityName: "UserMO") != nil else {
+            print("Could not add object to database :-(")
+            return
+        }
+        loadDataSource()
+    }
 
     /*
     // MARK: - Navigation
@@ -41,6 +70,46 @@ class HighScoresVC: UIViewController {
             UIActivityType(rawValue: "com.apple.mobilenotes.SharingExtension")
         ]
         self.present(activityVC, animated: true, completion: nil)
+    }
+    
+    // MARK: - functions that will make class conform to protocol 'UITableViewDataSource' an other table-related ones
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return users.count
+        default:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0:
+            return 90
+        default:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "maleCell") as? UserTVCell else {
+            print("Something wrong")
+            return UITableViewCell()
+        }
+        let user = users[indexPath.row]
+        cell.nameLabel.text = (user.name ?? "Empty") + " " + (user.surname ?? "Empty")
+        cell.ageLabel.text = "\(user.age )"
+        
+        return  cell
+    }
+    
+    @IBAction func userSearchFieldEditingChanged(_ sender: Any) {
+        users = UserService.instance.getUsersWithNames(nameFilter: userSearchField.text)
     }
 
 }
