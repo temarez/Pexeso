@@ -64,22 +64,22 @@ class HighScoresVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             return UITableViewCell()
         }
         let user = users[indexPath.row]
-        cell.nameLabel.text = (user.name ?? "Empty")
-        cell.cardsNumberLabel.text = "Cards num: " + (user.surname ?? "Empty")
-        cell.scoreLabel.text = "Score: \(user.score )"
+        cell.nameLabel.text = (user.name ?? "Unknown")
+        cell.cardsNumberLabel.text = "Cards pairs: " + (user.cardsPairsNumber ?? "Empty")
+        cell.scoreLabel.text = "Score: \(user.score)"
         
-        return  cell
+        return cell
     }
     
     // MARK: - GUI-related functionality
     
     @IBAction func userSearchFieldEditingChanged(_ sender: Any) {
         users = UserService.instance.getUsersWithNames(nameFilter: userSearchField.text)
-        addUser(name: "Artem", surname: "Rieznikov", score: 32)
+        addUser(name: "Artem", cardsPairsNumber: "Rieznikov", score: 32)
     }
     
-    func addUser(name: String, surname: String, score: Int) {
-        UserService.instance.addUser(name: name, surname: surname, score: score)
+    func addUser(name: String, cardsPairsNumber: String, score: Int) {
+        UserService.instance.addUser(name: name, cardsPairsNumber: cardsPairsNumber, score: score)
         loadDataSource()
     }
     

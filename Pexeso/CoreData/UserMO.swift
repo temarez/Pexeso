@@ -13,7 +13,7 @@ import CoreData
 public class UserMO: NSManagedObject {
 
     @NSManaged public var name: String?
-    @NSManaged public var surname: String?
+    @NSManaged public var cardsPairsNumber: String?
     @NSManaged public var score: Int64
     
 }
