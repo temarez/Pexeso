@@ -1,5 +1,5 @@
 //
-//  UserTVCell.swift
+//  ScoreTVCell.swift
 //  Pexeso
 //
 //  Created by Artem Rieznikov on 01.02.18.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class UserTVCell: UITableViewCell {
+class ScoreTVCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var cardsNumberLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     
 }

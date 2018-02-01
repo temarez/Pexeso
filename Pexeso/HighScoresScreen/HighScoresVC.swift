@@ -74,13 +74,14 @@ class HighScoresVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as? UserTVCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as? ScoreTVCell else {
             print("Something wrong")
             return UITableViewCell()
         }
         let user = users[indexPath.row]
-        cell.nameLabel.text = (user.name ?? "Empty") + " " + (user.surname ?? "Empty")
-        cell.ageLabel.text = "\(user.age )"
+        cell.nameLabel.text = (user.name ?? "Empty")
+        cell.cardsNumberLabel.text = "Cards num: " + (user.surname ?? "Empty")
+        cell.scoreLabel.text = "Score: \(user.age )"
         
         return  cell
     }
